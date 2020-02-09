@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">College</string>
     <string name="college_app">College App</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_roll_no">Enter Roll No</string>
+    <string name="phone_no">Phone No</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="spinner_title">spinner_title</string>
+    <string name="txtName">Niranjan</string>
+    <string name="msc_it2">MSc IT2</string>
+    <string name="profile">profile</string>
+    <string name="notes">notes</string>
+    <string name="assignments">assignmrnt</string>
+    <string name="book">book</string>
+    <string name="assignment">assignmrnt</string>
+    <string name="grpchats">Chats</string>
+    <string name="chat">chat</string>
+    <string name="time">time</string>
+    <string name="practical">practical</string>
+
 </resources>
