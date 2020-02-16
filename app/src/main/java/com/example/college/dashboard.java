@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class dashboard extends AppCompatActivity {
 
-    TextView txtName , txtFields;
+    TextView txtName, txtFields;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class dashboard extends AppCompatActivity {
 
     }
 
-    private void showAllUserData() {
+    public void showAllUserData() {
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("name");
@@ -32,4 +33,11 @@ public class dashboard extends AppCompatActivity {
         txtFields.setText(stream);
     }
 
+    public void logout(View view) {
+
+         new storeUser(dashboard.this).removeUser();
+         Intent intent = new Intent(dashboard.this,home.class);
+         startActivity(intent);
+         finish();
+    }
 }

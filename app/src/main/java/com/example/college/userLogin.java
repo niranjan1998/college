@@ -67,7 +67,7 @@ public class userLogin extends AppCompatActivity {
     public void loginUser(View view) {
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
-            return ;
+            return;
         } else {
             isUser(view);
         }
@@ -99,19 +99,28 @@ public class userLogin extends AppCompatActivity {
                         password.setError(null);
                         password.setErrorEnabled(false);
 
+
+//transfer data to dashboard
                         String nameFromDB = dataSnapshot.child(userEnteredRoll).child("name").getValue(String.class);
                         String rollFromDB = dataSnapshot.child(userEnteredRoll).child("roll").getValue(String.class);
                         String phoneNoFromDB = dataSnapshot.child(userEnteredRoll).child("phone").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredRoll).child("email").getValue(String.class);
                         String streamFromDB = dataSnapshot.child(userEnteredRoll).child("stream").getValue(String.class);
+                        String passFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
 
-                        Intent intent = new Intent(getApplicationContext(),dashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), dashboard.class);
 
-                        intent.putExtra("name",nameFromDB);
-                        intent.putExtra("roll",rollFromDB);
-                        intent.putExtra("email",emailFromDB);
-                        intent.putExtra("phoneNo",phoneNoFromDB);
-                        intent.putExtra("stream",streamFromDB);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("roll", rollFromDB);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("phoneNo", phoneNoFromDB);
+                        intent.putExtra("stream", streamFromDB);
+                        intent.putExtra("password", passFromDB);
+
+//store user data using shared preference
+                        storeUser storeUser = new storeUser(userLogin.this);
+                        storeUser.setName(nameFromDB);
+                        storeUser.setPass(passFromDB);
 
                         startActivity(intent);
 
@@ -155,149 +164,3 @@ public class userLogin extends AppCompatActivity {
     }*/
 
 }
-/*
-
-        //All elements Hooks
-        progressBar =findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
-        callSignUp = findViewById(R.id.signup_screen);
-        image = findViewById(R.id.logo_image);
-        logoText = findViewById(R.id.logo_name);
-        sloganText = findViewById(R.id.slogan_name);
-        username = findViewById(R.id.username_login);
-        password = findViewById(R.id.password_login);
-        login_btn = findViewById(R.id.login_btn);
-
-
-    }
-
-
-    private Boolean validateUsername() {
-        String val = username.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            username.setError("Field cannot be empty");
-            return false;
-        } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validatePassword() {
-        String val = password.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            password.setError("Field cannot be empty");
-            return false;
-        } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-
-    public void loginUser(View view) {
-        //Validate Login Info
-        if (!validateUsername() | !validatePassword()) {
-            return;
-        }
-        else{
-            isUser();
-        }
-
-    }
-
-    private void isUser() {
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        final String userEnteredUsername = username.getEditText().getText().toString().trim();
-        final String userEnteredPassword = password.getEditText().getText().toString().trim();
-
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-
-        Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
-
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.exists()){
-
-                    username.setError(null);
-                    username.setErrorEnabled(false);
-
-                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
-
-                    if(passwordFromDB.equals(userEnteredPassword)){
-
-                        username.setError(null);
-                        username.setErrorEnabled(false);
-
-                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
-                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
-                        String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
-                        String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
-
-                        Intent intent = new Intent(getApplicationContext(),UserProfile.class);
-
-                        intent.putExtra("name",nameFromDB);
-                        intent.putExtra("username",usernameFromDB);
-                        intent.putExtra("email",emailFromDB);
-                        intent.putExtra("phoneNo",phoneNoFromDB);
-                        intent.putExtra("password",passwordFromDB);
-
-                        startActivity(intent);
-
-                    }
-                    else{
-                        progressBar.setVisibility(View.GONE);
-                        password.setError("Wrong Password");
-                        password.requestFocus();
-                    }
-                }
-                else {
-                    progressBar.setVisibility(View.GONE);
-                    username.setError("No such User exist");
-                    username.requestFocus();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-
-    //Call SignUp Screen
-    public void callSignUpScreen(View view) {
-        //To call next activity
-        Intent intent = new Intent(Login.this, SignUp.class);
-
-        //create pairs for animation
-        Pair[] pairs = new Pair[7];
-        pairs[0] = new Pair&lt;View, String&gt;(image, "logo_image"); //1st one is the element and 2nd is the transition name of animation.
-        pairs[1] = new Pair&lt;View, String&gt;(logoText, "logo_text");
-        pairs[2] = new Pair&lt;View, String&gt;(sloganText, "logo_desc");
-        pairs[3] = new Pair&lt;View, String&gt;(username, "username_tran");
-        pairs[4] = new Pair&lt;View, String&gt;(password, "password_tran");
-        pairs[5] = new Pair&lt;View, String&gt;(login_btn, "button_tran");
-        pairs[6] = new Pair&lt;View, String&gt;(callSignUp, "login_signup_tran");
-
-        //Call next activity by attaching the animation with it.
-        if (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
-            startActivity(intent, options.toBundle());
-        }
-    }
-
-}
-*/

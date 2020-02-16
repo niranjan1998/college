@@ -17,12 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegUsers"></activity>
-        <activity android:name=".userLogin">
-
-        </activity>
+        <activity android:name=".userLogin">        </activity>
         <activity android:name=".login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".dashboard" />
+        <activity android:name=".dashboard">        </activity>
     </application>
 
 </manifest>
