@@ -47,7 +47,6 @@
                 android:layout_toEndOf="@+id/txtField"
                 android:text="Logout"
                 android:textColor="#ffff"
-                android:onClick="logout"
                 android:textSize="15sp" />
 
             <ImageView
@@ -63,7 +62,7 @@
             android:alignmentMode="alignMargins"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="50dp"
             android:columnCount="2"
             android:columnOrderPreserved="false"
             android:rowCount="6">
@@ -74,7 +73,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="0dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -84,6 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="upload_notes"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/book"
+                        android:text="@string/notes"
                         android:textSize="18sp"
                         android:textColor="#6f6f6f" />
 
@@ -110,7 +110,7 @@
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -120,6 +120,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:onClick="upload_asg"
                     android:padding="16dp">
 
                     <ImageView
@@ -146,7 +147,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="0dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -184,7 +185,7 @@
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -194,6 +195,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
+                    android:onClick="dash_not"
                     android:padding="16dp">
 
                     <ImageView
@@ -230,6 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="timepass"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -268,6 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="upload_pdf"
                     android:orientation="vertical"
                     android:padding="16dp">
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view_notes">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/file_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:hintAnimationEnabled="true">
+
+            <EditText
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/filename"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/SelectFile_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/select"
+                android:textColor="#2196F3"
+                android:textSize="15sp"
+                app:cornerRadius="20dp"
+                app:icon="@android:drawable/ic_menu_add" />
+
+            <com.google.android.material.button.MaterialButton
+                android:visibility="invisible"
+                android:id="@+id/uploadFile_btn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/upload"
+                android:textColor="#2196F3"
+                android:textSize="15sp"
+                app:cornerRadius="20dp"
+                app:icon="@android:drawable/ic_menu_upload" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/upload"
+        app:icon="@android:drawable/ic_menu_add"
+        app:iconPadding="0dp"
+        app:iconSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

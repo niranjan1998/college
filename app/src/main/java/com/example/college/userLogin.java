@@ -1,17 +1,18 @@
 package com.example.college;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.google.android.material.textfield.TextInputLayout;
-
-
-import android.view.View;
-import android.widget.Button;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +20,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class userLogin extends AppCompatActivity {
 
-    Button login_btn;
-    TextInputLayout username, password;
+    Button isUser;
+    EditText username, password;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    Boolean saveLogin;
+    CheckBox slcheckbox;
+
+    TextInputLayout vusername,vpassword;
+
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,52 +41,79 @@ public class userLogin extends AppCompatActivity {
 
 
         //All elements Hooks
-        username = findViewById(R.id.user_email);
-        password = findViewById(R.id.user_password);
-        login_btn = findViewById(R.id.btn_login);
+        vusername = findViewById(R.id.user_email);
+        vpassword = findViewById(R.id.user_password);
+        isUser = findViewById(R.id.btn_login);
+
+        username = findViewById(R.id.user_emails);
+        password = findViewById(R.id.user_passwords);
+        progressBar = findViewById(R.id.progressBar);
+
+        int pv = progressBar.getProgress();
+
+
+        sharedPreferences = getSharedPreferences("loginRef", MODE_PRIVATE);
+        slcheckbox = findViewById(R.id.checkbox);
+        editor = sharedPreferences.edit();
+
+        isUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isUser();
+
+            }
+        });
+
+       saveLogin = sharedPreferences.getBoolean("saveLogin",true);
+        if(saveLogin==true){
+            username.setText(sharedPreferences.getString("username",null));
+            password.setText(sharedPreferences.getString("password",null));
+
+        }
+
 
     }
 
-    private Boolean validateUsername() {
-        String val = username.getEditText().getText().toString();
+    public Boolean validateUsername() {
+        String val = vusername.getEditText().getText().toString();
 
         if (val.isEmpty()) {
-            username.setError("Field cannot be empty");
+            vusername.setError("Field cannot be empty");
             return false;
         } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
+            vusername.setError(null);
+            vusername.setErrorEnabled(false);
             return true;
         }
     }
 
-    private Boolean validatePassword() {
-        String val = password.getEditText().getText().toString();
+    public Boolean validatePassword() {
+        String val = vpassword.getEditText().getText().toString();
 
         if (val.isEmpty()) {
-            password.setError("Field cannot be empty");
+            vpassword.setError("Field cannot be empty");
             return false;
         } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
+            vpassword.setError(null);
+            vpassword.setErrorEnabled(false);
             return true;
         }
     }
 
 
-    public void loginUser(View view) {
+    public void loginUser() {
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
-            return;
+
         } else {
-            isUser(view);
+            isUser();
         }
 
     }
 
-    public void isUser(View view) {
-        final String userEnteredRoll = username.getEditText().getText().toString().trim();
-        final String userEnteredPassword = password.getEditText().getText().toString().trim();
+    public void isUser() {
+        final String userEnteredRoll = username.getText().toString().trim();
+        final String userEnteredPassword = password.getText().toString().trim();
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("studentData");
@@ -89,15 +126,22 @@ public class userLogin extends AppCompatActivity {
 
                 if (dataSnapshot.exists()) {
 
-                    username.setError(null);
-                    username.setErrorEnabled(false);
+                    vusername.setError(null);
+                    vusername.setErrorEnabled(false);
 
                     String passwordFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
 
                     if (passwordFromDB.equals(userEnteredPassword)) {
 
-                        password.setError(null);
-                        password.setErrorEnabled(false);
+                        vpassword.setError(null);
+                        vpassword.setErrorEnabled(false);
+
+                        if (slcheckbox.isChecked()) {
+                            editor.putBoolean("saveLogin", true);
+                            editor.putString("username", userEnteredRoll);
+                            editor.putString("password", userEnteredPassword);
+                            editor.commit();
+                        }
 
 
 //transfer data to dashboard
@@ -116,23 +160,22 @@ public class userLogin extends AppCompatActivity {
                         intent.putExtra("phoneNo", phoneNoFromDB);
                         intent.putExtra("stream", streamFromDB);
                         intent.putExtra("password", passFromDB);
-
+/*
 //store user data using shared preference
                         storeUser storeUser = new storeUser(userLogin.this);
-                        storeUser.setName(nameFromDB);
+                        storeUser.setName(userEnteredRoll);
                         storeUser.setPass(passFromDB);
-
+*/
                         startActivity(intent);
 
                     } else {
-                        password.setError("Wrong Password");
-                        password.requestFocus();
+                        vpassword.setError("Wrong Password");
+                        vpassword.requestFocus();
                     }
                 } else {
-                    username.setError("No such User exist");
-                    username.requestFocus();
+                    vusername.setError("No such User exist");
+                    vusername.requestFocus();
                 }
-
             }
 
             @Override
@@ -141,26 +184,4 @@ public class userLogin extends AppCompatActivity {
             }
         });
     }
-  /*  //Call SignUp Screen
-    public void callSignUpScreen(View view) {
-        //To call next activity
-        Intent intent = new Intent(Login.this, SignUp.class);
-
-        //create pairs for animation
-        Pair[] pairs = new Pair[7];
-        pairs[0] = new Pair&lt;View, String&gt;(image, "logo_image"); //1st one is the element and 2nd is the transition name of animation.
-        pairs[1] = new Pair&lt;View, String&gt;(logoText, "logo_text");
-        pairs[2] = new Pair&lt;View, String&gt;(sloganText, "logo_desc");
-        pairs[3] = new Pair&lt;View, String&gt;(username, "username_tran");
-        pairs[4] = new Pair&lt;View, String&gt;(password, "password_tran");
-        pairs[5] = new Pair&lt;View, String&gt;(login_btn, "button_tran");
-        pairs[6] = new Pair&lt;View, String&gt;(callSignUp, "login_signup_tran");
-
-        //Call next activity by attaching the animation with it.
-        if (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
-            startActivity(intent, options.toBundle());
-        }
-    }*/
-
 }

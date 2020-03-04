@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="100dp"
-    android:layout_marginBottom="100dp"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:gravity="center"
+    android:padding="35dp"
     tools:context=".userLogin">
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <EditText
+            android:id="@+id/user_emails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -33,9 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true">
+        app:passwordToggleEnabled="true"
+        android:focusableInTouchMode="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <EditText
+            android:id="@+id/user_passwords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,16 +48,31 @@
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkbox"
+        android:text="@string/remember"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
+    </com.google.android.material.checkbox.MaterialCheckBox>
+
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/btn_round"
-        android:onClick="isUser"
         android:text="@string/login"
         android:textColor="#ffff"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        app:cornerRadius="20dp"
+        tools:ignore="OnClick" />
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/colorAccent" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

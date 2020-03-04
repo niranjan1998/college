@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".upload_notes">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="40dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/folder_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            android:focusableInTouchMode="true">
+            <EditText
+                android:id="@+id/folder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/filename"
+                android:maxLength="20"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textSize="20sp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/upload_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_round"
+            android:text="@string/upload"
+            android:textColor="#ffff"
+            android:textSize="22sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/file_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/filename"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/SelectFile_btn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/select"
+            android:textColor="#2196F3"
+            android:textSize="15sp"
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_add" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/uploadFile_btn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/upload"
+            android:textColor="#2196F3"
+            android:textSize="15sp"
+            app:cornerRadius="20dp"
+            app:icon="@android:drawable/ic_menu_upload" />
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:padding="40dp">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reFolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

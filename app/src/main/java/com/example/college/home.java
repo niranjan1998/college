@@ -1,13 +1,10 @@
 package com.example.college;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class home extends AppCompatActivity {
 
@@ -17,7 +14,7 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
+/*
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -32,7 +29,7 @@ public class home extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-        }, 2000);
+        }, 2000);*/
     }
 
     public void signupBtn(View view) {

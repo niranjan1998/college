@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.college">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view_notes"></activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".dash_notes" />
+        <activity android:name=".viewfiles" />
+        <activity android:name=".upload_files" />
+        <activity android:name=".upload_notes" />
         <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,11 +31,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegUsers"></activity>
-        <activity android:name=".userLogin">        </activity>
+        <activity android:name=".RegUsers" />
+        <activity android:name=".userLogin" />
         <activity android:name=".login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".dashboard">        </activity>
+        <activity android:name=".dashboard" />
     </application>
 
 </manifest>
