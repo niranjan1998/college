@@ -9,11 +9,25 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayoutCompat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/main_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/sem_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/file_names"
@@ -55,7 +69,6 @@
                 app:icon="@android:drawable/ic_menu_add" />
 
             <com.google.android.material.button.MaterialButton
-                android:visibility="invisible"
                 android:id="@+id/uploadFile_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                 android:layout_width="wrap_content"
@@ -65,10 +78,24 @@
                 android:text="@string/upload"
                 android:textColor="#2196F3"
                 android:textSize="15sp"
+                android:visibility="invisible"
                 app:cornerRadius="20dp"
                 app:icon="@android:drawable/ic_menu_upload" />
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/fab"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:drawableStart="@drawable/ic_folder_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+        app:layout_constraintVertical_bias="0.588" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab"

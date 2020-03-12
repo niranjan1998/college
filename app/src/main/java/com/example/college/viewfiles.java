@@ -38,10 +38,6 @@ public class viewfiles extends AppCompatActivity {
         uploadList = new ArrayList<>();
         listView = findViewById(R.id.listView);
 
-        uploadList = new ArrayList<>();
-        listView = findViewById(R.id.listView);
-
-
         //adding a clicklistener on listview
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

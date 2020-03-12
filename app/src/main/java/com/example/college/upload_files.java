@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -109,7 +110,11 @@ public class upload_files extends AppCompatActivity implements View.OnClickListe
                         progressBar.setVisibility(View.GONE);
                         textViewStatus.setText("File Uploaded Successfully");
 
-                        uploads_fmodel upload = new uploads_fmodel(editTextFilename.getText().toString(), taskSnapshot.getStorage().getDownloadUrl().toString());
+                        Task<Uri>  uri =  taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uri.isComplete());
+                        Uri url = uri.getResult();
+
+                        uploads_fmodel upload = new uploads_fmodel(editTextFilename.getText().toString(),url.toString());
                         mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(upload);
                     }
                 })

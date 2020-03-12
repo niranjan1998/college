@@ -50,6 +50,8 @@ public class dashboard extends AppCompatActivity {
     }
 
     public void timepass(View view) {
+        Intent intent = new Intent(dashboard.this,event_upload.class);
+        startActivity(intent);
     }
 
     public void upload_pdf(View view) {

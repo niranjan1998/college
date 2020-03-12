@@ -10,17 +10,17 @@
         android:id="@+id/lin_sem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cd_mscIt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="mscIt"
             android:layout_margin="16dp"
             android:clickable="true"
             android:focusable="true"
+            android:onClick="mscIt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -84,16 +84,15 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:id="@+id/lin_mscSub"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:visibility="visible"
+        android:orientation="vertical"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.cardview.widget.CardView
@@ -123,13 +122,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:onClick="msc_notes1"
             android:focusable="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:onClick="mscIt_sem1"
                 android:padding="16dp">
 
                 <TextView
@@ -149,6 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:onClick="msc_notes2"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem1"
@@ -164,9 +164,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="@string/sem2"
                     android:drawableStart="@drawable/ic_folder_black_24dp"
                     android:drawablePadding="2dp"
+                    android:text="@string/sem2"
                     android:textColor="#000"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -177,6 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:onClick="msc_notes3"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem2"
@@ -192,10 +193,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="@string/sem3"
-                    android:textColor="#000"
                     android:drawableStart="@drawable/ic_folder_black_24dp"
                     android:drawablePadding="2dp"
+                    android:text="@string/sem3"
+                    android:textColor="#000"
                     android:textSize="18sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -206,6 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:clickable="true"
+            android:onClick="msc_notes4"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem3"
             tools:layout_editor_absoluteX="16dp">
@@ -220,9 +222,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="@string/sem4"
                     android:drawableStart="@drawable/ic_folder_black_24dp"
                     android:drawablePadding="2dp"
+                    android:text="@string/sem4"
                     android:textColor="#000"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -235,15 +237,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
+        android:orientation="vertical"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/bscIt"
+                    android:textColor="#000"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bsc_sem1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="bsc_notes1"
             android:clickable="true"
             android:focusable="true">
 
@@ -271,6 +296,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:clickable="true"
+            android:onClick="bsc_notes2"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem1"
             tools:layout_editor_absoluteX="16dp">
@@ -285,6 +311,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_folder_black_24dp"
+                    android:drawablePadding="2dp"
                     android:text="@string/sem2"
                     android:textColor="#000"
                     android:textSize="18sp" />
@@ -296,6 +324,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:onClick="bsc_notes3"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem2"
@@ -311,6 +340,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_folder_black_24dp"
+                    android:drawablePadding="2dp"
                     android:text="@string/sem3"
                     android:textColor="#000"
                     android:textSize="18sp" />
@@ -323,6 +354,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:clickable="true"
+            android:onClick="bsc_notes4"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem3"
             tools:layout_editor_absoluteX="16dp">
@@ -337,6 +369,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_folder_black_24dp"
+                    android:drawablePadding="2dp"
                     android:text="@string/sem4"
                     android:textColor="#000"
                     android:textSize="18sp" />
@@ -348,6 +382,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:onClick="bsc_notes5"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem2"
@@ -363,6 +398,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_folder_black_24dp"
+                    android:drawablePadding="2dp"
                     android:text="@string/sem5"
                     android:textColor="#000"
                     android:textSize="18sp" />
@@ -374,6 +411,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:onClick="bsc_notes6"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintTop_toBottomOf="@+id/msc_sem6"
@@ -389,6 +427,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_folder_black_24dp"
+                    android:drawablePadding="2dp"
                     android:text="@string/sem6"
                     android:textColor="#000"
                     android:textSize="18sp" />

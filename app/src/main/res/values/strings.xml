@@ -22,6 +22,10 @@
     <string name="remember">Remember Me</string>
     <string name="grpchats">chats</string>
     <string name="upload">Upload File</string>
+    <string name="selectImage">Select Image</string>
+    <string name="upload_event">Upload Event</string>
+    <string name="event_title">Event Title</string>
+    <string name="event_dep">Event Description </string>
     <string name="filename">Enter File Name</string>
     <string name="select">Select File</string>
 
@@ -42,6 +46,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="delete">Delete</string>
+    <string name="date">Date</string>
+    <string name="takeImage">Take Image</string>
 
 
 </resources>

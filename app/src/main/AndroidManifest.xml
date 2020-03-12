@@ -15,11 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view_notes"></activity>
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".event_upload_event"></activity>
+        <activity android:name=".event_expand" />
+        <activity android:name=".event_recycleItem" />
+        <activity android:name=".event_upload" />
+        <activity android:name=".view_notes" />
         <activity android:name=".dash_notes" />
         <activity android:name=".viewfiles" />
         <activity android:name=".upload_files" />
