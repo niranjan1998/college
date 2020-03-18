@@ -56,72 +56,73 @@ public class dash_notes extends AppCompatActivity {
 
 
     public void bsc_notes1(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem1");
+        intent.putExtra("sem", "SEMESTER-1");
         startActivity(intent);
     }
 
     public void bsc_notes2(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem2");
+        intent.putExtra("sem", "SEMESTER-2");
         startActivity(intent);
     }
 
     public void bsc_notes3(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem3");
+        intent.putExtra("sem", "SEMESTER-3");
         startActivity(intent);
     }
 
     public void bsc_notes4(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem4");
+        intent.putExtra("sem", "SEMESTER-4");
         startActivity(intent);
     }
 
     public void bsc_notes5(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem5");
+        intent.putExtra("sem", "SEMESTER-5");
         startActivity(intent);
     }
 
     public void bsc_notes6(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "BSC");
-        intent.putExtra("sem", "sem6");
+        intent.putExtra("sem", "SEMESTER-6");
         startActivity(intent);
     }
 
     public void msc_notes1(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "MSC");
-        intent.putExtra("sem", "sem1");
+        intent.putExtra("sem", "SEMESTER-1");
         startActivity(intent);
     }
 
     public void msc_notes2(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "MSC");
-        intent.putExtra("sem", "sem2");
+        intent.putExtra("sem", "SEMESTER-2");
         startActivity(intent);
     }
 
     public void msc_notes3(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "MSC");
-        intent.putExtra("sem", "sem3");
+        intent.putExtra("sem", "SEMESTER-3");
         startActivity(intent);
     }
 
     public void msc_notes4(View view) {
-        Intent intent = new Intent(getApplicationContext(), view_notes.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
         intent.putExtra("main", "MSC");
-        intent.putExtra("sem", "sem4");
+        intent.putExtra("sem", "SEMESTER-4");
         startActivity(intent);
     }
+
 }

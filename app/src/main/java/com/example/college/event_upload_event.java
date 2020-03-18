@@ -1,10 +1,13 @@
 package com.example.college;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
@@ -34,10 +37,10 @@ public class event_upload_event extends AppCompatActivity {
             .format(Calendar.getInstance().getTime());
     ;
     EditText event_title, event_dep;
-    EditText event_date;
-    ImageView event_image;
+    ImageView event_image, e_img;
     Uri uri;
     String imageUrl;
+    Context context;
 
 
     @Override
@@ -45,10 +48,13 @@ public class event_upload_event extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_upload_event);
 
-        event_date = findViewById(R.id.ed_event_date);
+
         event_title = findViewById(R.id.ed_event_name);
         event_dep = findViewById(R.id.ed_event_dep);
         event_image = findViewById(R.id.event_up_img);
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
 
     }
@@ -64,12 +70,17 @@ public class event_upload_event extends AppCompatActivity {
         Intent imgPicker = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Random random = new Random();
         int key = random.nextInt(1000);
-        File f = new File(Environment.getExternalStorageDirectory(), "picture" + key + "jpg");
-        uri = Uri.fromFile(f);
+        File photo = new File(Environment.getExternalStorageDirectory(), "picture" + key + ".jpg");
+        uri = Uri.fromFile(photo);
         imgPicker.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-
-        startActivityForResult(imgPicker, 2);
+        startActivityForResult(imgPicker, 22);
     }
+/*
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        Bitmap OutImage = Bitmap.createScaledBitmap(inImage, 1000, 1000, true);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), OutImage, "Title", null);
+        return Uri.parse(path);
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -79,34 +90,39 @@ public class event_upload_event extends AppCompatActivity {
 
             uri = data.getData();
             event_image.setImageURI(uri);
-        } else if (requestCode == 2 && resultCode == RESULT_OK) {
+        } else if (requestCode == 22 && resultCode == RESULT_OK) {
+            /*
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            event_image.setImageBitmap(bitmap);*/
 
-            // Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            //event_image.setImageBitmap(bitmap);
 
-            Intent mediaScan = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-            mediaScan.setData(uri);
-            this.sendBroadcast(mediaScan);
-           /* try {
-                Scanner scanner = new Scanner();
+            Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            mediaScanIntent.setData(uri);
+            this.sendBroadcast(mediaScanIntent);
+            try {
+
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                event_image.setImageBitmap(bitmap);
+              /*  Scanner scanner = new Scanner();
                 final Bitmap bitmap = scanner.decodeBitmapUri(event_upload_event.this, uri);
-                lostimg.setImageBitmap(bitmap);
+
+                event_image.setImageBitmap(bitmap);
                 uri = this.uri;
-                if (uri.getLastPathSegment().indexOf(".") > 0).substring(0, uri.getLastPathSegment()
-                        .lastIndexOf("."));
-                Toast.makeText(getApplicationContext(), filename, Toast.LENGTH_LONG).show();
+
+                //if (uri.getLastPathSegment().indexOf(".") > 0)
+                //filename = uri.getLastPathSegment().substring(0, uri.getLastPathSegment().lastIndexOf("."));
+
+                //  Toast.makeText(getApplicationContext(), filename,Toast.LENGTH_LONG).show();
+*/
 
             } catch (Exception e) {
                 Toast.makeText(this, "Failed to load Image", Toast.LENGTH_SHORT).show();
-            }*/
+            }
+        } else {
+            Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
+        }
 
-    } else
-
-    {
-        Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
     }
-
-}
 
     public void uploadImage() {
         StorageReference storageReference = FirebaseStorage.getInstance()
@@ -154,5 +170,9 @@ public class event_upload_event extends AppCompatActivity {
 
     public void btn_uploadEvents(View view) {
         uploadImage();
+    }
+
+    public void btn_image_view(View view) {
+        btnSelectImage( view);
     }
 }

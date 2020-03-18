@@ -28,9 +28,9 @@ public class userLogin extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Boolean saveLogin;
-    CheckBox slcheckbox;
+    CheckBox sl_checkbox;
 
-    TextInputLayout vusername,vpassword;
+    TextInputLayout v_username, v_password;
 
     ProgressBar progressBar;
 
@@ -41,8 +41,8 @@ public class userLogin extends AppCompatActivity {
 
 
         //All elements Hooks
-        vusername = findViewById(R.id.user_email);
-        vpassword = findViewById(R.id.user_password);
+        v_username = findViewById(R.id.user_email);
+        v_password = findViewById(R.id.user_password);
         isUser = findViewById(R.id.btn_login);
 
         username = findViewById(R.id.user_emails);
@@ -53,57 +53,53 @@ public class userLogin extends AppCompatActivity {
 
 
         sharedPreferences = getSharedPreferences("loginRef", MODE_PRIVATE);
-        slcheckbox = findViewById(R.id.checkbox);
+        sl_checkbox = findViewById(R.id.checkbox);
         editor = sharedPreferences.edit();
 
         isUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isUser();
-
+                loginUser();
             }
         });
 
-       saveLogin = sharedPreferences.getBoolean("saveLogin",true);
-        if(saveLogin==true){
-            username.setText(sharedPreferences.getString("username",null));
-            password.setText(sharedPreferences.getString("password",null));
-
+        saveLogin = sharedPreferences.getBoolean("saveLogin", true);
+        if (saveLogin == true) {
+            username.setText(sharedPreferences.getString("roll", null));
+            password.setText(sharedPreferences.getString("password", null));
         }
-
-
     }
 
     public Boolean validateUsername() {
-        String val = vusername.getEditText().getText().toString();
+        String val = v_username.getEditText().getText().toString();
 
         if (val.isEmpty()) {
-            vusername.setError("Field cannot be empty");
+            v_username.setError("Field cannot be empty");
             return false;
         } else {
-            vusername.setError(null);
-            vusername.setErrorEnabled(false);
+            v_username.setError(null);
+            v_username.setErrorEnabled(false);
             return true;
         }
     }
 
     public Boolean validatePassword() {
-        String val = vpassword.getEditText().getText().toString();
+        String val = v_password.getEditText().getText().toString();
 
         if (val.isEmpty()) {
-            vpassword.setError("Field cannot be empty");
+            v_password.setError("Field cannot be empty");
             return false;
         } else {
-            vpassword.setError(null);
-            vpassword.setErrorEnabled(false);
+            v_password.setError(null);
+            v_password.setErrorEnabled(false);
             return true;
         }
     }
 
-
     public void loginUser() {
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
+            return;
 
         } else {
             isUser();
@@ -126,23 +122,15 @@ public class userLogin extends AppCompatActivity {
 
                 if (dataSnapshot.exists()) {
 
-                    vusername.setError(null);
-                    vusername.setErrorEnabled(false);
+                    v_username.setError(null);
+                    v_username.setErrorEnabled(false);
 
                     String passwordFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
 
                     if (passwordFromDB.equals(userEnteredPassword)) {
 
-                        vpassword.setError(null);
-                        vpassword.setErrorEnabled(false);
-
-                        if (slcheckbox.isChecked()) {
-                            editor.putBoolean("saveLogin", true);
-                            editor.putString("username", userEnteredRoll);
-                            editor.putString("password", userEnteredPassword);
-                            editor.commit();
-                        }
-
+                        v_password.setError(null);
+                        v_password.setErrorEnabled(false);
 
 //transfer data to dashboard
                         String nameFromDB = dataSnapshot.child(userEnteredRoll).child("name").getValue(String.class);
@@ -151,15 +139,43 @@ public class userLogin extends AppCompatActivity {
                         String emailFromDB = dataSnapshot.child(userEnteredRoll).child("email").getValue(String.class);
                         String streamFromDB = dataSnapshot.child(userEnteredRoll).child("stream").getValue(String.class);
                         String passFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
+                        String roleFromDB = dataSnapshot.child(userEnteredRoll).child("role").getValue(String.class);
+                        String picFromDB = dataSnapshot.child(userEnteredRoll).child("pic").getValue(String.class);
+
+                        //save uses data in shared preference
+                        if (sl_checkbox.isChecked()) {
+                            editor.putBoolean("saveLogin", true);
+                            editor.putString("roll", rollFromDB);
+                            editor.putString("name", nameFromDB);
+                            editor.putString("email", emailFromDB);
+                            editor.putString("class", streamFromDB);
+                            editor.putString("phone", phoneNoFromDB);
+                            editor.putString("password", passFromDB);
+                            editor.putString("role", roleFromDB);
+                            editor.putString("pic", picFromDB);
+
+                            editor.commit();
+                        }
+
+
+                        userLoginHelper helper = new userLoginHelper();
+
+                        // helper.getName(nameFromDB);
+                        //    helper.setName(nameFromDB);
+                        // System.out.println(helper.getName());
+                        //holder.notes_names.setText(notesList.get(i).getName());
+                        //reference.child(roll).setValue(helperClass);
+
 
                         Intent intent = new Intent(getApplicationContext(), dashboard.class);
-
+                        //Intent intent = new Intent(getApplicationContext(), userProfile.class);
+/*
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("roll", rollFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("phoneNo", phoneNoFromDB);
                         intent.putExtra("stream", streamFromDB);
-                        intent.putExtra("password", passFromDB);
+                        intent.putExtra("password", passFromDB);*/
 /*
 //store user data using shared preference
                         storeUser storeUser = new storeUser(userLogin.this);
@@ -169,12 +185,12 @@ public class userLogin extends AppCompatActivity {
                         startActivity(intent);
 
                     } else {
-                        vpassword.setError("Wrong Password");
-                        vpassword.requestFocus();
+                        v_password.setError("Wrong Password");
+                        v_password.requestFocus();
                     }
                 } else {
-                    vusername.setError("No such User exist");
-                    vusername.requestFocus();
+                    v_username.setError("No such User exist");
+                    v_username.requestFocus();
                 }
             }
 

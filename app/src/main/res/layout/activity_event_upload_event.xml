@@ -13,17 +13,18 @@
         android:padding="30dp"
         android:orientation="vertical">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/event_up_img"
             android:src="@drawable/add_image"
+            android:onClick="btn_image_view"
             android:scaleType="fitCenter"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/event_title"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
             android:id="@+id/ed_event_name"/>
@@ -33,33 +34,41 @@
             android:hint="@string/event_dep"
             android:textSize="18sp"
             android:inputType="textMultiLine"
-            android:layout_marginTop="20dp"
+            android:gravity="top|start"
+            android:maxLines="10"
+            android:lines="2"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
             android:id="@+id/ed_event_dep"/>
-        <EditText
-            android:id="@+id/ed_event_date"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:hint="@string/upload"
-            android:layout_height="wrap_content"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_event_takeImg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="btnTakeImage"
             android:text="@string/takeImage"
-            android:onClick="btnTakeImage"/>
+            app:icon="@android:drawable/ic_menu_camera"
+            android:layout_marginTop="20dp"
+            app:iconGravity="textStart" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_event_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="btnSelectImage"
             android:text="@string/selectImage"
-            android:onClick="btnSelectImage"/>
+            app:iconTint="@color/white"
+            app:iconGravity="textStart"
+            app:icon="@android:drawable/ic_menu_gallery" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_event_upload"
-            android:onClick="btn_uploadEvents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/upload_event"/>
+            android:onClick="btn_uploadEvents"
+            android:text="@string/upload_event"
+            app:icon="@drawable/ic_file_upload_black_24dp"
+            app:iconGravity="textStart" />
 
     </LinearLayout>
 

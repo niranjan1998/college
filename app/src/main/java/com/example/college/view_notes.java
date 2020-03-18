@@ -3,7 +3,6 @@ package com.example.college;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -20,11 +19,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -120,7 +119,7 @@ public class view_notes extends AppCompatActivity {
         uploads_fModels = new ArrayList<>();
         listView = findViewById(R.id.listView);
 
-        viewAllFiles();
+        //viewAllFiles();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -145,7 +144,7 @@ public class view_notes extends AppCompatActivity {
                 }
             }
         });
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+       /* listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view_notes.this);
@@ -170,7 +169,7 @@ public class view_notes extends AppCompatActivity {
                 dialog.show();
                 return true;
             }
-        });
+        });*/
 
     }
 
@@ -287,32 +286,41 @@ public class view_notes extends AppCompatActivity {
 
     public void uploadFiles(Uri pdfUri) {
 
+       // final String file_nameText = s_Filename.getText().toString() + ".pdf";
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setTitle("Uploading FIle");
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        StorageReference sRef = storage.child("notebooks/").child(Stream_path).child(Sem_path).child(System.currentTimeMillis() + "");
+        StorageReference sRef = storage.child("notebooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString());
         sRef.putFile(pdfUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String url = uri.toString();
+                                database.child(Stream_path).child(Sem_path).child(s_Filename.getText().toString()).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(view_notes.this, "File successfully Uploaded !!!", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(view_notes.this, notes_view.class));
+                                            finish();
+                                        } else {
 
-                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                        while (!uri.isComplete()) ;
-                        Uri url = uri.getResult();
-
-                        uploads_fmodel upload = new uploads_fmodel(s_Filename.getText().toString(), url.toString());
-                        database.child(Stream_path).child(Sem_path).child(database.push().getKey()).setValue(upload);
-
-                        Toast.makeText(view_notes.this, "File Uploaded", Toast.LENGTH_SHORT).show();
-
-                        s_Filename.setText("");
-                        progressDialog.dismiss();
-                        selectFile_btn.setVisibility(View.VISIBLE);
-                        uploadFile_btn.setVisibility(View.INVISIBLE);
+                                            progressDialog.dismiss();
+                                            Toast.makeText(view_notes.this, "File Upload Failed !!!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

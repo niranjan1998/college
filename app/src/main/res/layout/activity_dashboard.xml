@@ -46,12 +46,14 @@
                 android:layout_marginTop="7dp"
                 android:layout_toEndOf="@+id/txtField"
                 android:text="Logout"
+                android:onClick="logout"
                 android:textColor="#ffff"
                 android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="62dp"
                 android:layout_height="62dp"
+                android:onClick="btn_profile"
                 android:layout_alignParentEnd="true"
                 android:contentDescription="@string/profile"
                 android:src="@drawable/contact" />
@@ -163,7 +165,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/grpchats"
+                        android:contentDescription="@string/grpChats"
                         android:src="@drawable/chat" />
 
                     <TextView
@@ -278,7 +280,7 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/grpchats"
+                        android:contentDescription="@string/grpChats"
                         android:src="@drawable/chat" />
 
                     <TextView

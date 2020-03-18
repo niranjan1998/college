@@ -20,7 +20,7 @@
     <string name="practical">practical</string>
     <string name="Reg">ADD</string>
     <string name="remember">Remember Me</string>
-    <string name="grpchats">chats</string>
+    <string name="grpChats">chats</string>
     <string name="upload">Upload File</string>
     <string name="selectImage">Select Image</string>
     <string name="upload_event">Upload Event</string>
@@ -49,6 +49,13 @@
     <string name="delete">Delete</string>
     <string name="date">Date</string>
     <string name="takeImage">Take Image</string>
+    <string name="full_name">Full Name</string>
+    <string name="roll_no">Roll Number</string>
+    <string name="email">E-Mail</string>
+    <string name="phone">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="stdAdd">Add Student</string>
+
 
 
 </resources>

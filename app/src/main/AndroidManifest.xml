@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -15,7 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".event_upload_event"></activity>
+        <activity android:name=".dash_notes_upload"></activity>
+        <activity android:name=".dash_notes_adapter" />
+        <activity android:name=".dash_notes_list" />
+        <activity android:name=".userProfile" />
+        <activity android:name=".notes_recycleItem" />
+        <activity android:name=".notes_view" />
+        <activity android:name=".event_upload_event" />
         <activity android:name=".event_expand" />
         <activity android:name=".event_recycleItem" />
         <activity android:name=".event_upload" />
@@ -37,5 +44,4 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".dashboard" />
     </application>
-
 </manifest>

@@ -62,7 +62,6 @@ public class event_upload extends AppCompatActivity {
            e_adapter.notifyDataSetChanged();
            progressDialog.dismiss();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 progressDialog.dismiss();

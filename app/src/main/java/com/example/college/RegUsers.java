@@ -1,31 +1,30 @@
 package com.example.college;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.view.View;
 
-import java.sql.DatabaseMetaData;
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.AdapterView.OnItemSelectedListener;
-
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegUsers extends AppCompatActivity implements OnItemSelectedListener {
 
-    TextInputLayout regName, regRoll, regPhone, regEmail, regPassword;
+    EditText regName, regRoll, regPhone, regEmail;
     Button regBtn;
+
+    String name, roll, phone, email, password, stream, role, pic;
 
     Spinner spinner;
     String item;
@@ -42,29 +41,13 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
         regRoll = findViewById(R.id.reg_roll);
         regEmail = findViewById(R.id.reg_email);
         regPhone = findViewById(R.id.reg_phone);
-        regPassword = findViewById(R.id.reg_password);
         regBtn = findViewById(R.id.btn_Register);
 
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("studentData");
-
-                String name = regName.getEditText().getText().toString();
-                String roll = regRoll.getEditText().getText().toString();
-                String phone = regPhone.getEditText().getText().toString();
-                String email = regEmail.getEditText().getText().toString();
-                String password = regPassword.getEditText().getText().toString();
-                String stream = item;
-
-
-                UserHelperClass helperClass = new UserHelperClass(name, roll, phone, email, password, stream);
-
-                reference.child(roll).setValue(helperClass);
-
-
+                validateField();
             }
         });
 
@@ -89,14 +72,69 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
         spinner.setAdapter(dataAdapter);
     }
 
+    private void validateField() {
+
+        name = regName.getText().toString();
+        roll = regRoll.getText().toString();
+        phone = regPhone.getText().toString();
+        email = regEmail.getText().toString();
+        password = regRoll.getText().toString();
+        stream = item;
+        if (name.trim().equals("")) {
+            regName.setError("Enter Name");
+        } else if (roll.trim().equals("")) {
+            regRoll.setError("Enter Roll no");
+        } else if (phone.trim().equals("")) {
+            regPhone.setError("Enter Phone no");
+        } else if (phone.trim().length() < 10) {
+            regPhone.setError("Incorrect Phone no");
+        } else if (email.trim().equals("")) {
+            regEmail.setError("Enter e-mail");
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            regEmail.setError("Not a valid e-mail");
+        } else if (item.trim().equals("Select Stream")) {
+            Toast.makeText(getApplicationContext(), "Select Stream ", Toast.LENGTH_SHORT).show();
+        } else {
+            addStudent();
+        }
+    }
+
+    private void addStudent() {
+        String student = "Student";
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("studentData");
+
+        name = regName.getText().toString();
+        roll = regRoll.getText().toString();
+        phone = regPhone.getText().toString();
+        email = regEmail.getText().toString();
+        password = regRoll.getText().toString();
+        stream = item;
+        role = student;
+        pic = " ";
+
+        UserHelperClass helperClass = new UserHelperClass(name, roll, phone, email, password, stream, role, pic);
+
+        reference.child(roll).setValue(helperClass);
+
+        Toast.makeText(getApplicationContext(), "Student Added", Toast.LENGTH_SHORT).show();
+
+        finish();
+    }
+
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (position != 0) {
+        }
+
         //on selecting a spinner item
         item = parent.getItemAtPosition(position).toString();
         //showing selected
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+        /*else {
+            Toast.makeText(parent.getContext(), "Select Stream ", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
-
     }
 }

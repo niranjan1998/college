@@ -1,12 +1,11 @@
 package com.example.college;
 
-public class UserHelperClass {
-
+public class userLoginHelper {
     String name,roll,phone,email,password,stream,role,pic;
 
-    public UserHelperClass(){}
-
-    public UserHelperClass(String name, String roll, String phone, String email, String password,String stream,String role,String pic) {
+    public userLoginHelper() {
+    }
+    public userLoginHelper(String name, String roll, String phone, String email, String password, String stream, String role, String pic) {
         this.name = name;
         this.roll = roll;
         this.phone = phone;
@@ -15,35 +14,10 @@ public class UserHelperClass {
         this.stream = stream;
         this.role = role;
         this.pic = pic;
-
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getStream() {
-        return stream;
-    }
-
-    public void setStream(String stream) {
-        this.stream = stream;
     }
 
     public void setName(String name) {
@@ -80,5 +54,29 @@ public class UserHelperClass {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getStream() {
+        return stream;
+    }
+
+    public void setStream(String stream) {
+        this.stream = stream;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }
