@@ -45,12 +45,13 @@
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="7dp"
                 android:layout_toEndOf="@+id/txtField"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:onClick="logout"
                 android:textColor="#ffff"
                 android:textSize="15sp" />
 
             <ImageView
+                android:id="@+id/dash_user_img"
                 android:layout_width="62dp"
                 android:layout_height="62dp"
                 android:onClick="btn_profile"
@@ -75,8 +76,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -111,8 +112,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -149,8 +150,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -159,6 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="chat"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -186,8 +188,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -197,7 +199,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:onClick="dash_not"
                     android:padding="16dp">
 
                     <ImageView
@@ -224,8 +225,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -234,7 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="timepass"
+                    android:onClick="event"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -263,8 +264,8 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardElevation="6dp">
@@ -273,21 +274,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="upload_pdf"
+                    android:onClick="myClass"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/grpChats"
+                        android:contentDescription="@string/myClass"
                         android:src="@drawable/chat" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/chat"
+                        android:text="@string/myClass"
                         android:textSize="18sp"
                         android:textColor="#6f6f6f" />
 

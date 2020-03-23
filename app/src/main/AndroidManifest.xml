@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dash_notes_upload"></activity>
+        <activity android:name=".grp_chat"></activity>
+        <activity android:name=".my_class" />
+        <activity android:name=".event_comment_item" />
+        <activity android:name=".dash_notes_upload" />
         <activity android:name=".dash_notes_adapter" />
         <activity android:name=".dash_notes_list" />
         <activity android:name=".userProfile" />
@@ -44,4 +47,5 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".dashboard" />
     </application>
+
 </manifest>

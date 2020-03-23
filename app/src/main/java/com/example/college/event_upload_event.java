@@ -1,7 +1,6 @@
 package com.example.college;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -35,12 +34,12 @@ public class event_upload_event extends AppCompatActivity {
 
     String myCurrentDate = DateFormat.getDateTimeInstance()
             .format(Calendar.getInstance().getTime());
-    ;
+
     EditText event_title, event_dep;
     ImageView event_image, e_img;
     Uri uri;
     String imageUrl;
-    Context context;
+
 
 
     @Override

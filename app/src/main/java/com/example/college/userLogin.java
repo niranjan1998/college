@@ -1,5 +1,6 @@
 package com.example.college;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,8 +26,8 @@ public class userLogin extends AppCompatActivity {
 
     Button isUser;
     EditText username, password;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences, userData;
+    SharedPreferences.Editor editor, userEditor;
     Boolean saveLogin;
     CheckBox sl_checkbox;
 
@@ -34,6 +35,7 @@ public class userLogin extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +51,12 @@ public class userLogin extends AppCompatActivity {
         password = findViewById(R.id.user_passwords);
         progressBar = findViewById(R.id.progressBar);
 
-        int pv = progressBar.getProgress();
-
 
         sharedPreferences = getSharedPreferences("loginRef", MODE_PRIVATE);
+        userData = getSharedPreferences("loginUser", MODE_PRIVATE);
         sl_checkbox = findViewById(R.id.checkbox);
         editor = sharedPreferences.edit();
+        userEditor = userData.edit();
 
         isUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,10 +65,10 @@ public class userLogin extends AppCompatActivity {
             }
         });
 
-        saveLogin = sharedPreferences.getBoolean("saveLogin", true);
-        if (saveLogin == true) {
-            username.setText(sharedPreferences.getString("roll", null));
-            password.setText(sharedPreferences.getString("password", null));
+        saveLogin = userData.getBoolean("saveLogin", true);
+        if (saveLogin) {
+            username.setText(userData.getString("roll", null));
+            password.setText(userData.getString("password", null));
         }
     }
 
@@ -99,7 +101,6 @@ public class userLogin extends AppCompatActivity {
     public void loginUser() {
         //Validate Login Info
         if (!validateUsername() | !validatePassword()) {
-            return;
 
         } else {
             isUser();
@@ -127,6 +128,7 @@ public class userLogin extends AppCompatActivity {
 
                     String passwordFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
 
+                    assert passwordFromDB != null;
                     if (passwordFromDB.equals(userEnteredPassword)) {
 
                         v_password.setError(null);
@@ -142,24 +144,25 @@ public class userLogin extends AppCompatActivity {
                         String roleFromDB = dataSnapshot.child(userEnteredRoll).child("role").getValue(String.class);
                         String picFromDB = dataSnapshot.child(userEnteredRoll).child("pic").getValue(String.class);
 
-                        //save uses data in shared preference
+                        //save user data in shared preference
                         if (sl_checkbox.isChecked()) {
-                            editor.putBoolean("saveLogin", true);
-                            editor.putString("roll", rollFromDB);
-                            editor.putString("name", nameFromDB);
-                            editor.putString("email", emailFromDB);
-                            editor.putString("class", streamFromDB);
-                            editor.putString("phone", phoneNoFromDB);
-                            editor.putString("password", passFromDB);
-                            editor.putString("role", roleFromDB);
-                            editor.putString("pic", picFromDB);
-
-                            editor.commit();
+                            userEditor.putBoolean("saveLogin", true);
+                            userEditor.putString("roll", rollFromDB);
+                            userEditor.putString("password", rollFromDB);
+                            userEditor.commit();
                         }
+                        //store user information in sp
+                        editor.putString("roll", rollFromDB);
+                        editor.putString("name", nameFromDB);
+                        editor.putString("email", emailFromDB);
+                        editor.putString("class", streamFromDB);
+                        editor.putString("phone", phoneNoFromDB);
+                        editor.putString("password", passFromDB);
+                        editor.putString("role", roleFromDB);
+                        editor.commit();
 
 
-                        userLoginHelper helper = new userLoginHelper();
-
+                        //   userLoginHelper helper = new userLoginHelper();
                         // helper.getName(nameFromDB);
                         //    helper.setName(nameFromDB);
                         // System.out.println(helper.getName());

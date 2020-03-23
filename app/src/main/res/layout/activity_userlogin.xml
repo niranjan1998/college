@@ -1,78 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="35dp"
     tools:context=".userLogin">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_email"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="35dp">
 
-        <EditText
-            android:id="@+id/user_emails"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/enter_roll_no"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        app:passwordToggleEnabled="true"
-        android:focusableInTouchMode="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            <EditText
+                android:id="@+id/user_emails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_roll_no"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/user_passwords"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/enter_password"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:passwordToggleEnabled="true">
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkbox"
-        android:text="@string/remember"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/user_passwords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enter_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.checkbox.MaterialCheckBox>
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/remember"
+            android:visibility="visible">
+
+        </com.google.android.material.checkbox.MaterialCheckBox>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/login"
-        android:textColor="#ffff"
-        android:textSize="22sp"
-        app:cornerRadius="20dp"
-        tools:ignore="OnClick" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/login"
+            android:textColor="#ffff"
+            android:textSize="22sp"
+            app:cornerRadius="20dp"
+            tools:ignore="OnClick" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progressTint="@color/colorAccent" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressTint="@color/colorAccent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

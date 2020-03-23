@@ -6,131 +6,141 @@
     android:layout_height="match_parent"
     tools:context=".RegUsers">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/notes_card"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="180dp"
+            android:background="@drawable/gradient_background" />
 
-            <LinearLayout
+        <RelativeLayout
+            android:layout_marginTop="-60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/notes_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:clickable="true"
+                android:focusable="true"
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tl_name"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:scrollbars="horizontal"
-                    app:startIconDrawable="@android:drawable/ic_menu_myplaces">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:digits="qwertyuiopasdfghjklzxcvbnm,QWERTYUIOPASDFGHJKLZXCVBNM,_-  "
-                        android:hint="@string/enter_name"
-                        android:inputType="text"
-                        android:maxLength="40"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    app:startIconDrawable="@android:drawable/ic_input_add">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_roll"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="@string/enter_roll_no"
-                        android:inputType="text"
-                        android:maxLength="10"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    app:startIconDrawable="@android:drawable/sym_action_call">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reg_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:digits="1234567890"
-                        android:hint="@string/phone_no"
-                        android:inputType="phone"
-                        android:maxLength="10"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    app:startIconDrawable="@android:drawable/sym_action_email">
-
-                    <EditText
-                        android:id="@+id/reg_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="@string/enter_email"
-                        android:importantForAutofill="no"
-                        android:inputType="textEmailAddress"
-                        android:textSize="20sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:prompt="@string/spinner_title" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_Register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_round"
-                    android:text="@string/stdAdd"
-                    android:textColor="#ffff"
-                    android:textSize="22sp" />
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-            </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:scrollbars="horizontal"
+                        app:startIconDrawable="@android:drawable/ic_menu_myplaces">
 
-        </androidx.cardview.widget.CardView>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/reg_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="qwertyuiopasdfghjklzxcvbnm,QWERTYUIOPASDFGHJKLZXCVBNM,_-  "
+                            android:ems="10"
+                            android:hint="@string/enter_name"
+                            android:inputType="text"
+                            android:maxLength="40"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        app:startIconDrawable="@android:drawable/ic_input_add">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/reg_roll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="@string/enter_roll_no"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        app:startIconDrawable="@android:drawable/sym_action_call">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/reg_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="1234567890"
+                            android:ems="10"
+                            android:hint="@string/phone_no"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        app:startIconDrawable="@android:drawable/sym_action_email">
+
+                        <EditText
+                            android:id="@+id/reg_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="@string/enter_email"
+                            android:importantForAutofill="no"
+                            android:inputType="textEmailAddress"
+                            android:textSize="20sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/spinner_title" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_Register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/btn_round"
+                        android:text="@string/stdAdd"
+                        android:textColor="#ffff"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

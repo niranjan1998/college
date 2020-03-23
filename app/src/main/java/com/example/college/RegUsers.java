@@ -101,6 +101,8 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
 
     private void addStudent() {
         String student = "Student";
+        String profile =
+                "https://firebasestorage.googleapis.com/v0/b/college-36833.appspot.com/o/images%20(6).jpeg?alt=media&token=f4825fa5-4a74-4698-82fd-06b17080ab98";
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("studentData");
 
@@ -111,7 +113,7 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
         password = regRoll.getText().toString();
         stream = item;
         role = student;
-        pic = " ";
+        pic = profile;
 
         UserHelperClass helperClass = new UserHelperClass(name, roll, phone, email, password, stream, role, pic);
 

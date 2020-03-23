@@ -31,7 +31,6 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.EventViewH
     List<event_model> eventList;
     String imgUrl = "";
 
-
     public event_adapter(Context context, List<event_model> eventList) {
         this.context = context;
         this.eventList = eventList;

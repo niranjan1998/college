@@ -13,15 +13,30 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@android:color/holo_blue_light"
+            android:background="@drawable/gradient_background"
             android:padding="20dp">
 
-            <ImageView
+            <com.zolad.zoominimageview.ZoomInImageView
                 android:id="@+id/user_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:onClick="select_image"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/profile"
+                android:src="@drawable/contact" />
+
+            <ImageView
+                android:id="@+id/no_profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/user_profile"
+                android:layout_alignEnd="@+id/user_profile"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="-15dp"
+                android:layout_marginEnd="-15dp"
+                android:layout_marginBottom="20dp"
+                android:contentDescription="@string/profile"
+                android:onClick="select_image"
                 android:src="@drawable/contact" />
 
             <TextView
@@ -65,8 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:clickable="false"
-                android:focusable="false"
                 android:hint="@string/roll_no">
 
                 <EditText
@@ -77,7 +90,6 @@
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:focusable="false"
-                    android:inputType="none"
                     android:text="@string/roll_no" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -93,9 +105,10 @@
                     android:id="@+id/ed_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
-
+                    android:focusable="false"
                     android:text="@string/email" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,6 +124,8 @@
                     android:id="@+id/ed_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:text="@string/phone" />
@@ -128,19 +143,41 @@
                     android:id="@+id/ed_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:text="@string/password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/updatePassword">
+
+                <EditText
+                    android:id="@+id/ed_c_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
+                    android:inputType="textFilter"
+                    android:drawableStart="@drawable/ic_file_upload_black_24dp"
+                    android:drawablePadding="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/update_password"
+                android:onClick="updatePassword"
                 android:background="@android:color/holo_blue_light"
-                android:text="@string/common_google_play_services_update_button"
+                android:text="@string/updatePassword"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
     </LinearLayout>

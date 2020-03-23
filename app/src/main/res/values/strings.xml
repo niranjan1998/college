@@ -54,8 +54,13 @@
     <string name="email">E-Mail</string>
     <string name="phone">Phone Number</string>
     <string name="password">Password</string>
+    <string name="updatePassword">Update Password</string>
     <string name="stdAdd">Add Student</string>
-
-
+    <string name="addComment">Add Comment</string>
+    <string name="comments">Comments :</string>
+    <string name="post">Post</string>
+    <string name="stream">Stream</string>
+    <string name="myClass">My Class</string>
+    <string name="logout">Logout</string>
 
 </resources>
