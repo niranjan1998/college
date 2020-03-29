@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -35,6 +36,8 @@ public class userLogin extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    private long last_click = 0;
+
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,10 @@ public class userLogin extends AppCompatActivity {
         isUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(SystemClock.elapsedRealtime() - last_click < 1000){
+                    return;
+                }
+                last_click = SystemClock.elapsedRealtime();
                 loginUser();
             }
         });
@@ -113,7 +120,7 @@ public class userLogin extends AppCompatActivity {
         final String userEnteredPassword = password.getText().toString().trim();
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("studentData");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
 
         Query checkUser = reference.orderByChild("roll").equalTo(userEnteredRoll);
 
@@ -148,8 +155,8 @@ public class userLogin extends AppCompatActivity {
                         if (sl_checkbox.isChecked()) {
                             userEditor.putBoolean("saveLogin", true);
                             userEditor.putString("roll", rollFromDB);
-                            userEditor.putString("password", rollFromDB);
-                            userEditor.commit();
+                            userEditor.putString("password", passFromDB);
+                            userEditor.apply();
                         }
                         //store user information in sp
                         editor.putString("roll", rollFromDB);
@@ -186,6 +193,7 @@ public class userLogin extends AppCompatActivity {
                         storeUser.setPass(passFromDB);
 */
                         startActivity(intent);
+                        finish();
 
                     } else {
                         v_password.setError("Wrong Password");

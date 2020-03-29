@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class event_upload extends AppCompatActivity {
 
@@ -27,14 +29,21 @@ public class event_upload extends AppCompatActivity {
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
     ProgressDialog progressDialog;
+    MaterialToolbar materialToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_upload);
 
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("Events");
+        setSupportActionBar(materialToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         recyclerView= findViewById(R.id.recycle_view);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(event_upload.this,1);
+        gridLayoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         progressDialog = new ProgressDialog(this);

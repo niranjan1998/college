@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".show_grp">
+
+    <LinearLayout
+        android:id="@+id/toll_bar_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/tollbar_layout" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:onClick="grp_mscSem2"
+        android:id="@+id/card_sem2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/toll_bar_name"
+        android:layout_marginTop="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="OnClick">
+
+        <RelativeLayout
+            android:id="@+id/rel_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/grp_imgSem2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/add_student" />
+
+            <TextView
+                android:id="@+id/grp_nameSem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/grp_imgSem2"
+                android:gravity="center_vertical"
+                android:text="@string/msc_it2"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:onClick="grp_mscSem1"
+        android:id="@+id/card_sem1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/card_sem2"
+        android:layout_marginTop="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/grp_imgSem1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/add_student" />
+
+            <TextView
+                android:id="@+id/grp_nameSem1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/grp_imgSem1"
+                android:gravity="center_vertical"
+                android:text="@string/mscIt"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

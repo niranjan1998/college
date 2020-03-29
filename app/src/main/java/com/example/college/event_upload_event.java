@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -46,6 +47,12 @@ public class event_upload_event extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_upload_event);
+
+        MaterialToolbar materialToolbar;
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("Upload Events");
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         event_title = findViewById(R.id.ed_event_name);

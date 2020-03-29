@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +41,13 @@ public class dash_notes_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_notes_list);
+
+
+        MaterialToolbar materialToolbar;
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("Notes");
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //getting stream and semester
         tv_sem = findViewById(R.id.tv_sem);

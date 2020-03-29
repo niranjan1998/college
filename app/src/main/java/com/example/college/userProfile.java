@@ -46,7 +46,7 @@ public class userProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("studentData");
+        databaseReference = FirebaseDatabase.getInstance().getReference("UsersData");
 
         txt_userName = findViewById(R.id.user_name);
         txt_class = findViewById(R.id.user_class);
@@ -93,7 +93,7 @@ public class userProfile extends AppCompatActivity {
         ed_phone.setText(phone);
         ed_pass.setText(password);
 
-        FirebaseDatabase.getInstance().getReference("studentData")
+        FirebaseDatabase.getInstance().getReference("UsersData")
                 .child(roll).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -143,7 +143,6 @@ public class userProfile extends AppCompatActivity {
 
                 databaseReference.child(roll).child("password").setValue(ed_c_pass.getText().toString());
 
-                Toast.makeText(getApplicationContext(), "some" + ed_c_pass, Toast.LENGTH_SHORT).show();
                 //change sp value all
                 SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
                 result.edit().putString("password", ed_c_pass.getText().toString()).apply();
@@ -183,7 +182,7 @@ public class userProfile extends AppCompatActivity {
 
     public void uploadImage() {
         StorageReference storageReference = FirebaseStorage.getInstance()
-                .getReference().child("studentData").child(roll).child("pic").child(uri.getLastPathSegment());
+                .getReference().child("UsersData").child(roll).child("pic").child(uri.getLastPathSegment());
 
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -194,7 +193,7 @@ public class userProfile extends AppCompatActivity {
                 Uri urlImage = uriTask.getResult();
                 assert urlImage != null;
                 imageUrl = urlImage.toString();
-                FirebaseDatabase.getInstance().getReference("studentData")
+                FirebaseDatabase.getInstance().getReference("UsersData")
                         .child(roll).child("pic").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

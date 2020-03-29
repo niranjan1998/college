@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapps"
     tools:context=".dashboard">
 
     <LinearLayout
@@ -12,60 +11,79 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="20dp">
+            android:layout_height="220dp"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtUsername"
+                android:layout_margin="15dp"
+                android:id="@+id/college_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtName"
+                android:text="@string/college_app"
                 android:textColor="#ffff"
                 android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/txtField"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtUsername"
-                android:layout_marginTop="6dp"
-                android:text="@string/msc_it2"
-                android:textColor="#ffff"
-                android:textSize="15sp" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp">
 
-            <TextView
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtUsername"
-                android:layout_marginStart="13dp"
-                android:layout_marginTop="7dp"
-                android:layout_toEndOf="@+id/txtField"
-                android:text="@string/logout"
-                android:onClick="logout"
-                android:textColor="#ffff"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/txtUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtName"
+                    android:textColor="#ffff"
+                    android:textSize="22sp" />
 
-            <ImageView
-                android:id="@+id/dash_user_img"
-                android:layout_width="62dp"
-                android:layout_height="62dp"
-                android:onClick="btn_profile"
-                android:layout_alignParentEnd="true"
-                android:contentDescription="@string/profile"
-                android:src="@drawable/contact" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtUsername"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/msc_it2"
+                    android:textColor="#ffff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtUsername"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toEndOf="@+id/txtField"
+                    android:onClick="logout"
+                    android:text="@string/logout"
+                    android:textColor="#ffff"
+                    android:textSize="15sp" />
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/dash_user_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:civ_border_width="2dp"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/profile"
+                    android:onClick="btn_profile"
+                    android:src="@drawable/contact" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alignmentMode="alignMargins"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="-60dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="50dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
             android:rowCount="6">
@@ -75,11 +93,11 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -101,29 +119,30 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/notes"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical"
                     android:onClick="upload_asg"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <ImageView
@@ -137,23 +156,24 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/assignments"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -182,19 +202,21 @@
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
+                    android:onClick="show_grps"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -204,31 +226,32 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/lab"
-                        android:contentDescription="@string/practical" />
+                        android:contentDescription="@string/practical"
+                        android:src="@drawable/lab" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/practical"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -250,8 +273,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/time"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -263,11 +286,11 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -289,89 +312,90 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/myClass"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="add_student"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/lab"
-                        android:contentDescription="@string/practical" />
+                        android:contentDescription="@string/admin"
+                        android:src="@drawable/blog" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/practical"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:text="@string/admin"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                app:cardCornerRadius="12dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:onClick="chat_bot"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:contentDescription="@string/time"
-                        android:src="@drawable/time" />
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:contentDescription="@string/chat_bot"
+                        android:src="@drawable/chatbotgif" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/time"
-                        android:textSize="18sp"
-                        android:textColor="#6f6f6f" />
+                        android:text="@string/chat_bot"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
 
             </androidx.cardview.widget.CardView>
-
-
 
 
         </GridLayout>

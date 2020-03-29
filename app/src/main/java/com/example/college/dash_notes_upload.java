@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -52,6 +53,11 @@ public class dash_notes_upload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_notes_upload);
+
+        MaterialToolbar materialToolbar;
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("Upload Notes");
+        setSupportActionBar(materialToolbar);
 
 
         storage = FirebaseStorage.getInstance().getReference();

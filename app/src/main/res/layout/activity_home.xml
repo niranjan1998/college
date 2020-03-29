@@ -4,41 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/gradient_background"
     tools:context=".home">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="40dp"
-    android:gravity="center">
-    <Button
-        android:id="@+id/singup"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Signup"
-        android:onClick="signupBtn"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="131dp"
-        tools:ignore="OnClick" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imageView"
+        android:layout_height="150dp"
+        android:src="@mipmap/ic_pen_logo_round"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        android:layout_width="150dp" />
+
+        <TextView
+            android:id="@+id/college_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@string/college_app"
+            android:textColor="@color/white"
+            android:textSize="35sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="247dp"
+            android:layout_height="176dp"
+            android:src="@drawable/collegew" />
+
+        <Button
+            android:id="@+id/singup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="signupBtn"
+            android:text="Signup"
+            tools:ignore="OnClick"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="131dp" />
 
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:onClick="loginBtn"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="131dp" />
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="loginBtn"
+            android:text="Login"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="131dp" />
 
-    <Button
-        android:id="@+id/dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dashboard"
-        android:onClick="dashBtn"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="131dp" />
-</LinearLayout>
+        <Button
+            android:id="@+id/dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="dashBtn"
+            android:text="Dashboard"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="131dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

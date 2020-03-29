@@ -77,6 +77,7 @@ public class event_expand extends AppCompatActivity {
         //to show comments
         recyclerView = findViewById(R.id.recycle_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(event_expand.this);
+        linearLayoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         comment_model_list = new ArrayList<>();

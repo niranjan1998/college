@@ -51,10 +51,10 @@ public class event_comment_adapter extends RecyclerView.Adapter<event_comment_ad
         holder.c_date.setText(commentList.get(i).getKey());
 
 
-        Bundle bundle = ((Activity)context).getIntent().getExtras();
+        Bundle bundle = ((Activity) context).getIntent().getExtras();
 
         if (bundle != null) {
-         key = bundle.getString("keyValue");
+            key = bundle.getString("keyValue");
         }
 
         //to get key of comment
@@ -78,7 +78,7 @@ public class event_comment_adapter extends RecyclerView.Adapter<event_comment_ad
                                 databaseReference.child("comments").child(date).removeValue();
                                 notifyDataSetChanged();
                                 notifyItemRemoved(i);
-                                Toast.makeText(context,"Comment Deleted" + i,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Comment Deleted" + i, Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -40,5 +40,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.zolad:zoominimageview:1.0.0'
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
 }

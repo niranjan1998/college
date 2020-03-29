@@ -11,26 +11,47 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_pen_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_pen_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".grp_chat"></activity>
+        <activity android:name=".show_grp"/>
+        <activity
+            android:name=".admin_panel"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".dashboard" />
+        <activity
+            android:name=".reg_teacher"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".admin_panel" />
+        <activity
+            android:name=".chat_bot"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true" />
+        <activity android:name=".grp_chat" />
         <activity android:name=".my_class" />
         <activity android:name=".event_comment_item" />
-        <activity android:name=".dash_notes_upload" />
-        <activity android:name=".dash_notes_adapter" />
-        <activity android:name=".dash_notes_list" />
         <activity android:name=".userProfile" />
         <activity android:name=".notes_recycleItem" />
         <activity android:name=".notes_view" />
-        <activity android:name=".event_upload_event" />
+        <activity
+            android:name=".event_upload_event"
+            android:parentActivityName=".event_upload" />
         <activity android:name=".event_expand" />
         <activity android:name=".event_recycleItem" />
-        <activity android:name=".event_upload" />
+        <activity
+            android:name=".event_upload"
+            android:parentActivityName=".dashboard" />
         <activity android:name=".view_notes" />
-        <activity android:name=".dash_notes" />
+        <activity
+            android:name=".dash_notes"
+            android:parentActivityName=".dashboard" />
+        <activity android:name=".dash_notes_upload" />
+        <activity android:name=".dash_notes_adapter" />
+        <activity
+            android:name=".dash_notes_list"
+            android:parentActivityName=".dash_notes" />
         <activity android:name=".viewfiles" />
         <activity android:name=".upload_files" />
         <activity android:name=".upload_notes" />
@@ -41,11 +62,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegUsers" />
+        <activity
+            android:name=".RegUsers"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".admin_panel" />
         <activity android:name=".userLogin" />
         <activity android:name=".login" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".dashboard" />
+        <activity
+            android:name=".dashboard"
+            android:hardwareAccelerated="true" />
     </application>
 
 </manifest>

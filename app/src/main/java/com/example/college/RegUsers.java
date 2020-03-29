@@ -101,10 +101,9 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
 
     private void addStudent() {
         String student = "Student";
-        String profile =
-                "https://firebasestorage.googleapis.com/v0/b/college-36833.appspot.com/o/images%20(6).jpeg?alt=media&token=f4825fa5-4a74-4698-82fd-06b17080ab98";
+        String profile = "https://firebasestorage.googleapis.com/v0/b/college-36833.appspot.com/o/addprofile.jpeg?alt=media&token=eb2dde58-e796-491f-9183-13d8f469579c";
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("studentData");
+        reference = rootNode.getReference("UsersData");
 
         name = regName.getText().toString();
         roll = regRoll.getText().toString();
@@ -125,13 +124,15 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (position != 0) {
-        }
-
-        //on selecting a spinner item
         item = parent.getItemAtPosition(position).toString();
-        //showing selected
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+
+        if (position != 0) {
+
+            //on selecting a spinner item
+            //item = parent.getItemAtPosition(position).toString();
+            //showing selected
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+        }
         /*else {
             Toast.makeText(parent.getContext(), "Select Stream ", Toast.LENGTH_SHORT).show();
         }*/

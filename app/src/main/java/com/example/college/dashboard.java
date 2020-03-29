@@ -52,7 +52,7 @@ public class dashboard extends AppCompatActivity {
         txtName.setText(name);
         txtFields.setText(stream);
 
-        FirebaseDatabase.getInstance().getReference("studentData")
+        FirebaseDatabase.getInstance().getReference("UsersData")
                 .child(roll).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,6 +99,14 @@ public class dashboard extends AppCompatActivity {
         Intent intent = new Intent(dashboard.this, my_class.class);
         startActivity(intent);
     }
+    public void add_student(View view) {
+        Intent intent = new Intent(dashboard.this, admin_panel.class);
+        startActivity(intent);
+    }
+    public void chat_bot(View view) {
+        Intent intent = new Intent(dashboard.this, chat_bot.class);
+        startActivity(intent);
+    }
 
     public void logout(View view) {
         removeValue();
@@ -123,5 +131,8 @@ public class dashboard extends AppCompatActivity {
         finish();
     }
 
-
+    public void show_grps(View view) {
+        Intent intent = new Intent(dashboard.this, show_grp.class);
+        startActivity(intent);
+    }
 }

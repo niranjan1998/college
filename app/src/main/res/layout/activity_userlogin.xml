@@ -13,6 +13,23 @@
         android:orientation="vertical"
         android:padding="35dp">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/college_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000"
+            android:text="@string/college_app"
+            android:textSize="35sp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000"
+            android:text="@string/welcome"
+            android:textSize="35sp" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/user_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

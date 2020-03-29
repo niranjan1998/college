@@ -12,15 +12,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="@drawable/gradient_background" />
 
+        <ImageView
+            android:layout_width="165dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="-200dp"
+            android:src="@drawable/collegebw" />
+
         <RelativeLayout
-            android:layout_marginTop="-60dp"
+            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-30dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/notes_card"

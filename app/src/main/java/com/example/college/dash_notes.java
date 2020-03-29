@@ -8,7 +8,11 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class dash_notes extends AppCompatActivity {
+
+    MaterialToolbar materialToolbar;
 
     LinearLayout lin_sem, lin_bscSub, lin_mscSub;
     CardView msc_It, bsc_It, msc_sem1, msc_sem2, msc_sem3, msc_sem4, bsc_sem1, bsc_sem2, bsc_sem3, bsc_sem4, bsc_sem5, bsc_sem6;
@@ -17,6 +21,11 @@ public class dash_notes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_notes);
+
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("Notes");
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lin_sem = findViewById(R.id.lin_sem);
         lin_bscSub = findViewById(R.id.lin_bscSub);
