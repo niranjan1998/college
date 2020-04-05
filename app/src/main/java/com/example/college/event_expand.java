@@ -1,9 +1,11 @@
 package com.example.college;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,6 +43,7 @@ public class event_expand extends AppCompatActivity {
     String key = "";
     String imgUrl = "";
     DatabaseReference databaseReference;
+    Button button;
 
     //for getting comment data
     RecyclerView recyclerView;
@@ -59,7 +62,14 @@ public class event_expand extends AppCompatActivity {
         event_expand_name = findViewById(R.id.tv_expand_title);
         event_expand_date = findViewById(R.id.tv_expand_date);
         ed_comment = findViewById(R.id.ed_comment);
+        button = findViewById(R.id.button);
 
+        SharedPreferences result = getSharedPreferences("loginRef", Context.MODE_PRIVATE);
+        String role = result.getString("role", "");
+
+        if (role.equals("Teacher")) {
+            button.setVisibility(View.VISIBLE);
+        }
         databaseReference = FirebaseDatabase.getInstance().getReference("Events");
 
         Bundle bundle = getIntent().getExtras();
@@ -130,25 +140,26 @@ public class event_expand extends AppCompatActivity {
         stream = result.getString("class", "");
         String myCurrentDate = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());
-
-        comment_model c_model = new comment_model(
-                name,
-                stream,
-                ed_comment.getText().toString(),
-                myCurrentDate
-        );
-        FirebaseDatabase.getInstance().getReference("Events").child(key).child("comments")
-                .child(myCurrentDate).setValue(c_model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(event_expand.this, "Comment Added", Toast.LENGTH_SHORT).show();
-                    startActivity(getIntent());
-                    finish();
-                    overridePendingTransition(0, 0);
+        if (!ed_comment.getText().toString().isEmpty()) {
+            comment_model c_model = new comment_model(
+                    name,
+                    stream,
+                    ed_comment.getText().toString(),
+                    myCurrentDate
+            );
+            FirebaseDatabase.getInstance().getReference("Events").child(key).child("comments")
+                    .child(myCurrentDate).setValue(c_model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(event_expand.this, "Comment Added", Toast.LENGTH_SHORT).show();
+                        startActivity(getIntent());
+                        finish();
+                        overridePendingTransition(0, 0);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public void txt_comment(View view) {

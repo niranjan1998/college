@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
     tools:context=".dashboard">
 
     <LinearLayout
@@ -18,10 +19,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_margin="15dp"
                 android:id="@+id/college_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="15dp"
                 android:text="@string/college_app"
                 android:textColor="#ffff"
                 android:textSize="22sp" />
@@ -68,11 +69,11 @@
                     android:id="@+id/dash_user_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    app:civ_border_width="2dp"
                     android:layout_alignParentEnd="true"
                     android:contentDescription="@string/profile"
                     android:onClick="btn_profile"
-                    android:src="@drawable/contact" />
+                    android:src="@drawable/contact"
+                    app:civ_border_width="2dp" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -173,6 +174,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
@@ -216,7 +219,6 @@
                 app:cardElevation="6dp">
 
                 <LinearLayout
-                    android:onClick="show_grps"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -297,7 +299,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="myClass"
                     android:orientation="vertical"
                     android:padding="16dp">
 

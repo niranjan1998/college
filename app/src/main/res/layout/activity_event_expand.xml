@@ -56,9 +56,11 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_round">
 
                 <TextView
                     android:id="@+id/txt_comments"
@@ -72,23 +74,25 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:onClick="close_comment"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/ic_file_upload_black_24dp" />
-
+                    android:onClick="close_comment"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    android:tint="@color/colorPrimaryDark" />
             </RelativeLayout>
+
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_round">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycle_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycle_view"
                     android:scrollbars="vertical">
 
                 </androidx.recyclerview.widget.RecyclerView>
@@ -104,11 +108,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/colorAccent"
                     android:hint="@string/addComment"
                     android:importantForAutofill="no"
                     android:inputType="textFilter"
-                    android:textSize="18sp"
                     android:maxLines="2"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toTopOf="@+id/button"
                     app:layout_constraintEnd_toStartOf="@+id/btn_comment"
                     app:layout_constraintStart_toStartOf="@+id/button"
@@ -118,12 +123,12 @@
                     android:id="@+id/btn_comment"
                     android:layout_width="73dp"
                     android:layout_height="36dp"
-                    android:onClick="btn_comment"
                     android:layout_below="@+id/ed_comment"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
+                    android:onClick="btn_comment"
+                    android:src="@drawable/ic_send_black_24dp"
                     android:text="@string/delete"
-                    android:src="@drawable/ic_file_upload_black_24dp"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="@+id/ed_comment"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,8 +143,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:onClick="btnDeleteEvent"
-                    android:text="@string/delete"
-                    android:visibility="visible"
+                    android:text="@string/delete_event"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

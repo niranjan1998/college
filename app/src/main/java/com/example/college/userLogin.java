@@ -36,6 +36,8 @@ public class userLogin extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    String userEnteredRoll, userEnteredPassword;
+
     private long last_click = 0;
 
     @SuppressLint("CommitPrefEdits")
@@ -54,7 +56,6 @@ public class userLogin extends AppCompatActivity {
         password = findViewById(R.id.user_passwords);
         progressBar = findViewById(R.id.progressBar);
 
-
         sharedPreferences = getSharedPreferences("loginRef", MODE_PRIVATE);
         userData = getSharedPreferences("loginUser", MODE_PRIVATE);
         sl_checkbox = findViewById(R.id.checkbox);
@@ -64,7 +65,7 @@ public class userLogin extends AppCompatActivity {
         isUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(SystemClock.elapsedRealtime() - last_click < 1000){
+                if (SystemClock.elapsedRealtime() - last_click < 1000) {
                     return;
                 }
                 last_click = SystemClock.elapsedRealtime();
@@ -74,8 +75,12 @@ public class userLogin extends AppCompatActivity {
 
         saveLogin = userData.getBoolean("saveLogin", true);
         if (saveLogin) {
+
             username.setText(userData.getString("roll", null));
             password.setText(userData.getString("password", null));
+
+            isUser();
+
         }
     }
 
@@ -116,8 +121,8 @@ public class userLogin extends AppCompatActivity {
     }
 
     public void isUser() {
-        final String userEnteredRoll = username.getText().toString().trim();
-        final String userEnteredPassword = password.getText().toString().trim();
+        userEnteredRoll = username.getText().toString().trim();
+        userEnteredPassword = password.getText().toString().trim();
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
@@ -137,6 +142,8 @@ public class userLogin extends AppCompatActivity {
 
                     assert passwordFromDB != null;
                     if (passwordFromDB.equals(userEnteredPassword)) {
+
+                        progressBar.setVisibility(View.VISIBLE);
 
                         v_password.setError(null);
                         v_password.setErrorEnabled(false);
@@ -196,6 +203,7 @@ public class userLogin extends AppCompatActivity {
                         finish();
 
                     } else {
+
                         v_password.setError("Wrong Password");
                         v_password.requestFocus();
                     }

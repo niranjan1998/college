@@ -4,5 +4,7 @@
     <color name="colorPrimary">#0091EA</color>
     <color name="colorAccent">#D88520</color>
     <color name="white">#fff</color>
+    <color name="Black">#000</color>
+    <color name="light_color">#EBECF1</color>
     <color name="colorLight">#00B0FF</color>
 </resources>

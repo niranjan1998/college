@@ -8,11 +8,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class home extends AppCompatActivity {
+
     Animation name_ani;
     TextView name;
 
@@ -22,7 +24,10 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        name_ani = AnimationUtils.loadAnimation(this,R.anim.name_animation);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(home.this, R.color.colorLight));
+
+
+        name_ani = AnimationUtils.loadAnimation(this, R.anim.name_animation);
         name = findViewById(R.id.college_app);
         name.setAnimation(name_ani);
 
@@ -32,9 +37,9 @@ public class home extends AppCompatActivity {
             @Override
             public void run() {
 
-                    Intent intent = new Intent(home.this, userLogin.class);
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(home.this, userLogin.class);
+                startActivity(intent);
+                finish();
 
             }
         }, 1000);

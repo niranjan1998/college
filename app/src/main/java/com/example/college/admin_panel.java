@@ -23,4 +23,14 @@ public class admin_panel extends AppCompatActivity {
         Intent intent = new Intent(this, RegUsers.class);
         startActivity(intent);
     }
+
+    public void show_students(View view) {
+        Intent intent = new Intent(this, admin_show_std.class);
+        startActivity(intent);
+    }
+
+    public void show_teacher(View view) {
+        Intent intent = new Intent(this, admin_show_std.class);
+        startActivity(intent);
+    }
 }

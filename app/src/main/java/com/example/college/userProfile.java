@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,11 +35,12 @@ public class userProfile extends AppCompatActivity {
     EditText ed_roll, ed_email, ed_phone, ed_pass, ed_c_pass;
     String name, roll, email, stream, phone, password, pic;
 
+    TextInputLayout txt_editPassword;
+    Button btn_update;
+
     ImageView profile_image;
     Uri uri;
     String imageUrl;
-
-
 
     DatabaseReference databaseReference;
 
@@ -56,6 +59,9 @@ public class userProfile extends AppCompatActivity {
         ed_pass = findViewById(R.id.ed_password);
         ed_c_pass = findViewById(R.id.ed_c_password);
         profile_image = findViewById(R.id.user_profile);
+
+        txt_editPassword = findViewById(R.id.txt_editPassword);
+        btn_update = findViewById(R.id.update_password);
         showAllUserData();
 
     }
@@ -151,7 +157,6 @@ public class userProfile extends AppCompatActivity {
                 login.edit().putString("password", ed_c_pass.getText().toString()).apply();
                 return true;
             }
-        } else {
         }
         return false;
     }
@@ -170,6 +175,7 @@ public class userProfile extends AppCompatActivity {
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
 
+            assert data != null;
             uri = data.getData();
             profile_image.setImageURI(uri);
             uploadImage();
@@ -208,4 +214,8 @@ public class userProfile extends AppCompatActivity {
         });
     }
 
+    public void show_edit(View view) {
+        txt_editPassword.setVisibility(View.VISIBLE);
+        btn_update.setVisibility(View.VISIBLE);
+    }
 }

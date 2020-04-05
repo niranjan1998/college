@@ -27,14 +27,14 @@ public class my_class_adapter extends RecyclerView.Adapter<my_class_adapter.Clas
 
     @NonNull
     @Override
-    public my_class_adapter.ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_class_item, parent, false);
         return new ClassViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull my_class_adapter.ClassViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ClassViewHolder holder, int position) {
 
         Glide.with(context)
                 .load(usersList.get(position).getPic()).into(holder.imageView);
@@ -43,7 +43,6 @@ public class my_class_adapter extends RecyclerView.Adapter<my_class_adapter.Clas
         holder.u_roll.setText(usersList.get(position).getRoll());
         holder.u_role.setText(usersList.get(position).getRole());
         holder.u_class.setText(usersList.get(position).getStream());
-
     }
 
     @Override
@@ -53,7 +52,7 @@ public class my_class_adapter extends RecyclerView.Adapter<my_class_adapter.Clas
 
     static class ClassViewHolder extends RecyclerView.ViewHolder {
 
-        TextView u_name,u_roll,u_role,u_class;
+        TextView u_name, u_roll, u_role, u_class;
         CardView cardView;
         ImageView imageView;
 

@@ -19,7 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 public class dashboard extends AppCompatActivity {
 
     TextView txtName, txtFields;
-    ImageView  profile_image;
+    ImageView profile_image;
+    String stream;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class dashboard extends AppCompatActivity {
         txtName = findViewById(R.id.txtUsername);
         txtFields = findViewById(R.id.txtField);
         profile_image = findViewById(R.id.dash_user_img);
+
+
+        SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
+        stream = result.getString("class", "");
 
         showAllUserData();
 
@@ -87,22 +93,33 @@ public class dashboard extends AppCompatActivity {
     }
 
     public void chat(View view) {
-        Intent intent = new Intent(dashboard.this, grp_chat.class);
-        startActivity(intent);
+
+        SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
+        String sp_stream = result.getString("role", "");
+
+
+        if (sp_stream.trim().equals("Student")) {
+
+            Intent intent = new Intent(dashboard.this, grp_chat.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(dashboard.this, show_grp.class);
+            startActivity(intent);
+        }
+
+
     }
 
     public void event(View view) {
         Intent intent = new Intent(dashboard.this, event_upload.class);
         startActivity(intent);
     }
-    public void myClass(View view) {
-        Intent intent = new Intent(dashboard.this, my_class.class);
-        startActivity(intent);
-    }
+
     public void add_student(View view) {
         Intent intent = new Intent(dashboard.this, admin_panel.class);
         startActivity(intent);
     }
+
     public void chat_bot(View view) {
         Intent intent = new Intent(dashboard.this, chat_bot.class);
         startActivity(intent);
@@ -129,10 +146,5 @@ public class dashboard extends AppCompatActivity {
         Intent intent = new Intent(dashboard.this, userProfile.class);
         startActivity(intent);
         finish();
-    }
-
-    public void show_grps(View view) {
-        Intent intent = new Intent(dashboard.this, show_grp.class);
-        startActivity(intent);
     }
 }

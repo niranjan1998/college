@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class dash_notes_list extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class dash_notes_list extends AppCompatActivity {
         materialToolbar = findViewById(R.id.toll_bar);
         materialToolbar.setTitle("Notes");
         setSupportActionBar(materialToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 //getting stream and semester
         tv_sem = findViewById(R.id.tv_sem);

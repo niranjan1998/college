@@ -7,59 +7,83 @@
     tools:context=".event_recycleItem">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/event_card"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:id="@+id/event_card"
-        app:cardElevation="3dp"
+        android:layout_margin="4dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_margin="4dp"
+        app:cardElevation="3dp"
         app:cardUseCompatPadding="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="6.2"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="6.2">
+
             <ImageView
+                android:id="@+id/event_img"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:id="@+id/event_img"
                 android:layout_weight="4"
-                android:src="@drawable/assignment"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/assignment" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:weightSum="2.5"
-                android:layout_weight="2.5">
+                android:layout_weight="2.5"
+                android:weightSum="2.5">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
                     <TextView
+                        android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:text="Title"
-                        android:textStyle="bold"
                         android:textSize="18sp"
-                        android:maxLines="1"
-                        android:id="@+id/tv_title"/>
-                    <TextView
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textSize="18sp"
-                        android:maxLines="1"
-                        android:id="@+id/tv_dep"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="date"
-                        android:textSize="14sp"
-                        android:maxLines="1"
-                        android:id="@+id/tv_date"/>
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_dep"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="Description"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_below="@+id/tv_dep"
+                            android:id="@+id/tv_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:layout_marginEnd="30dp"
+                            android:text="date"
+                            android:textSize="14sp" />
+                        <ImageView
+                            android:id="@+id/comment"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_comment_black_24dp"/>
+                    </RelativeLayout>
+
+
                 </LinearLayout>
 
 

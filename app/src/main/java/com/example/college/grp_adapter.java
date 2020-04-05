@@ -1,17 +1,26 @@
 package com.example.college;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
+import java.util.Random;
 
 public class grp_adapter extends RecyclerView.Adapter {
 
@@ -29,7 +38,7 @@ public class grp_adapter extends RecyclerView.Adapter {
         SharedPreferences result = context.getSharedPreferences("loginRef", Context.MODE_PRIVATE);
         String name = result.getString("name", "");
 
-        if (msgList.get(position).getUser_name().toString().contains(name)) {
+        if (msgList.get(position).getUser_name().contains(name)) {
             return 0;
         }
         return 1;
@@ -53,32 +62,65 @@ public class grp_adapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-         SharedPreferences result = context.getSharedPreferences("loginRef", Context.MODE_PRIVATE);
-         String name = result.getString("name", "");
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
-        if (msgList.get(position).getUser_name().toString().contains(name)) {
+        SharedPreferences result = context.getSharedPreferences("loginRef", Context.MODE_PRIVATE);
+        String name = result.getString("name", "");
+
+
+        //to view group name from sp
+        SharedPreferences sp_grp_name = context.getSharedPreferences("spGrpName", Context.MODE_PRIVATE);
+        final String grp_names = sp_grp_name.getString("name","");
+
+        //to get key of comment
+        final Intent intent = new Intent(context, event_expand.class);
+        intent.putExtra("date", msgList.get(holder.getAdapterPosition()).getUser_key());
+        final String date = intent.getStringExtra("date");
+
+        if (msgList.get(position).getUser_name().contains(name)) {
             final MessageViewHolderSend messageViewHolderSend = (MessageViewHolderSend) holder;
             messageViewHolderSend.s_name.setText(msgList.get(position).getUser_name());
             messageViewHolderSend.s_msg.setText(msgList.get(position).getUser_msg());
             messageViewHolderSend.s_date.setText(msgList.get(position).getUser_key());
 
-            messageViewHolderSend.s_date.setOnClickListener(new View.OnClickListener() {
+            ((MessageViewHolderSend) holder).cardViewSend.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View v) {
-                  /*  messageViewHolderSend.getAdapterPosition();
-                    //comment_model comment ;
-                    commentList.get(holder.getAdapterPosition()).getKey())
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Groups");
-                    databaseReference.child("MSc IT 2").child(messageViewHolderSend.).removeValue();
-                    notifyDataSetChanged();
-                    notifyItemRemoved(i);
-                    Toast.makeText(context, "Comment Deleted" + i, Toast.LENGTH_SHORT).show();*/
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Do you want to Delete ?").setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    msgList.remove(msgList.get(position));
+
+                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Groups").child(grp_names).child("messages");
+                                    databaseReference.child(date).removeValue();
+                                    notifyDataSetChanged();
+                                    notifyItemRemoved(position);
+                                    Toast.makeText(context, "Message Deleted" + position, Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.setTitle("Confirm");
+                    dialog.show();
+                    return true;
                 }
             });
 
         } else {
+
+            Random random = new Random();
+            int color = Color.argb(255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
+
             MessageViewHolderRec messageViewHolderRec = (MessageViewHolderRec) holder;
+            messageViewHolderRec.r_name.setTextColor(color);
             messageViewHolderRec.r_name.setText(msgList.get(position).getUser_name());
             messageViewHolderRec.r_msg.setText(msgList.get(position).getUser_msg());
             messageViewHolderRec.r_date.setText(msgList.get(position).getUser_key());

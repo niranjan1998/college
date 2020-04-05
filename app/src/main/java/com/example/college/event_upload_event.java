@@ -42,7 +42,6 @@ public class event_upload_event extends AppCompatActivity {
     String imageUrl;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,24 +153,38 @@ public class event_upload_event extends AppCompatActivity {
 
     public void uploadEvent() {
 
-        event_model e_model = new event_model(
-                event_title.getText().toString(),
-                event_dep.getText().toString(),
-                imageUrl,
-                myCurrentDate
-        );
+        if (!event_title.getText().toString().isEmpty() && !event_dep.getText().toString().isEmpty()) {
+
+            event_model e_model = new event_model(
+                    event_title.getText().toString(),
+                    event_dep.getText().toString(),
+                    imageUrl,
+                    myCurrentDate
+            );
 
 
-        FirebaseDatabase.getInstance().getReference("Events")
-                .child(myCurrentDate).setValue(e_model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(event_upload_event.this, "Event Uploaded", Toast.LENGTH_SHORT).show();
-                    finish();
+            FirebaseDatabase.getInstance().getReference("Events")
+                    .child(myCurrentDate).setValue(e_model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(event_upload_event.this, "Event Uploaded", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
+            });
+        } else {
+            if (event_title.getText().toString().isEmpty()) {
+                event_title.setError("Empty");
+                event_title.requestFocus();
             }
-        });
+            if (event_dep.getText().toString().isEmpty()) {
+                event_dep.setError("Empty");
+                event_dep.requestFocus();
+            }
+
+            Toast.makeText(event_upload_event.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void btn_uploadEvents(View view) {
@@ -179,6 +192,6 @@ public class event_upload_event extends AppCompatActivity {
     }
 
     public void btn_image_view(View view) {
-        btnSelectImage( view);
+        btnSelectImage(view);
     }
 }

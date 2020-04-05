@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
@@ -25,10 +24,10 @@
             android:src="@drawable/collegebw" />
 
         <RelativeLayout
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-30dp">
+            android:layout_marginTop="-30dp"
+            android:visibility="visible">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/notes_card"
@@ -56,7 +55,7 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:scrollbars="horizontal"
-                        app:startIconDrawable="@android:drawable/ic_menu_myplaces">
+                        app:startIconDrawable="@drawable/ic_person_black_24dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/reg_name"
@@ -76,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
-                        app:startIconDrawable="@android:drawable/ic_input_add">
+                        app:startIconDrawable="@drawable/ic_enhanced_encryption_black_24dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/reg_roll"
@@ -95,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
-                        app:startIconDrawable="@android:drawable/sym_action_call">
+                        app:startIconDrawable="@drawable/ic_phone_black_24dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/reg_phone"
@@ -115,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
-                        app:startIconDrawable="@android:drawable/sym_action_email">
+                        app:startIconDrawable="@drawable/ic_email_black_24dp">
 
                         <EditText
                             android:id="@+id/reg_email"

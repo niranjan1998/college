@@ -11,10 +11,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,12 +79,14 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
 
     private void validateField() {
 
+
         name = regName.getText().toString();
         roll = regRoll.getText().toString();
         phone = regPhone.getText().toString();
         email = regEmail.getText().toString();
         password = regRoll.getText().toString();
         stream = item;
+
         if (name.trim().equals("")) {
             regName.setError("Enter Name");
         } else if (roll.trim().equals("")) {
@@ -95,8 +102,32 @@ public class RegUsers extends AppCompatActivity implements OnItemSelectedListene
         } else if (item.trim().equals("Select Stream")) {
             Toast.makeText(getApplicationContext(), "Select Stream ", Toast.LENGTH_SHORT).show();
         } else {
-            addStudent();
+            checkUser();
         }
+    }
+
+    public void checkUser() {
+        roll = regRoll.getText().toString();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
+
+        Query checkUser = reference.orderByChild("roll").equalTo(roll);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    regRoll.setError("User exist");
+                } else {
+                    addStudent();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void addStudent() {

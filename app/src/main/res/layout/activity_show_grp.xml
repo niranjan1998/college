@@ -48,7 +48,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/grp_imgSem2"
                 android:gravity="center_vertical"
-                android:text="@string/msc_it2"
+                android:text="@string/mscIt2"
                 android:textColor="#000"
                 android:textSize="18sp" />
 
@@ -83,7 +83,106 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/grp_imgSem1"
                 android:gravity="center_vertical"
-                android:text="@string/mscIt"
+                android:text="@string/mscIt1"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:onClick="grp_bscSem1"
+        android:id="@+id/card_semB1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/card_sem1"
+        android:layout_marginTop="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/grp_imgSemB1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/add_student" />
+
+            <TextView
+                android:id="@+id/grp_nameSemB1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/grp_imgSemB1"
+                android:gravity="center_vertical"
+                android:text="@string/bscIt1"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:onClick="grp_bscSem2"
+        android:id="@+id/card_semB2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/card_semB1"
+        android:layout_marginTop="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/grp_imgSemB2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/add_student" />
+
+            <TextView
+                android:id="@+id/grp_nameSemB2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/grp_imgSemB2"
+                android:gravity="center_vertical"
+                android:text="@string/bscIt2"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:onClick="grp_bscSem3"
+        android:id="@+id/card_semB3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/card_semB2"
+        android:layout_marginTop="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/grp_imgSemB3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/add_student" />
+
+            <TextView
+                android:id="@+id/grp_nameSemB3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/grp_imgSemB3"
+                android:gravity="center_vertical"
+                android:text="@string/bscIt3"
                 android:textColor="#000"
                 android:textSize="18sp" />
 

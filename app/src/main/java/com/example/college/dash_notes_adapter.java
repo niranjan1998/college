@@ -1,5 +1,6 @@
 package com.example.college;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,11 +25,14 @@ import java.util.List;
 
 public class dash_notes_adapter extends RecyclerView.Adapter<dash_notes_adapter.NotesViewHolder> {
 
-    Context context;
-    List<dash_notes_model> notesList;
+    private Context context;
+    private List<dash_notes_model> notesList;
 
 
-    public dash_notes_adapter(Context context, List<dash_notes_model> notesList) {
+    public dash_notes_adapter() {
+    }
+
+    dash_notes_adapter(Context context, List<dash_notes_model> notesList) {
         this.context = context;
         this.notesList = notesList;
     }
@@ -51,12 +55,13 @@ public class dash_notes_adapter extends RecyclerView.Adapter<dash_notes_adapter.
             dash_notes_model uploads = notesList.get(i);
             Uri uri = Uri.parse(uploads.getUrl());
 
+            @SuppressLint("IntentReset")
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.parse(String.valueOf(uri)), "application/pdf");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setDataAndType(Uri.parse(String.valueOf(uri)), "application/pdf");
                 context.startActivity(intent);
 
             }

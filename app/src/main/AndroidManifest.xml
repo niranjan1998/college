@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_pen_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".show_grp"/>
+        <activity android:name=".admin_user_editor" />
+        <activity android:name=".admin_show_std" />
+        <activity android:name=".show_grp" />
         <activity
             android:name=".admin_panel"
             android:configChanges="orientation|screenSize"

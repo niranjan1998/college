@@ -38,6 +38,7 @@ public class dash_notes_upload extends AppCompatActivity {
     TextInputLayout file_names;
     EditText s_Filename;
     TextView tv_main, tv_sem;
+    TextView notes_name;
 
     Uri pdfUri;
     ProgressDialog progressDialog;
@@ -70,6 +71,8 @@ public class dash_notes_upload extends AppCompatActivity {
 
         tv_sem = findViewById(R.id.sem_path);
         tv_main = findViewById(R.id.main_path);
+
+        notes_name = findViewById(R.id.notes_name);
 
 
         Intent send_class = getIntent();
@@ -123,7 +126,7 @@ public class dash_notes_upload extends AppCompatActivity {
             s_Filename.setError("Enter File Name");
         } else {
             Intent intent = new Intent();
-            intent.setType("application/pdf");
+            intent.setType("application/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);//to fetch files
             startActivityForResult(intent, 86);
         }
@@ -135,6 +138,7 @@ public class dash_notes_upload extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 86 && resultCode == RESULT_OK && data != null) {
             pdfUri = data.getData();
+            //notes_name.setText("File Name : " + data.getData().getPath());
             selectFile_btn.setVisibility(View.GONE);
             uploadFile_btn.setVisibility(View.VISIBLE);
         } else {

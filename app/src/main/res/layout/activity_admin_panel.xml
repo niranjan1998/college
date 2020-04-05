@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/btn_round"
     tools:context=".admin_panel">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/college_app"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="@string/college_app"
-            android:textColor="#ffff"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/admin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="15dp"
-            android:text="@string/admin"
-            android:textColor="#ffff"
-            android:textSize="32sp"
-            android:textStyle="italic" />
-
-    </LinearLayout>
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/college_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/college_app"
+                android:textColor="#ffff"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/abril_fatface"
+                android:text="@string/admin"
+                android:textColor="#ffff"
+                android:textSize="35sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
 
         <GridLayout
             android:layout_width="match_parent"
@@ -45,89 +48,133 @@
             android:layout_marginTop="140dp"
             android:layout_marginRight="10dp"
             android:alignmentMode="alignMargins"
-            android:columnCount="2"
+            android:columnCount="1"
             android:columnOrderPreserved="false"
             android:rowCount="6">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:onClick="add_teacher"
                     android:orientation="vertical"
                     android:padding="16dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="90dp"
+                        android:text="@string/teachers"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:maxLines="1"
+                        android:id="@+id/btn_addTeacher"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:onClick="add_teacher"
+                        android:text="@string/add_teacher"
+                        app:cornerRadius="14dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toEndOf="@+id/btn_addTeacher"
+                        android:maxLines="1"
+                        android:layout_marginStart="5dp"
+                        android:onClick="show_teacher"
+                        android:text="@string/view_teachers"
+                        app:cornerRadius="14dp" />
 
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="-10dp"
                         android:contentDescription="@string/add_teacher"
-                        android:src="@drawable/add_student" />
+                        android:src="@drawable/round_teachers" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/add_teacher"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
-
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:onClick="add_student"
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:contentDescription="@string/practical"
-                        android:src="@drawable/add_student" />
-
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="90dp"
+                        android:text="@string/students"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
+                        tools:ignore="RelativeOverlap" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_addStudents"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:maxLines="1"
+                        android:onClick="add_student"
                         android:text="@string/add_student"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
+                        app:cornerRadius="14dp" />
 
-                </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:maxLines="1"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/btn_addStudents"
+                        android:onClick="show_students"
+                        android:text="@string/view_students"
+                        app:cornerRadius="14dp" />
 
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="-10dp"
+                        android:contentDescription="@string/add_teacher"
+                        android:src="@drawable/round_students" />
 
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
-
-
         </GridLayout>
-    </ScrollView>
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

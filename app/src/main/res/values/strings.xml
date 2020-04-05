@@ -31,6 +31,11 @@
     <string name="select">Select File</string>
 
     <string name="mscIt">Msc It </string>
+    <string name="mscIt1">Msc It Semester 1</string>
+    <string name="mscIt2">Msc It Semester 2</string>
+    <string name="bscIt1">Bsc It Semester 1</string>
+    <string name="bscIt2">Bsc It Semester 2</string>
+    <string name="bscIt3">Bsc It Semester 3</string>
     <string name="bscIt">Bsc It </string>
     <string name="sem1">Semester 1 </string>
     <string name="sem2">Semester 2 </string>
@@ -70,5 +75,14 @@
     <string name="admin">Admin</string>
     <string name="typeMsg">Type a message</string>
     <string name="grpName">Enter Group Name</string>
+    <string name="delete_event">Delete Event</string>
+    <string name="teachers">Teachers</string>
+    <string name="students">Students</string>
+    <string name="view_teachers">View Teachers</string>
+    <string name="view_students">view Students</string>
+    <string name="edit">Edit</string>
+    <string name="icon">icon</string>
+    <string name="update">Update</string>
+    <string name="delete_photo">Delete Profile Photo</string>
 
 </resources>

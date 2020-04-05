@@ -3,6 +3,7 @@ package com.example.college;
 public class UserHelperClass {
 
     String name,roll,phone,email,password,stream,role,pic;
+    private boolean expanded;
 
     public UserHelperClass(){}
 
@@ -15,6 +16,7 @@ public class UserHelperClass {
         this.stream = stream;
         this.role = role;
         this.pic = pic;
+        this.expanded = false;
 
     }
 
@@ -80,5 +82,13 @@ public class UserHelperClass {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 }

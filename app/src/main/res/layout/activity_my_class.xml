@@ -16,16 +16,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/colorLight"
+            app:expandedTitleMarginBottom="10dp"
             app:expandedTitleMarginStart="10dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <com.github.chrisbanes.photoview.PhotoView
                 android:id="@+id/class_image"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="centerCrop"
                 android:layout_below="@+id/class_name"
+                android:background="@android:color/transparent"
                 android:src="@drawable/lab" />
+
+            <ImageView
+                android:layout_marginBottom="40dp"
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end|bottom"
+                android:contentDescription="@string/add_student"
+                android:onClick="btnSelectImage"
+                android:tint="@color/white"
+                app:srcCompat="@drawable/ic_mode_edit_black_24dp" />
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toll_bar_name"

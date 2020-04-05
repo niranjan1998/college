@@ -20,9 +20,9 @@
                 android:id="@+id/user_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:onClick="select_image"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/profile"
+                android:onClick="select_image"
                 android:src="@drawable/contact" />
 
             <ImageView
@@ -50,6 +50,7 @@
                 android:layout_toEndOf="@+id/user_profile"
                 android:includeFontPadding="false"
                 android:text="@string/app_name"
+                android:textAllCaps="true"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -63,6 +64,7 @@
                 android:layout_toEndOf="@+id/user_profile"
                 android:includeFontPadding="false"
                 android:text="@string/mscIt"
+                android:textAllCaps="true"
                 android:textSize="20sp"
                 android:textStyle="normal" />
 
@@ -90,6 +92,7 @@
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:focusable="false"
+                    android:hint="@string/roll_no"
                     android:text="@string/roll_no" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -125,59 +128,79 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="false"
-                    android:focusable="false"
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
+                    android:focusable="false"
                     android:text="@string/phone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/password">
+                android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/ed_password"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:focusable="false"
-                    android:drawableStart="@drawable/ic_file_upload_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:text="@string/password" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/password">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/ed_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="50dp"
+                        android:clickable="false"
+                        android:drawableStart="@drawable/ic_file_upload_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:focusable="false"
+                        android:text="@string/password" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="50dp"
+                    android:layout_height="53dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:contentDescription="@string/add_student"
+                    android:onClick="show_edit"
+                    android:src="@drawable/ic_mode_edit_black_24dp" />
+            </RelativeLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_editPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="@string/updatePassword">
+                android:hint="@string/updatePassword"
+                android:visibility="invisible">
 
                 <EditText
                     android:id="@+id/ed_c_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
+                    android:drawableStart="@drawable/ic_file_upload_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:inputType="textFilter"
                     android:maxLength="10"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
-                    android:inputType="textFilter"
-                    android:drawableStart="@drawable/ic_file_upload_black_24dp"
-                    android:drawablePadding="10dp" />
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/update_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/update_password"
-                android:onClick="updatePassword"
                 android:background="@android:color/holo_blue_light"
+                android:onClick="updatePassword"
                 android:text="@string/updatePassword"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
         </LinearLayout>
     </LinearLayout>
