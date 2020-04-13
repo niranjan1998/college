@@ -84,5 +84,17 @@
     <string name="icon">icon</string>
     <string name="update">Update</string>
     <string name="delete_photo">Delete Profile Photo</string>
+    <string name="create_new_todo">Create New TODO</string>
+    <string name="add_title">Add Title</string>
+    <string name="description">Description</string>
+    <string name="describe_todo">Describe TODO</string>
+    <string name="timeline">Timeline</string>
+    <string name="select_date_and_time">Select Date And Time</string>
+    <string name="create_now">Create Now</string>
+    <string name="class_todo">Class TODO</string>
+    <string name="slash">/</string>
+    <string name="feedback">Send Feedback</string>
+    <string name="calender">calender</string>
+    <string name="select_date">Select Date</string>
 
 </resources>

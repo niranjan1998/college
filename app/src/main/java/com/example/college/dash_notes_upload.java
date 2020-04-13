@@ -30,6 +30,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Objects;
+
 
 public class dash_notes_upload extends AppCompatActivity {
 
@@ -62,7 +64,7 @@ public class dash_notes_upload extends AppCompatActivity {
 
 
         storage = FirebaseStorage.getInstance().getReference();
-        database = FirebaseDatabase.getInstance().getReference("storebooks");
+        database = FirebaseDatabase.getInstance().getReference("storeBooks");
 
         selectFile_btn = findViewById(R.id.SelectFile_btn);
         uploadFile_btn = findViewById(R.id.uploadFile_btn);
@@ -126,7 +128,7 @@ public class dash_notes_upload extends AppCompatActivity {
             s_Filename.setError("Enter File Name");
         } else {
             Intent intent = new Intent();
-            intent.setType("application/*");
+            intent.setType("application/pdf");
             intent.setAction(Intent.ACTION_GET_CONTENT);//to fetch files
             startActivityForResult(intent, 86);
         }
@@ -154,7 +156,7 @@ public class dash_notes_upload extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        StorageReference sRef = storage.child("storebooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString());
+        StorageReference sRef = storage.child("storeBooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString() + ".pdf");
         sRef.putFile(pdfUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -165,8 +167,9 @@ public class dash_notes_upload extends AppCompatActivity {
                         while (!uri.isComplete()) ;
                         Uri url = uri.getResult();
 
-                        dash_notes_model upload = new dash_notes_model(s_Filename.getText().toString(), url.toString());
-                        database.child(Stream_path).child(Sem_path).child(database.push().getKey()).setValue(upload);
+                        assert url != null;
+                        dash_notes_model upload = new dash_notes_model(s_Filename.getText().toString() , url.toString());
+                        database.child(Stream_path).child(Sem_path).child(Objects.requireNonNull(database.push().getKey())).setValue(upload);
 
                         Toast.makeText(dash_notes_upload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
 

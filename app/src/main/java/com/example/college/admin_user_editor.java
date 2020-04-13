@@ -16,18 +16,19 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class admin_user_editor extends AppCompatActivity {
 
     EditText ed_name, ed_email, ed_phone, ed_roll, ed_password;
-    String s_name, s_email, s_phone, s_roll, s_password, s_class;
-    TextView txt_userName, txt_class;
+    String s_name, s_email, s_phone, s_roll, s_password, s_class, s_role;
+    TextView txt_userName, txt_class, txt_role;
     ImageView imageView;
     Button btn_img_del, btn_update;
 
-    DatabaseReference databaseReference;
+    TextInputLayout user_password;
 
     MaterialToolbar materialToolbar;
 
@@ -40,9 +41,7 @@ public class admin_user_editor extends AppCompatActivity {
         setContentView(R.layout.activity_admin_user_editor);
 
         materialToolbar = findViewById(R.id.toll_bar);
-        materialToolbar.setTitle("Student Details");
-        setSupportActionBar(materialToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         ed_name = findViewById(R.id.ed_fullName);
         ed_email = findViewById(R.id.ed_email);
@@ -52,11 +51,11 @@ public class admin_user_editor extends AppCompatActivity {
         imageView = findViewById(R.id.user_profile);
         btn_img_del = findViewById(R.id.btn_del_img);
         btn_update = findViewById(R.id.btn_update);
+        user_password= findViewById(R.id.user_password);
 
         txt_userName = findViewById(R.id.user_name);
         txt_class = findViewById(R.id.user_class);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Events");
+        txt_role = findViewById(R.id.user_role);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -64,6 +63,7 @@ public class admin_user_editor extends AppCompatActivity {
             ed_name.setText(bundle.getString("name"));
             txt_userName.setText(bundle.getString("name"));
             txt_class.setText(bundle.getString("class"));
+            txt_role.setText(bundle.getString("role"));
             ed_roll.setText(bundle.getString("roll"));
             ed_email.setText(bundle.getString("email"));
             ed_phone.setText(bundle.getString("phone"));
@@ -71,6 +71,9 @@ public class admin_user_editor extends AppCompatActivity {
             Glide.with(this).load(bundle.getString("image")).into(imageView);
 
         }
+        materialToolbar.setTitle(txt_role.getText().toString() + " " + "Details");
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void btn_del_img(View view) {
@@ -98,6 +101,7 @@ public class admin_user_editor extends AppCompatActivity {
         s_roll = ed_roll.getText().toString();
         s_password = ed_password.getText().toString();
         s_class = txt_class.getText().toString();
+        s_role = txt_role.getText().toString();
 
         if (s_name.trim().equals("")) {
             ed_name.setError("Enter Name");
@@ -111,6 +115,7 @@ public class admin_user_editor extends AppCompatActivity {
             ed_password.setError("Enter Password");
         } else if (s_password.trim().length() < 5) {
             ed_password.setError("short password");
+            user_password.setBoxStrokeColor(this.getResources().getColor(R.color.Red));
         } else if (s_email.trim().equals("")) {
             ed_email.setError("Enter e-mail");
         } else if (!Patterns.EMAIL_ADDRESS.matcher(s_email).matches()) {
@@ -119,7 +124,7 @@ public class admin_user_editor extends AppCompatActivity {
             String profile = "https://firebasestorage.googleapis.com/v0/b/college-36833.appspot.com/o/addprofile.jpeg?alt=media&token=eb2dde58-e796-491f-9183-13d8f469579c";
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("UsersData");
-            UserHelperClass helperClass = new UserHelperClass(s_name, s_roll, s_phone, s_email, s_password, s_class, "Student", profile );
+            UserHelperClass helperClass = new UserHelperClass(s_name, s_roll, s_phone, s_email, s_password, s_class,s_role , profile);
             reference.child(s_roll).setValue(helperClass);
             txt_userName.setText(s_name);
             Toast.makeText(getApplicationContext(), "Data Changed", Toast.LENGTH_SHORT).show();

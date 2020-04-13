@@ -2,6 +2,7 @@ package com.example.college;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
@@ -11,12 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +27,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -34,7 +40,12 @@ public class grp_chat extends AppCompatActivity {
 
     EditText txt_msg;
     TextView txt_className;
-    ImageView imageView;
+    ImageView imageView, attach_img;
+
+
+    //ImageView profile_image;
+    Uri uri;
+    String imageUrl;
 
     private long last_click = 0;
 
@@ -53,12 +64,13 @@ public class grp_chat extends AppCompatActivity {
 
         MaterialToolbar materialToolbar;
         materialToolbar = findViewById(R.id.toll_bar);
-        setSupportActionBar(materialToolbar);
 
 
         txt_msg = findViewById(R.id.txt_msg);
         txt_className = findViewById(R.id.class_name);
         imageView = findViewById(R.id.class_image);
+        attach_img = findViewById(R.id.class_attach);
+
 
 
         //getting semester name
@@ -66,21 +78,22 @@ public class grp_chat extends AppCompatActivity {
         String sp_stream = result.getString("role", "");
         String sp_class = result.getString("class", "");
 
-
         Intent intent = getIntent();
         String i_stream = intent.getStringExtra("group");
 
         if (sp_stream.trim().equals("Teacher")) {
             grp_name = i_stream;
             showMessages();
-            Toast.makeText(getApplicationContext(), "Teacher i_stream", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Teacher i_stream" + grp_name, Toast.LENGTH_SHORT).show();
         } else {
             grp_name = sp_class;
             showMessages();
-            Toast.makeText(getApplicationContext(), "sp_stream", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "sp_stream " + grp_name, Toast.LENGTH_SHORT).show();
         }
 
         txt_className.setText(grp_name);
+        setSupportActionBar(materialToolbar);
+
 
 
         FirebaseDatabase.getInstance().getReference("Groups")
@@ -108,7 +121,14 @@ public class grp_chat extends AppCompatActivity {
         //to store group name in sp
         SharedPreferences sp_grp_name = getSharedPreferences("spGrpName", MODE_PRIVATE);
         sp_grp_name.edit().putString("name", grp_name).apply();
-        String grp_names = sp_grp_name.getString("name", "");
+       // String grp_names = sp_grp_name.getString("name", "");
+
+        attach_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select_image();
+            }
+        });
 
     }
 
@@ -173,7 +193,6 @@ public class grp_chat extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void btn_uploadMsg(View view) {
 
         if (SystemClock.elapsedRealtime() - last_click < 1000) {
@@ -186,6 +205,8 @@ public class grp_chat extends AppCompatActivity {
         SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
         name = result.getString("name", "");
 
+        String msg_type = "text";
+
 
         String myCurrentDate = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());
@@ -193,6 +214,7 @@ public class grp_chat extends AppCompatActivity {
         grp_model g_model = new grp_model(
                 name,
                 txt_msg.getText().toString(),
+                msg_type,
                 myCurrentDate
         );
         FirebaseDatabase.getInstance().getReference("Groups").child(grp_name).child("messages")
@@ -205,5 +227,81 @@ public class grp_chat extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void select_image() {
+
+        Intent imgPicker = new Intent(Intent.ACTION_PICK);
+        imgPicker.setType("image/*");
+        startActivityForResult(imgPicker, 1);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+
+            assert data != null;
+            uri = data.getData();
+            //  profile_image.setImageURI(uri);
+            btn_upload_img();
+
+        } else {
+            Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    public void btn_upload_img() {
+
+        StorageReference storageReference = FirebaseStorage.getInstance()
+                .getReference().child("Groups").child(grp_name).child("images").child(uri.getLastPathSegment());
+
+        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                while (!uriTask.isComplete()) ;
+                Uri urlImage = uriTask.getResult();
+                assert urlImage != null;
+                imageUrl = urlImage.toString();
+
+                String name;
+                SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
+                name = result.getString("name", "");
+
+                String msg_type = "image";
+
+
+                final String myCurrentDate = DateFormat.getDateTimeInstance()
+                        .format(Calendar.getInstance().getTime());
+
+                final grp_model g_model = new grp_model(
+                        name,
+                        imageUrl,
+                        msg_type,
+                        myCurrentDate
+                );
+
+                FirebaseDatabase.getInstance().getReference("Groups")
+                        .child(grp_name).child("messages")
+                        .child(myCurrentDate).setValue(g_model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(grp_chat.this, "Image Added", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(grp_chat.this, "Image not added", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+
     }
 }

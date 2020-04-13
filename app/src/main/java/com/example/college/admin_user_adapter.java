@@ -64,6 +64,7 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
                 intent.putExtra("name", adminUserList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("roll", adminUserList.get(holder.getAdapterPosition()).getRoll());
                 intent.putExtra("class", adminUserList.get(holder.getAdapterPosition()).getStream());
+                intent.putExtra("role", adminUserList.get(holder.getAdapterPosition()).getRole());
                 intent.putExtra("email", adminUserList.get(holder.getAdapterPosition()).getEmail());
                 intent.putExtra("phone", adminUserList.get(holder.getAdapterPosition()).getPhone());
                 intent.putExtra("password", adminUserList.get(holder.getAdapterPosition()).getPassword());
@@ -92,7 +93,7 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
                                 databaseReference.child(roll).removeValue();
                                 notifyDataSetChanged();
                                 notifyItemRemoved(position);
-                                Toast.makeText(context, "Student Deleted" + position, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "User Deleted" + position, Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {

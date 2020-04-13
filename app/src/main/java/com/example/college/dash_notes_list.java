@@ -77,7 +77,7 @@ public class dash_notes_list extends AppCompatActivity {
         final dash_notes_adapter n_adapter = new dash_notes_adapter(dash_notes_list.this,notes_models_list);
         recyclerView.setAdapter(n_adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("storebooks").child(Stream_path).child(Sem_path);
+        databaseReference = FirebaseDatabase.getInstance().getReference("storeBooks").child(Stream_path).child(Sem_path);
 
 
         progressDialog.show();

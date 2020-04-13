@@ -79,8 +79,9 @@ public class userLogin extends AppCompatActivity {
             username.setText(userData.getString("roll", null));
             password.setText(userData.getString("password", null));
 
-            isUser();
-
+            if (!username.getText().toString().equals("")) {
+                isUser();
+            }
         }
     }
 
@@ -156,7 +157,6 @@ public class userLogin extends AppCompatActivity {
                         String streamFromDB = dataSnapshot.child(userEnteredRoll).child("stream").getValue(String.class);
                         String passFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
                         String roleFromDB = dataSnapshot.child(userEnteredRoll).child("role").getValue(String.class);
-                        String picFromDB = dataSnapshot.child(userEnteredRoll).child("pic").getValue(String.class);
 
                         //save user data in shared preference
                         if (sl_checkbox.isChecked()) {
@@ -173,7 +173,7 @@ public class userLogin extends AppCompatActivity {
                         editor.putString("phone", phoneNoFromDB);
                         editor.putString("password", passFromDB);
                         editor.putString("role", roleFromDB);
-                        editor.commit();
+                        editor.apply();
 
 
                         //   userLoginHelper helper = new userLoginHelper();

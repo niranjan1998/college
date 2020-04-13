@@ -81,12 +81,12 @@
                         tools:ignore="RelativeOverlap" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:maxLines="1"
                         android:id="@+id/btn_addTeacher"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:maxLines="1"
                         android:onClick="add_teacher"
                         android:text="@string/add_teacher"
                         app:cornerRadius="14dp" />
@@ -96,9 +96,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:layout_marginStart="5dp"
                         android:layout_toEndOf="@+id/btn_addTeacher"
                         android:maxLines="1"
-                        android:layout_marginStart="5dp"
                         android:onClick="show_teacher"
                         android:text="@string/view_teachers"
                         app:cornerRadius="14dp" />
@@ -158,9 +158,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:maxLines="1"
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@+id/btn_addStudents"
+                        android:maxLines="1"
                         android:onClick="show_students"
                         android:text="@string/view_students"
                         app:cornerRadius="14dp" />

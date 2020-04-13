@@ -7,13 +7,13 @@
     tools:context=".event_recycleItem">
 
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="8dp"
         android:id="@+id/event_card"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_margin="4dp"
         android:clickable="true"
         android:focusable="true"
-        app:cardElevation="3dp"
+        app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout

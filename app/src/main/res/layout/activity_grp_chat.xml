@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/chat_bg_color"
     android:orientation="vertical"
     tools:context=".grp_chat">
 
@@ -29,20 +30,21 @@
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/class_image"
                 android:layout_width="40dp"
-                app:civ_border_width="1dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_pen_logo_round" />
+                android:src="@mipmap/ic_pen_logo_round"
+                app:civ_border_width="1dp" />
 
             <TextView
                 android:id="@+id/class_name"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
+
         </com.google.android.material.appbar.MaterialToolbar>
 
 
@@ -51,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toll_bar"
-            android:layout_marginBottom="40dp" />
+            android:layout_marginBottom="50dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <RelativeLayout
@@ -59,39 +61,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_round"
+        android:paddingBottom="5dp"
         android:scrollbars="vertical"
         android:visibility="visible">
 
-
-        <EditText
-            android:id="@+id/txt_msg"
+        <RelativeLayout
+            android:id="@+id/rel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="53dp"
-            android:gravity="center_vertical"
-            android:hint="@string/typeMsg"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:maxLines="10"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical"
-            android:textSize="18sp" />
+            android:background="@drawable/bg_round">
 
-        <ImageView
+            <EditText
+                android:id="@+id/txt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="28dp"
+                android:gravity="center_vertical"
+                android:hint="@string/typeMsg"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:maxLines="8"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                android:textSize="18sp" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/class_attach"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="-33dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/txt_msg"
+                android:src="@drawable/ic_attach_file_black_24dp" />
+
+        </RelativeLayout>
+
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/img_send"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_alignEnd="@+id/txt_msg"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_alignEnd="@+id/rel"
             android:layout_alignParentEnd="true"
-            android:layout_margin="2dp"
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/gcm_defaultSenderId"
             android:onClick="btn_uploadMsg"
             android:src="@drawable/ic_send_black_24dp" />
+
 
     </RelativeLayout>
 

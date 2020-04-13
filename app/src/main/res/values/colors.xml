@@ -7,4 +7,5 @@
     <color name="Black">#000</color>
     <color name="light_color">#EBECF1</color>
     <color name="colorLight">#00B0FF</color>
+    <color name="Red">#D50000</color>
 </resources>

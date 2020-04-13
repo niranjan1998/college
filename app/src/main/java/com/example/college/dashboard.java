@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,9 @@ public class dashboard extends AppCompatActivity {
 
 
         SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
-        stream = result.getString("class", "");
+        stream = result.getString("role", "");
+
+        Toast.makeText(getApplicationContext(), stream, Toast.LENGTH_SHORT).show();
 
         showAllUserData();
 
@@ -97,7 +100,6 @@ public class dashboard extends AppCompatActivity {
         SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
         String sp_stream = result.getString("role", "");
 
-
         if (sp_stream.trim().equals("Student")) {
 
             Intent intent = new Intent(dashboard.this, grp_chat.class);
@@ -146,5 +148,10 @@ public class dashboard extends AppCompatActivity {
         Intent intent = new Intent(dashboard.this, userProfile.class);
         startActivity(intent);
         finish();
+    }
+
+    public void open_todo(View view) {
+        Intent intent = new Intent(dashboard.this, todo_main.class);
+        startActivity(intent);
     }
 }

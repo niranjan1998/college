@@ -1,5 +1,6 @@
 package com.example.college;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -217,5 +219,36 @@ public class userProfile extends AppCompatActivity {
     public void show_edit(View view) {
         txt_editPassword.setVisibility(View.VISIBLE);
         btn_update.setVisibility(View.VISIBLE);
+    }
+
+    public void logout(View view) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        builder.setMessage("Do you want to Logout ?").setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        removeValue();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.setTitle("Confirm");
+        dialog.show();
+    }
+
+    private void removeValue() {
+        //removing values from sp
+        getApplicationContext().getSharedPreferences("loginRef", 0).edit().clear().apply();
+        getApplicationContext().getSharedPreferences("loginUser", 0).edit().clear().apply();
+        Intent intent = new Intent(userProfile.this, home.class);
+        startActivity(intent);
+        finish();
     }
 }

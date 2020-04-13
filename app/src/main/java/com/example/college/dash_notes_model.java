@@ -6,7 +6,6 @@ public class dash_notes_model {
 
 
     // Default constructor required for calls to
-    // DataSnapshot.getValue(User.class)
     public dash_notes_model() {
     }
 

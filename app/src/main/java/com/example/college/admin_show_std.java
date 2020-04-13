@@ -1,5 +1,6 @@
 package com.example.college;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ public class admin_show_std extends AppCompatActivity implements AdapterView.OnI
 
     MaterialToolbar materialToolbar;
 
+    String i_role;
     Spinner spinner;
     String item;
 
@@ -41,11 +43,16 @@ public class admin_show_std extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_admin_show_std);
 
         materialToolbar = findViewById(R.id.toll_bar);
-        materialToolbar.setTitle("Student Details");
-        setSupportActionBar(materialToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         recyclerView = findViewById(R.id.recycle_view);
+
+        Intent roles = getIntent();
+        i_role = roles.getStringExtra("role");
+
+        materialToolbar.setTitle( i_role + " Details");
+        setSupportActionBar(materialToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //spinner element
         spinner = findViewById(R.id.spinner);
@@ -54,11 +61,17 @@ public class admin_show_std extends AppCompatActivity implements AdapterView.OnI
         //spinner drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add(0, "Select Stream");
-        categories.add("MSc IT 1");
-        categories.add("MSc IT 2");
-        categories.add("BSc IT 1");
-        categories.add("BSc IT 2");
-        categories.add("BSc IT 3");
+        if (i_role.toString().trim().equals("Student")) {
+            categories.add("MSc IT 1");
+            categories.add("MSc IT 2");
+            categories.add("BSc IT 1");
+            categories.add("BSc IT 2");
+            categories.add("BSc IT 3");
+        } else {
+            categories.add("IT");
+            categories.add("CS");
+        }
+
 
         //Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categories);
@@ -101,7 +114,7 @@ public class admin_show_std extends AppCompatActivity implements AdapterView.OnI
                     UserHelperClass userHelperClass = itemSnapshot.getValue(UserHelperClass.class);
 
                     assert userHelperClass != null;
-                    if (userHelperClass.getStream().trim().toString().equals(item.trim())) {
+                    if (userHelperClass.getStream().trim().equals(item.trim())) {
                         adminUserList.add(userHelperClass);
                     }
                 }
@@ -116,6 +129,6 @@ public class admin_show_std extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void onNothingSelected(AdapterView<?> arg0) {
-       // recyclerView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
     }
 }

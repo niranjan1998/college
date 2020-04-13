@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,7 +38,8 @@
                 android:layout_marginBottom="20dp"
                 android:contentDescription="@string/profile"
                 android:onClick="select_image"
-                android:src="@drawable/contact" />
+                android:src="@drawable/contact"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/user_name"
@@ -93,6 +95,8 @@
                     android:drawablePadding="10dp"
                     android:focusable="false"
                     android:hint="@string/roll_no"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
                     android:text="@string/roll_no" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +116,10 @@
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:focusable="false"
-                    android:text="@string/email" />
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/email"
+                    tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +138,10 @@
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
                     android:focusable="false"
-                    android:text="@string/phone" />
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:text="@string/phone"
+                    tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,7 +165,10 @@
                         android:drawableStart="@drawable/ic_file_upload_black_24dp"
                         android:drawablePadding="10dp"
                         android:focusable="false"
-                        android:text="@string/password" />
+                        android:importantForAutofill="no"
+                        android:inputType="textVisiblePassword"
+                        android:text="@string/password"
+                        tools:ignore="LabelFor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:hint="@string/updatePassword"
-                android:visibility="invisible">
+                android:visibility="gone">
 
                 <EditText
                     android:id="@+id/ed_c_password"
@@ -185,10 +198,12 @@
                     android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
                     android:drawableStart="@drawable/ic_file_upload_black_24dp"
                     android:drawablePadding="10dp"
-                    android:inputType="textFilter"
+                    android:importantForAutofill="no"
+                    android:inputType="textVisiblePassword"
                     android:maxLength="10"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    tools:ignore="LabelFor" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -200,7 +215,37 @@
                 android:onClick="updatePassword"
                 android:text="@string/updatePassword"
                 android:textStyle="bold"
-                android:visibility="invisible" />
+                android:visibility="gone" />
+
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_box"
+                android:padding="10dp"
+                android:text="@string/feedback"
+                android:textAlignment="viewStart"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_person_black_24dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:onClick="logout"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="10dp"
+                android:padding="10dp"
+                android:text="@string/logout"
+                android:textAlignment="viewStart"
+                android:textColor="#58353131"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_person_black_24dp"
+                app:rippleColor="@color/colorAccent" />
 
         </LinearLayout>
     </LinearLayout>
