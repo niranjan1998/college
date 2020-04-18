@@ -90,8 +90,9 @@ public class todo_add extends AppCompatActivity {
 
     private void btnUploadTodo() {
 
-        SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
-        String s_name = result.getString("name", "");
+        // SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
+        //   String s_name = result.getString("name", "");
+        String s_name;
 
         s_title = ed_title.getText().toString();
         s_date = txt_date.getText().toString();
@@ -107,7 +108,7 @@ public class todo_add extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("todoData");
 
         String id = reference.push().getKey();
-        todo_model todo_model = new todo_model(s_title, s_desc, s_date,myCurrentDate, id, s_name, s_class);
+        todo_model todo_model = new todo_model(s_title, s_desc, s_date, myCurrentDate, id, s_name, s_class);
 
         assert id != null;
         reference.child(s_class).child(id).setValue(todo_model);
@@ -157,25 +158,12 @@ public class todo_add extends AppCompatActivity {
                 calendar1.set(Calendar.MONTH, month);
                 calendar1.set(Calendar.DATE, dayOfMonth);
 
-             //   pick_time();
+                //   pick_time();
                 String dateTxt = DateFormat.format("MMM d,yyyy", calendar1).toString();
-                txt_date.setText(dateTxt );
+                txt_date.setText(dateTxt);
 
             }
         }, YEAR, MONTH, DATE);
         datePickerDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent i_intent = getIntent();
-        String className = i_intent.getStringExtra("grp_name");
-
-        Intent intent = new Intent(getApplicationContext(), todo_main.class);
-        intent.putExtra("item_name", className);
-        startActivity(intent);
-        finish();
     }
 }

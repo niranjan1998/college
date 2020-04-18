@@ -86,6 +86,11 @@ public class grp_adapter extends RecyclerView.Adapter {
 
         if (msgList.get(position).getUser_name().contains(name)) {
 
+            if(msgList.get(position).getUser_msg_type() == null){
+                Toast.makeText(context, "empty box" + position, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if(msgList.get(position).getUser_msg_type().equals(img)){
                 final MessageViewHolderSend messageViewHolderSend = (MessageViewHolderSend) holder;
                 messageViewHolderSend.s_name.setText(msgList.get(position).getUser_name());

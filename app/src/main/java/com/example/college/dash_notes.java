@@ -10,6 +10,8 @@ import androidx.cardview.widget.CardView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.Objects;
+
 public class dash_notes extends AppCompatActivity {
 
     MaterialToolbar materialToolbar;
@@ -25,7 +27,7 @@ public class dash_notes extends AppCompatActivity {
         materialToolbar = findViewById(R.id.toll_bar);
         materialToolbar.setTitle("Notes");
         setSupportActionBar(materialToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         lin_sem = findViewById(R.id.lin_sem);
         lin_bscSub = findViewById(R.id.lin_bscSub);
@@ -65,70 +67,70 @@ public class dash_notes extends AppCompatActivity {
 
 
     public void bsc_notes1(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-1");
         startActivity(intent);
     }
 
     public void bsc_notes2(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-2");
         startActivity(intent);
     }
 
     public void bsc_notes3(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-3");
         startActivity(intent);
     }
 
     public void bsc_notes4(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-4");
         startActivity(intent);
     }
 
     public void bsc_notes5(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-5");
         startActivity(intent);
     }
 
     public void bsc_notes6(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "BSC");
         intent.putExtra("sem", "SEMESTER-6");
         startActivity(intent);
     }
 
     public void msc_notes1(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "MSC");
         intent.putExtra("sem", "SEMESTER-1");
         startActivity(intent);
     }
 
     public void msc_notes2(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "MSC");
         intent.putExtra("sem", "SEMESTER-2");
         startActivity(intent);
     }
 
     public void msc_notes3(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "MSC");
         intent.putExtra("sem", "SEMESTER-3");
         startActivity(intent);
     }
 
     public void msc_notes4(View view) {
-        Intent intent = new Intent(getApplicationContext(), dash_notes_list.class);
+        Intent intent = new Intent(getApplicationContext(), dash_notes_categories.class);
         intent.putExtra("main", "MSC");
         intent.putExtra("sem", "SEMESTER-4");
         startActivity(intent);

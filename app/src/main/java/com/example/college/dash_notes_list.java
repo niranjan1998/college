@@ -24,12 +24,11 @@ import java.util.Objects;
 
 public class dash_notes_list extends AppCompatActivity {
 
-
     TextView tv_main, tv_sem;
 
     String Stream_path;
     String Sem_path;
-
+    String extra;
 
     RecyclerView recyclerView;
     List<dash_notes_model> notes_models_list;
@@ -43,12 +42,8 @@ public class dash_notes_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_notes_list);
 
-
         MaterialToolbar materialToolbar;
         materialToolbar = findViewById(R.id.toll_bar);
-        materialToolbar.setTitle("Notes");
-        setSupportActionBar(materialToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 //getting stream and semester
         tv_sem = findViewById(R.id.tv_sem);
@@ -57,6 +52,12 @@ public class dash_notes_list extends AppCompatActivity {
         Intent intent = getIntent();
         String main = intent.getStringExtra("main");
         String sem = intent.getStringExtra("sem");
+        extra = intent.getStringExtra("extra");
+
+
+        materialToolbar.setTitle(extra);
+        setSupportActionBar(materialToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         tv_main.setText(main);
         tv_sem.setText(sem);
@@ -77,8 +78,7 @@ public class dash_notes_list extends AppCompatActivity {
         final dash_notes_adapter n_adapter = new dash_notes_adapter(dash_notes_list.this,notes_models_list);
         recyclerView.setAdapter(n_adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("storeBooks").child(Stream_path).child(Sem_path);
-
+        databaseReference = FirebaseDatabase.getInstance().getReference("storeBooks").child(Stream_path).child(Sem_path).child(extra);
 
         progressDialog.show();
 
@@ -106,6 +106,7 @@ public class dash_notes_list extends AppCompatActivity {
         Intent send_class = new Intent(getApplicationContext(), dash_notes_upload.class);
         send_class.putExtra("class", Stream_path);
         send_class.putExtra("sem", Sem_path);
+        send_class.putExtra("extra", extra);
         startActivity(send_class);
 
     }

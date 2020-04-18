@@ -1,8 +1,10 @@
 package com.example.college;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -31,37 +33,78 @@ public class home extends AppCompatActivity {
         name = findViewById(R.id.college_app);
         name.setAnimation(name_ani);
 
-
+        checkConnection();
+        /*
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+
 
                 Intent intent = new Intent(home.this, userLogin.class);
                 startActivity(intent);
                 finish();
 
             }
-        }, 1000);
+        }, 1000);*/
     }
 
-    public void signupBtn(View view) {
+    public void checkConnection(){
+        ConnectivityManager manager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert manager != null;
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
 
-        Intent intent = new Intent(this, RegUsers.class);
-        startActivity(intent);
+        if(null!=networkInfo){
+            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI){
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+
+
+                        Intent intent = new Intent(home.this, userLogin.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                }, 1000);
+               // Toast.makeText(getApplicationContext(),"Wifi Enabled",Toast.LENGTH_SHORT).show();
+            }
+            if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE){
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        Intent intent = new Intent(home.this, userLogin.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                }, 1000);
+              //  Toast.makeText(getApplicationContext(),"Data Enabled",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+
+                    Intent intent = new Intent(home.this, no_internet.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+            }, 1000);
+
+         //   Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    public void loginBtn(View view) {
-
-        Intent intent = new Intent(home.this, userLogin.class);
-        startActivity(intent);
-
-    }
-
-    public void dashBtn(View view) {
-
-        Intent intent = new Intent(this, dashboard.class);
-        startActivity(intent);
-    }
 
 }

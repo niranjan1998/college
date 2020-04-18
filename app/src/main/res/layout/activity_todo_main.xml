@@ -15,7 +15,7 @@
         android:layout_height="150dp"
         android:layout_below="@+id/toll_bar"
         android:background="@drawable/gradient_background"
-        android:padding="20dp">
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/txt_name"
@@ -37,12 +37,12 @@
             android:textSize="22sp" />
 
 
-        <LinearLayout
-            android:layout_marginTop="25dp"
+        <RelativeLayout
             android:id="@+id/lin_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_class"
+            android:layout_marginTop="25dp"
             android:background="@drawable/btn_round"
             android:orientation="vertical">
 
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:spinnerMode="dropdown" />
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <ScrollView

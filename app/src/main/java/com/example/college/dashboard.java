@@ -2,6 +2,7 @@ package com.example.college;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +24,7 @@ public class dashboard extends AppCompatActivity {
     TextView txtName, txtFields;
     ImageView profile_image;
     String stream;
+    CardView card_chat_bot;
 
 
     @Override
@@ -32,6 +35,21 @@ public class dashboard extends AppCompatActivity {
         txtName = findViewById(R.id.txtUsername);
         txtFields = findViewById(R.id.txtField);
         profile_image = findViewById(R.id.dash_user_img);
+        card_chat_bot = findViewById(R.id.card_chat_bot);
+
+        card_chat_bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chat_bot();
+            }
+        });
+        card_chat_bot.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                chat_bot_ui();
+                return true;
+            }
+        });
 
 
         SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
@@ -91,7 +109,8 @@ public class dashboard extends AppCompatActivity {
     }
 
     public void upload_asg(View view) {
-        Intent intent = new Intent(dashboard.this, upload_files.class);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("http://siesascs.edu.in"));
         startActivity(intent);
     }
 
@@ -122,8 +141,12 @@ public class dashboard extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void chat_bot(View view) {
+    public void chat_bot() {
         Intent intent = new Intent(dashboard.this, chat_bot.class);
+        startActivity(intent);
+    }
+    public void chat_bot_ui() {
+        Intent intent = new Intent(dashboard.this, chat_bot_ui.class);
         startActivity(intent);
     }
 

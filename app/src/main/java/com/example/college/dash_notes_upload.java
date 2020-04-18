@@ -39,6 +39,7 @@ public class dash_notes_upload extends AppCompatActivity {
     Button uploadFile_btn, selectFile_btn;
     TextInputLayout file_names;
     EditText s_Filename;
+
     TextView tv_main, tv_sem;
     TextView notes_name;
 
@@ -50,6 +51,7 @@ public class dash_notes_upload extends AppCompatActivity {
 
     String Stream_path;
     String Sem_path;
+    String extra;
 
 
     @Override
@@ -59,8 +61,6 @@ public class dash_notes_upload extends AppCompatActivity {
 
         MaterialToolbar materialToolbar;
         materialToolbar = findViewById(R.id.toll_bar);
-        materialToolbar.setTitle("Upload Notes");
-        setSupportActionBar(materialToolbar);
 
 
         storage = FirebaseStorage.getInstance().getReference();
@@ -80,6 +80,12 @@ public class dash_notes_upload extends AppCompatActivity {
         Intent send_class = getIntent();
         String main = send_class.getStringExtra("class");
         String sem = send_class.getStringExtra("sem");
+        extra = send_class.getStringExtra("extra");
+
+        materialToolbar.setTitle("Upload"+ " " + extra);
+        setSupportActionBar(materialToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         tv_main.setText(main);
         tv_sem.setText(sem);
@@ -150,48 +156,57 @@ public class dash_notes_upload extends AppCompatActivity {
 
     public void uploadFiles(Uri pdfUri) {
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setTitle("Uploading FIle");
-        progressDialog.setProgress(0);
-        progressDialog.show();
+        String s_textFile = s_Filename.getText().toString();
+        if (s_textFile.trim().equals("")) {
+            s_Filename.setError("Enter File Name");
+        } else {
 
-        StorageReference sRef = storage.child("storeBooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString() + ".pdf");
-        sRef.putFile(pdfUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setTitle("Uploading FIle");
+            progressDialog.setProgress(0);
+            progressDialog.show();
 
 
-                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                        while (!uri.isComplete()) ;
-                        Uri url = uri.getResult();
+            StorageReference sRef = storage.child("storeBooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString() + ".pdf");
+            sRef.putFile(pdfUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        assert url != null;
-                        dash_notes_model upload = new dash_notes_model(s_Filename.getText().toString() , url.toString());
-                        database.child(Stream_path).child(Sem_path).child(Objects.requireNonNull(database.push().getKey())).setValue(upload);
+                            Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uri.isComplete()) ;
+                            Uri url = uri.getResult();
 
-                        Toast.makeText(dash_notes_upload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
+                            assert url != null;
+                            String key = database.push().getKey();
 
-                        s_Filename.setText("");
-                        progressDialog.dismiss();
-                        selectFile_btn.setVisibility(View.VISIBLE);
-                        uploadFile_btn.setVisibility(View.INVISIBLE);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            dash_notes_model upload = new dash_notes_model(s_Filename.getText().toString(), url.toString(), key, Stream_path, extra, Sem_path);
+                            assert key != null;
+                            database.child(Stream_path).child(Sem_path).child(extra).child(key).setValue(upload);
 
-                        int currentProgress = (int) (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                        progressDialog.setProgress(currentProgress);
-                    }
-                });
+                            Toast.makeText(dash_notes_upload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
+
+                            s_Filename.setText("");
+                            progressDialog.dismiss();
+                            selectFile_btn.setVisibility(View.VISIBLE);
+                            uploadFile_btn.setVisibility(View.INVISIBLE);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+
+                            int currentProgress = (int) (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            progressDialog.setProgress(currentProgress);
+                        }
+                    });
+        }
     }
 }

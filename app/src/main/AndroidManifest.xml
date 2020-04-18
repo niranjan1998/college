@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.college">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +17,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_pen_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup">
+        <activity android:name=".no_internet" />
+        <activity
+            android:name=".feedback"
+            android:hardwareAccelerated="true"
+            android:parentActivityName=".userProfile" />
+        <activity android:name=".dash_notes_categories" />
+        <activity android:name=".chat_bot_ui" />
         <activity
             android:name=".todo_add"
             android:configChanges="orientation|screenSize"
@@ -25,8 +34,14 @@
             android:name=".todo_main"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".dashboard" />
-        <activity android:name=".admin_user_editor" />
-        <activity android:name=".admin_show_std" />
+        <activity
+            android:name=".admin_user_editor"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".admin_show_std" />
+        <activity
+            android:name=".admin_show_std"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".admin_panel" />
         <activity android:name=".show_grp" />
         <activity
             android:name=".admin_panel"
@@ -58,7 +73,10 @@
         <activity
             android:name=".dash_notes"
             android:parentActivityName=".dashboard" />
-        <activity android:name=".dash_notes_upload" />
+        <activity
+            android:name=".dash_notes_upload"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".dash_notes_list" />
         <activity android:name=".dash_notes_adapter" />
         <activity
             android:name=".dash_notes_list"

@@ -1,6 +1,5 @@
 package com.example.college;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -14,13 +13,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +30,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Objects;
+
 public class userProfile extends AppCompatActivity {
 
     TextView txt_userName, txt_class;
@@ -39,6 +40,7 @@ public class userProfile extends AppCompatActivity {
 
     TextInputLayout txt_editPassword;
     Button btn_update;
+    MaterialButton btn_logout;
 
     ImageView profile_image;
     Uri uri;
@@ -64,6 +66,13 @@ public class userProfile extends AppCompatActivity {
 
         txt_editPassword = findViewById(R.id.txt_editPassword);
         btn_update = findViewById(R.id.update_password);
+        btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         showAllUserData();
 
     }
@@ -190,7 +199,7 @@ public class userProfile extends AppCompatActivity {
 
     public void uploadImage() {
         StorageReference storageReference = FirebaseStorage.getInstance()
-                .getReference().child("UsersData").child(roll).child("pic").child(uri.getLastPathSegment());
+                .getReference().child("UsersData").child(roll).child("pic").child(Objects.requireNonNull(uri.getLastPathSegment()));
 
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -221,7 +230,30 @@ public class userProfile extends AppCompatActivity {
         btn_update.setVisibility(View.VISIBLE);
     }
 
-    public void logout(View view) {
+    public void logout() {
+
+
+        //removing values from sp
+        getApplicationContext().getSharedPreferences("loginRef", 0).edit().clear().apply();
+        getApplicationContext().getSharedPreferences("loginUser", 0).edit().clear().apply();
+
+        Toast.makeText(getApplicationContext(), "Logout Done", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(userProfile.this, home.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    public void feedback(View view) {
+
+        Intent intent = new Intent(userProfile.this, feedback.class);
+        startActivity(intent);
+
+    }
+
+/*
+    private boolean removeValue() {
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
         builder.setMessage("Do you want to Logout ?").setCancelable(false)
@@ -229,7 +261,10 @@ public class userProfile extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        removeValue();
+                        //removing values from sp
+                        getApplicationContext().getSharedPreferences("loginRef", 0).edit().clear().apply();
+                        getApplicationContext().getSharedPreferences("loginUser", 0).edit().clear().apply();
+
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -241,14 +276,7 @@ public class userProfile extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.setTitle("Confirm");
         dialog.show();
+        return true;
     }
-
-    private void removeValue() {
-        //removing values from sp
-        getApplicationContext().getSharedPreferences("loginRef", 0).edit().clear().apply();
-        getApplicationContext().getSharedPreferences("loginUser", 0).edit().clear().apply();
-        Intent intent = new Intent(userProfile.this, home.class);
-        startActivity(intent);
-        finish();
-    }
+*/
 }

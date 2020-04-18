@@ -10,10 +10,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,8 +96,33 @@ public class reg_teacher extends AppCompatActivity implements AdapterView.OnItem
         } else if (item.trim().equals("Select Stream")) {
             Toast.makeText(getApplicationContext(), "Select Stream ", Toast.LENGTH_SHORT).show();
         } else {
-            addTeacher();
+            checkUser();
         }
+    }
+
+
+    public void checkUser() {
+        roll = regRoll.getText().toString();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
+
+        Query checkUser = reference.orderByChild("roll").equalTo(roll);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    regRoll.setError("User exist");
+                } else {
+                    addTeacher();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void addTeacher() {

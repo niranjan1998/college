@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
     android:background="@drawable/btn_round"
+    android:focusable="true"
     tools:context=".dashboard">
 
     <LinearLayout
@@ -64,7 +64,8 @@
                     android:onClick="logout"
                     android:text="@string/logout"
                     android:textColor="#ffff"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:visibility="gone" />
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/dash_user_img"
@@ -136,6 +137,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:visibility="visible"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
@@ -150,14 +152,14 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/assignment"
-                        android:src="@drawable/assignment" />
+                        android:contentDescription="@string/college_app"
+                        android:src="@drawable/colleges" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/assignments"
+                        android:text="@string/website"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -198,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/chat"
+                        android:text="@string/group_chat"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -208,7 +210,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:onClick="open_todo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -217,6 +218,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:onClick="open_todo"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
@@ -231,7 +233,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:contentDescription="@string/practical"
-                        android:src="@drawable/lab" />
+                        android:src="@drawable/list" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -269,14 +271,14 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:contentDescription="@string/time"
-                        android:src="@drawable/time" />
+                        android:contentDescription="@string/events"
+                        android:src="@drawable/events" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/time"
+                        android:text="@string/events"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 
@@ -284,6 +286,45 @@
 
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_chat_bot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <pl.droidsonroids.gif.GifImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:contentDescription="@string/chat_bot"
+                        android:src="@drawable/chatbotgif" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/chat_bot"
+                        android:textColor="#6f6f6f"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -294,6 +335,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                android:visibility="gone"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
@@ -332,6 +374,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
+                android:visibility="gone"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 
@@ -354,44 +397,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="@string/admin"
-                        android:textColor="#6f6f6f"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:onClick="chat_bot"
-                    android:orientation="vertical">
-
-                    <pl.droidsonroids.gif.GifImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="@string/chat_bot"
-                        android:src="@drawable/chatbotgif" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/chat_bot"
                         android:textColor="#6f6f6f"
                         android:textSize="18sp" />
 

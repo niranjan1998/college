@@ -3,6 +3,7 @@ package com.example.college;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class dash_notes_adapter extends RecyclerView.Adapter<dash_notes_adapter.
 
     private Context context;
     private List<dash_notes_model> notesList;
+    private String name, key, stream, sem, extra;
 
 
     public dash_notes_adapter() {
@@ -48,10 +52,8 @@ public class dash_notes_adapter extends RecyclerView.Adapter<dash_notes_adapter.
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
 
-            //dash_notes_list upload = dash_notes_model.get(i);
-
             dash_notes_model uploads = notesList.get(i);
-            Uri uri = Uri.parse(uploads.getUrl());
+            //     Uri uri = Uri.parse(uploads.getUrl());
 
             @Override
             public void onClick(View v) {
@@ -64,35 +66,62 @@ public class dash_notes_adapter extends RecyclerView.Adapter<dash_notes_adapter.
             }
         });
 
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to Delete ?").setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String ref = notesList.get(i).getName();
-                                notesList.remove(notesList.get(i));
-                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("storeBooks");
-                                databaseReference.child("name").child(ref).removeValue();
-                                notifyDataSetChanged();
-                                notifyItemRemoved(i);
-                                Toast.makeText(context, "Deleted" + i, Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog dialog = builder.create();
-                dialog.setTitle("Confirm");
-                dialog.show();
-                return true;
-            }
-        });
+
+        //to get values
+        final Intent intent = new Intent(context, todo_main.class);
+        intent.putExtra("card_name", notesList.get(holder.getAdapterPosition()).getName());
+        name = intent.getStringExtra("card_name");
+        intent.putExtra("card_key", notesList.get(holder.getAdapterPosition()).getKey());
+        key = intent.getStringExtra("card_key");
+        intent.putExtra("card_stream", notesList.get(holder.getAdapterPosition()).getStream());
+        stream = intent.getStringExtra("card_stream");
+        intent.putExtra("card_sem", notesList.get(holder.getAdapterPosition()).getSem());
+        sem = intent.getStringExtra("card_sem");
+        intent.putExtra("card_extra", notesList.get(holder.getAdapterPosition()).getExtras());
+        extra = intent.getStringExtra("card_extra");
+
+
+        SharedPreferences result = context.getSharedPreferences("loginRef", Context.MODE_PRIVATE);
+        String role = result.getString("role", "");
+
+        if (role.equals("Teacher")) {
+            holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("Do you want to Delete ?").setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    notesList.remove(notesList.get(i));
+
+                                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                                    StorageReference storageReference = storage.getReference("storeBooks").child(stream).child(sem);
+                                    storageReference.child(name +".pdf").delete();
+
+                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("storeBooks").child(stream).child(sem).child(extra);
+                                    databaseReference.child(key).removeValue();
+                                   /* DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("storeBooks");
+                                    assert key != null;
+                                    databaseReference.child(key).removeValue();*/
+                                    notifyDataSetChanged();
+                                    notifyItemRemoved(i);
+                                    Toast.makeText(context, "Deleted" + i, Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog dialog = builder.create();
+                    dialog.setTitle("Confirm");
+                    dialog.show();
+                    return true;
+                }
+            });
+        }
     }
 
     @Override

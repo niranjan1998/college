@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,7 +46,6 @@ public class userLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
-
 
         //All elements Hooks
         v_username = findViewById(R.id.user_email);
@@ -125,67 +125,80 @@ public class userLogin extends AppCompatActivity {
         userEnteredRoll = username.getText().toString().trim();
         userEnteredPassword = password.getText().toString().trim();
 
+        if ((userEnteredRoll.equals("admin")) && (userEnteredPassword.equals("admin@890"))) {
+            //save user data in shared preference
+            if (sl_checkbox.isChecked()) {
+                userEditor.putBoolean("saveLogin", true);
+                userEditor.putString("roll", userEnteredRoll);
+                userEditor.putString("password", userEnteredPassword);
+                userEditor.apply();
+            }
+            Intent intent = new Intent(userLogin.this, admin_panel.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(getApplicationContext(), "admin here", Toast.LENGTH_SHORT).show();
+        } else {
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("UsersData");
 
-        Query checkUser = reference.orderByChild("roll").equalTo(userEnteredRoll);
+            Query checkUser = reference.orderByChild("roll").equalTo(userEnteredRoll);
 
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.exists()) {
+                    if (dataSnapshot.exists()) {
 
-                    v_username.setError(null);
-                    v_username.setErrorEnabled(false);
+                        v_username.setError(null);
+                        v_username.setErrorEnabled(false);
 
-                    String passwordFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
+                        String passwordFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
 
-                    assert passwordFromDB != null;
-                    if (passwordFromDB.equals(userEnteredPassword)) {
+                        assert passwordFromDB != null;
+                        if (passwordFromDB.equals(userEnteredPassword)) {
 
-                        progressBar.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.VISIBLE);
 
-                        v_password.setError(null);
-                        v_password.setErrorEnabled(false);
+                            v_password.setError(null);
+                            v_password.setErrorEnabled(false);
 
 //transfer data to dashboard
-                        String nameFromDB = dataSnapshot.child(userEnteredRoll).child("name").getValue(String.class);
-                        String rollFromDB = dataSnapshot.child(userEnteredRoll).child("roll").getValue(String.class);
-                        String phoneNoFromDB = dataSnapshot.child(userEnteredRoll).child("phone").getValue(String.class);
-                        String emailFromDB = dataSnapshot.child(userEnteredRoll).child("email").getValue(String.class);
-                        String streamFromDB = dataSnapshot.child(userEnteredRoll).child("stream").getValue(String.class);
-                        String passFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
-                        String roleFromDB = dataSnapshot.child(userEnteredRoll).child("role").getValue(String.class);
+                            String nameFromDB = dataSnapshot.child(userEnteredRoll).child("name").getValue(String.class);
+                            String rollFromDB = dataSnapshot.child(userEnteredRoll).child("roll").getValue(String.class);
+                            String phoneNoFromDB = dataSnapshot.child(userEnteredRoll).child("phone").getValue(String.class);
+                            String emailFromDB = dataSnapshot.child(userEnteredRoll).child("email").getValue(String.class);
+                            String streamFromDB = dataSnapshot.child(userEnteredRoll).child("stream").getValue(String.class);
+                            String passFromDB = dataSnapshot.child(userEnteredRoll).child("password").getValue(String.class);
+                            String roleFromDB = dataSnapshot.child(userEnteredRoll).child("role").getValue(String.class);
 
-                        //save user data in shared preference
-                        if (sl_checkbox.isChecked()) {
-                            userEditor.putBoolean("saveLogin", true);
-                            userEditor.putString("roll", rollFromDB);
-                            userEditor.putString("password", passFromDB);
-                            userEditor.apply();
-                        }
-                        //store user information in sp
-                        editor.putString("roll", rollFromDB);
-                        editor.putString("name", nameFromDB);
-                        editor.putString("email", emailFromDB);
-                        editor.putString("class", streamFromDB);
-                        editor.putString("phone", phoneNoFromDB);
-                        editor.putString("password", passFromDB);
-                        editor.putString("role", roleFromDB);
-                        editor.apply();
-
-
-                        //   userLoginHelper helper = new userLoginHelper();
-                        // helper.getName(nameFromDB);
-                        //    helper.setName(nameFromDB);
-                        // System.out.println(helper.getName());
-                        //holder.notes_names.setText(notesList.get(i).getName());
-                        //reference.child(roll).setValue(helperClass);
+                            //save user data in shared preference
+                            if (sl_checkbox.isChecked()) {
+                                userEditor.putBoolean("saveLogin", true);
+                                userEditor.putString("roll", rollFromDB);
+                                userEditor.putString("password", passFromDB);
+                                userEditor.apply();
+                            }
+                            //store user information in sp
+                            editor.putString("roll", rollFromDB);
+                            editor.putString("name", nameFromDB);
+                            editor.putString("email", emailFromDB);
+                            editor.putString("class", streamFromDB);
+                            editor.putString("phone", phoneNoFromDB);
+                            editor.putString("password", passFromDB);
+                            editor.putString("role", roleFromDB);
+                            editor.apply();
 
 
-                        Intent intent = new Intent(getApplicationContext(), dashboard.class);
-                        //Intent intent = new Intent(getApplicationContext(), userProfile.class);
+                            //   userLoginHelper helper = new userLoginHelper();
+                            // helper.getName(nameFromDB);
+                            //    helper.setName(nameFromDB);
+                            // System.out.println(helper.getName());
+                            //holder.notes_names.setText(notesList.get(i).getName());
+                            //reference.child(roll).setValue(helperClass);
+
+
+                            Intent intent = new Intent(getApplicationContext(), dashboard.class);
+                            //Intent intent = new Intent(getApplicationContext(), userProfile.class);
 /*
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("roll", rollFromDB);
@@ -199,24 +212,25 @@ public class userLogin extends AppCompatActivity {
                         storeUser.setName(userEnteredRoll);
                         storeUser.setPass(passFromDB);
 */
-                        startActivity(intent);
-                        finish();
+                            startActivity(intent);
+                            finish();
 
+                        } else {
+
+                            v_password.setError("Wrong Password");
+                            v_password.requestFocus();
+                        }
                     } else {
-
-                        v_password.setError("Wrong Password");
-                        v_password.requestFocus();
+                        v_username.setError("No such User exist");
+                        v_username.requestFocus();
                     }
-                } else {
-                    v_username.setError("No such User exist");
-                    v_username.requestFocus();
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
     }
 }

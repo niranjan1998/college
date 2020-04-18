@@ -10,8 +10,7 @@
         android:id="@+id/event_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="3dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,6 +124,7 @@
                     android:layout_below="@+id/ed_comment"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/send"
                     android:onClick="btn_comment"
                     android:src="@drawable/ic_send_black_24dp"
                     android:text="@string/delete"

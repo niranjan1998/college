@@ -18,16 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:textColor="#000"
             android:text="@string/college_app"
+            android:textColor="#000"
             android:textSize="35sp" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:textColor="#000"
             android:text="@string/welcome"
+            android:textColor="#000"
             android:textSize="35sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -36,14 +37,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            android:hint="@string/enter_roll_no">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/user_emails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/enter_roll_no"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:textSize="20sp" />
@@ -56,14 +57,14 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:hint="@string/enter_password"
             app:passwordToggleEnabled="true">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/user_passwords"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/enter_password"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 android:textSize="20sp" />
@@ -92,14 +93,13 @@
             tools:ignore="OnClick" />
 
         <ProgressBar
-            android:visibility="invisible"
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
             android:focusable="true"
-            />
+            android:indeterminate="true"
+            android:visibility="invisible" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

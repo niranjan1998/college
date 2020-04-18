@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +33,7 @@ public class todo_main extends AppCompatActivity implements AdapterView.OnItemSe
     TextView txt_userName, txt_grpName;
     Spinner spinner;
     String item;
-    LinearLayout linearLayout;
+    RelativeLayout linearLayout;
     FloatingActionButton floatingActionButton;
 
 
@@ -124,6 +124,14 @@ public class todo_main extends AppCompatActivity implements AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // recyclerView.setVisibility(View.GONE);
+        try {
+            Intent i_intent = getIntent();
+            item = i_intent.getStringExtra("item_name");
+            showList();
+            Toast.makeText(getApplicationContext(), "trying ...", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void showList() {

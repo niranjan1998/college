@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.UserViewHolder> {
@@ -125,6 +126,11 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
     @Override
     public int getItemCount() {
         return adminUserList.size();
+    }
+
+    public void filteredList(ArrayList<UserHelperClass> filterUsers) {
+        adminUserList = filterUsers;
+        notifyDataSetChanged();
     }
 
     static class UserViewHolder extends RecyclerView.ViewHolder {

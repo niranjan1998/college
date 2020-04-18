@@ -137,6 +137,7 @@
                     android:layoutDirection="rtl">
 
                     <Button
+                        android:textColor="@color/colorAccent"
                         android:id="@+id/btn_user_delete"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"

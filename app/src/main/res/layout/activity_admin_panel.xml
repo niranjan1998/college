@@ -27,11 +27,21 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:onClick="logout"
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/logout"
+                android:textColor="#ffff"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="15dp"
+                android:layout_margin="5dp"
                 android:fontFamily="@font/abril_fatface"
                 android:text="@string/admin"
                 android:textColor="#ffff"
@@ -61,6 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
 

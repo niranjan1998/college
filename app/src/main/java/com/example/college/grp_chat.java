@@ -72,7 +72,6 @@ public class grp_chat extends AppCompatActivity {
         attach_img = findViewById(R.id.class_attach);
 
 
-
         //getting semester name
         SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
         String sp_stream = result.getString("role", "");
@@ -93,7 +92,6 @@ public class grp_chat extends AppCompatActivity {
 
         txt_className.setText(grp_name);
         setSupportActionBar(materialToolbar);
-
 
 
         FirebaseDatabase.getInstance().getReference("Groups")
@@ -121,7 +119,7 @@ public class grp_chat extends AppCompatActivity {
         //to store group name in sp
         SharedPreferences sp_grp_name = getSharedPreferences("spGrpName", MODE_PRIVATE);
         sp_grp_name.edit().putString("name", grp_name).apply();
-       // String grp_names = sp_grp_name.getString("name", "");
+        // String grp_names = sp_grp_name.getString("name", "");
 
         attach_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +154,7 @@ public class grp_chat extends AppCompatActivity {
                     msgList.add(g_model);
                 }
                 g_adapter.notifyDataSetChanged();
+                g_adapter.notifyItemInserted(msgList.size());
                 recyclerView.scrollToPosition(msgList.size() - 1);
 
                 //to get last position when keyboard open
@@ -200,33 +199,38 @@ public class grp_chat extends AppCompatActivity {
         }
         last_click = SystemClock.elapsedRealtime();
 
+        if (!txt_msg.getText().toString().equals("")) {
+            String name;
+            SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
+            name = result.getString("name", "");
 
-        String name;
-        SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
-        name = result.getString("name", "");
-
-        String msg_type = "text";
+            String msg_type = "text";
 
 
-        String myCurrentDate = DateFormat.getDateTimeInstance()
-                .format(Calendar.getInstance().getTime());
+            String myCurrentDate = DateFormat.getDateTimeInstance()
+                    .format(Calendar.getInstance().getTime());
 
-        grp_model g_model = new grp_model(
-                name,
-                txt_msg.getText().toString(),
-                msg_type,
-                myCurrentDate
-        );
-        FirebaseDatabase.getInstance().getReference("Groups").child(grp_name).child("messages")
-                .child(myCurrentDate).setValue(g_model).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(grp_chat.this, "Added", Toast.LENGTH_SHORT).show();
-                    txt_msg.setText("");
+            grp_model g_model = new grp_model(
+                    name,
+                    txt_msg.getText().toString(),
+                    msg_type,
+                    myCurrentDate
+            );
+            FirebaseDatabase.getInstance().getReference("Groups").child(grp_name).child("messages")
+                    .child(myCurrentDate).setValue(g_model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(grp_chat.this, "Added", Toast.LENGTH_SHORT).show();
+                        txt_msg.setText("");
+                        startActivity(getIntent());
+                        finish();
+                        overridePendingTransition(0, 0);
+
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public void select_image() {
@@ -294,6 +298,10 @@ public class grp_chat extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(grp_chat.this, "Image Added", Toast.LENGTH_SHORT).show();
+
+                            startActivity(getIntent());
+                            finish();
+                            overridePendingTransition(0, 0);
                         } else {
                             Toast.makeText(grp_chat.this, "Image not added", Toast.LENGTH_SHORT).show();
                         }
