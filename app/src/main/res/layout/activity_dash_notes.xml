@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dash_notes">
+    tools:context="project.msc.college.dash_notes">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/tollbar_layout"/>
+        <include layout="@layout/tollbar_layout" />
 
         <LinearLayout
             android:id="@+id/lin_sem"
@@ -22,6 +22,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cd_mscIt"
+                app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -41,19 +42,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="@string/mscIt"
+                        android:text="@string/msc"
                         android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textSize="22sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/assignments"
-                        android:textColor="#555" />
+                        android:text="@string/information_technology"
+                        android:textColor="#555"
+                        android:textSize="18sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
                 android:id="@+id/cd_bscIt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +71,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:padding="30dp">
 
@@ -76,15 +79,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="@string/bscIt"
+                        android:text="@string/bsc"
                         android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textSize="22sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/assignments"
-                        android:textColor="#555" />
+                        android:text="@string/information_technology"
+                        android:textColor="#555"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

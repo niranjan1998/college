@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".show_grp">
+    tools:context="project.msc.college.show_grp">
 
     <LinearLayout
         android:id="@+id/toll_bar_name"

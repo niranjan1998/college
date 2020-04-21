@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".event_recycleItem">
+    tools:context="project.msc.college.event_recycleItem">
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="8dp"
         android:id="@+id/event_card"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:clickable="true"
         android:focusable="true"
+        app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="4"
+                android:contentDescription="@string/selectImage"
                 android:scaleType="centerCrop"
                 android:src="@drawable/assignment" />
 
@@ -34,60 +35,69 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                android:padding="10dp"
                 android:weightSum="2.5">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tv_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@string/title"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/tv_title"
+                        android:id="@+id/tv_dep"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="80dp"
                         android:maxLines="1"
-                        android:text="Title"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:text="@string/description"
+                        android:textSize="18sp" />
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/tv_date"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_dep"
+                        android:layout_marginEnd="80dp"
+                        android:maxLines="1"
+                        android:text="@string/date"
+                        android:textSize="14sp" />
 
-                        <TextView
-                            android:id="@+id/tv_dep"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:text="Description"
-                            android:textSize="18sp" />
+                    <ImageView
+                        android:id="@+id/comment"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/comments"
+                        android:src="@drawable/ic_comment_black_24dp" />
 
-                        <TextView
-                            android:layout_below="@+id/tv_dep"
-                            android:id="@+id/tv_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"
-                            android:layout_marginEnd="30dp"
-                            android:text="date"
-                            android:textSize="14sp" />
-                        <ImageView
-                            android:id="@+id/comment"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginBottom="10dp"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_comment_black_24dp"/>
-                    </RelativeLayout>
-
-
-                </LinearLayout>
+                    <ImageView
+                        android:id="@+id/event_share"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toStartOf="@+id/comment"
+                        android:contentDescription="@string/share"
+                        android:src="@drawable/ic_share_black_24dp" />
+                </RelativeLayout>
 
 
             </LinearLayout>
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

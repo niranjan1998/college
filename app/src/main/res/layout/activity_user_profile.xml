@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userProfile">
+    tools:context="project.msc.college.userProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:hint="@string/password">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -224,7 +224,7 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:onClick="feedback"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
@@ -234,7 +234,27 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:icon="@mipmap/legacy_feedback"
+                app:iconSize="42dp"
                 app:iconTint="@color/Black"
+                app:iconTintMode="screen" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:onClick="shareApp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/share_app"
+                android:textAlignment="viewStart"
+                android:textColor="#808080"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_share_black_24dp"
+                app:iconPadding="5dp"
+                app:iconSize="42dp"
+                app:iconTint="#555"
                 app:iconTintMode="screen" />
 
             <com.google.android.material.button.MaterialButton
@@ -242,7 +262,7 @@
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
                 android:text="@string/logout"
@@ -251,6 +271,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:icon="@mipmap/legacy_logout"
+                app:iconSize="42dp"
                 app:iconTint="@color/colorAccent"
                 app:iconTintMode="screen"
                 app:rippleColor="@color/colorAccent" />

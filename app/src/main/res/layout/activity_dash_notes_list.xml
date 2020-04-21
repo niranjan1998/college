@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dash_notes_list">
+    tools:context="project.msc.college.dash_notes_list">
 
 
  <include layout="@layout/tollbar_layout"/>

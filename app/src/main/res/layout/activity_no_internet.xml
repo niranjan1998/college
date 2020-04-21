@@ -6,7 +6,7 @@
     android:id="@+id/refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".no_internet">
+    tools:context="project.msc.college.no_internet">
 
     <RelativeLayout
         android:layout_width="match_parent"

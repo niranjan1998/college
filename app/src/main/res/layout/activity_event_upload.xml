@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".event_upload">
+    tools:context="project.msc.college.event_upload">
 
     <LinearLayout
         android:id="@+id/toll_bar_name"

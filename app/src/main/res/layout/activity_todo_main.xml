@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/btn_round"
     android:orientation="vertical"
-    tools:context=".todo_main">
+    tools:context="project.msc.college.todo_main">
 
     <include layout="@layout/tollbar_layout" />
 

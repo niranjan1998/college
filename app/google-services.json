@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:624534489929:android:71f5d0ac8a24fb3d752898",
         "android_client_info": {
-          "package_name": "com.example.college"
+          "package_name": "project.msc.college"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "624534489929-enbo6ld7hdhb1marifnicn61d18cm1nh.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.college",
+            "package_name": "project.msc.college",
             "certificate_hash": "8a2744e0a9c813013e773917af0bd197cc20017d"
           }
         },

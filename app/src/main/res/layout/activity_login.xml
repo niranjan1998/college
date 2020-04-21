@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:layout_marginTop="100dp"
-    tools:context=".login">
+    tools:context="project.msc.college.login">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

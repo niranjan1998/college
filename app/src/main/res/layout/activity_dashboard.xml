@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/btn_round"
     android:focusable="true"
-    tools:context=".dashboard">
+    tools:context="project.msc.college.dashboard">
 
     <LinearLayout
         android:layout_width="match_parent"
