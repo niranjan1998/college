@@ -2,6 +2,7 @@ package project.msc.college;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 import java.util.Timer;
@@ -20,6 +22,8 @@ public class home extends AppCompatActivity {
     Animation name_ani;
     TextView name;
 
+    Boolean isNightModeOn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,15 @@ public class home extends AppCompatActivity {
 
         getWindow().setNavigationBarColor(ContextCompat.getColor(home.this, R.color.colorLight));
 
+        SharedPreferences sharedPreferences = getSharedPreferences("system", MODE_PRIVATE);
+        isNightModeOn = sharedPreferences.getBoolean("NightMode", false);
+
+
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         name_ani = AnimationUtils.loadAnimation(this, R.anim.name_animation);
         name = findViewById(R.id.college_app);
@@ -49,13 +62,13 @@ public class home extends AppCompatActivity {
         }, 1000);*/
     }
 
-    public void checkConnection(){
-        ConnectivityManager manager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+    public void checkConnection() {
+        ConnectivityManager manager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         assert manager != null;
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
 
-        if(null!=networkInfo){
-            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI){
+        if (null != networkInfo) {
+            if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
 
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
@@ -69,9 +82,9 @@ public class home extends AppCompatActivity {
 
                     }
                 }, 1000);
-               // Toast.makeText(getApplicationContext(),"Wifi Enabled",Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(),"Wifi Enabled",Toast.LENGTH_SHORT).show();
             }
-            if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE){
+            if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
 
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
@@ -84,10 +97,9 @@ public class home extends AppCompatActivity {
 
                     }
                 }, 1000);
-              //  Toast.makeText(getApplicationContext(),"Data Enabled",Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(),"Data Enabled",Toast.LENGTH_SHORT).show();
             }
-        }
-        else{
+        } else {
 
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -101,7 +113,7 @@ public class home extends AppCompatActivity {
                 }
             }, 1000);
 
-         //   Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
+            //   Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
         }
 
     }

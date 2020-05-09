@@ -36,13 +36,29 @@ public class my_class_adapter extends RecyclerView.Adapter<my_class_adapter.Clas
     @Override
     public void onBindViewHolder(@NonNull final ClassViewHolder holder, int position) {
 
-        Glide.with(context)
-                .load(usersList.get(position).getPic()).into(holder.imageView);
+        String check = usersList.get(position).getRole();
 
-        holder.u_name.setText(usersList.get(position).getName());
-        holder.u_roll.setText(usersList.get(position).getRoll());
-        holder.u_role.setText(usersList.get(position).getRole());
-        holder.u_class.setText(usersList.get(position).getStream());
+        if (check.equals("Teacher")) {
+            Glide.with(context)
+                    .load(usersList.get(position).getPic()).into(holder.imageView);
+
+            holder.u_name.setText(usersList.get(position).getName());
+            holder.u_roll.setText(usersList.get(position).getRoll());
+            holder.u_role.setText(usersList.get(position).getRole());
+            holder.u_class.setText(usersList.get(position).getStream());
+            holder.u_roll.setVisibility(View.GONE);
+
+        } else {
+            Glide.with(context)
+                    .load(usersList.get(position).getPic()).into(holder.imageView);
+
+            holder.u_name.setText(usersList.get(position).getName());
+            holder.u_roll.setText(usersList.get(position).getRoll());
+            holder.u_role.setText(usersList.get(position).getRole());
+            holder.u_class.setText(usersList.get(position).getStream());
+        }
+
+
     }
 
     @Override

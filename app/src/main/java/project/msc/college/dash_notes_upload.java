@@ -82,7 +82,7 @@ public class dash_notes_upload extends AppCompatActivity {
         String sem = send_class.getStringExtra("sem");
         extra = send_class.getStringExtra("extra");
 
-        materialToolbar.setTitle("Upload"+ " " + extra);
+        materialToolbar.setTitle("Upload" + " " + extra);
         setSupportActionBar(materialToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -134,7 +134,7 @@ public class dash_notes_upload extends AppCompatActivity {
             s_Filename.setError("Enter File Name");
         } else {
             Intent intent = new Intent();
-            intent.setType("application/pdf");
+            intent.setType("application/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);//to fetch files
             startActivityForResult(intent, 86);
         }
@@ -168,7 +168,7 @@ public class dash_notes_upload extends AppCompatActivity {
             progressDialog.show();
 
 
-            StorageReference sRef = storage.child("storeBooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString() + ".pdf");
+            StorageReference sRef = storage.child("storeBooks/").child(Stream_path).child(Sem_path).child(s_Filename.getText().toString());
             sRef.putFile(pdfUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override

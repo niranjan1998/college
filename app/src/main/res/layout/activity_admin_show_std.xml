@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,37 +8,58 @@
 
     <include layout="@layout/tollbar_layout" />
 
-    <LinearLayout
-
-        android:id="@+id/li_spinner"
+    <RelativeLayout
+        android:id="@+id/rl_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toll_bar"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_round"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_below="@+id/toll_bar">
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinner"
+
+        <LinearLayout
+            android:id="@+id/li_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:spinnerMode="dropdown" />
-    </LinearLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/txt_bg_admin"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/COLOR"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:onClick="show_search"
+            android:tint="@color/Black"
+            app:srcCompat="@drawable/ic_search_black_24dp" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/ed_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/li_spinner"
+        android:layout_below="@id/rl_spinner"
         android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="50dp"
         android:hint="@string/enter_name_or_roll_no"
         android:importantForAutofill="no"
         android:inputType="text"
         android:visibility="invisible"
         tools:ignore="LabelFor" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
@@ -45,6 +67,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ed_search"
         android:background="@drawable/btn_round"
+        android:visibility="invisible" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/light_color"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="true"
+            android:text="@string/empty_list"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+            android:textSize="30sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:src="@drawable/ic_file_download_black_24dp"
         android:visibility="invisible" />
 
 </RelativeLayout>

@@ -93,6 +93,7 @@ public class todo_add extends AppCompatActivity {
         // SharedPreferences result = getSharedPreferences("loginRef", MODE_PRIVATE);
         //   String s_name = result.getString("name", "");
         String s_name;
+        String status = "notCompleted";
 
         s_title = ed_title.getText().toString();
         s_date = txt_date.getText().toString();
@@ -108,7 +109,7 @@ public class todo_add extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("todoData");
 
         String id = reference.push().getKey();
-        todo_model todo_model = new todo_model(s_title, s_desc, s_date, myCurrentDate, id, s_name, s_class);
+        todo_model todo_model = new todo_model(s_title, s_desc, s_date, myCurrentDate, id, s_name, s_class, status);
 
         assert id != null;
         reference.child(s_class).child(id).setValue(todo_model);

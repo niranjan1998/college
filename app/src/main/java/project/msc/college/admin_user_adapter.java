@@ -30,7 +30,7 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
     private List<UserHelperClass> adminUserList;
 
 
-    public admin_user_adapter(Context context, List<UserHelperClass> adminUserList) {
+    admin_user_adapter(Context context, List<UserHelperClass> adminUserList) {
         this.context = context;
         this.adminUserList = adminUserList;
     }
@@ -45,6 +45,11 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
 
     @Override
     public void onBindViewHolder(@NonNull final UserViewHolder holder, final int position) {
+
+        /*if (adminUserList.get.getRoll() == null) {
+            Toast.makeText(context, "Empty Data", Toast.LENGTH_SHORT).show();
+        }*/
+
         Glide.with(context)
                 .load(adminUserList.get(position).getPic()).into(holder.imageView);
 
@@ -85,15 +90,16 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
                 final String roll = intent.getStringExtra("roll");
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to Delete ?").setCancelable(false)
+                builder.setMessage("Delete ?" + roll).setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 adminUserList.remove(adminUserList.get(position));
                                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("UsersData");
+                                assert roll != null;
                                 databaseReference.child(roll).removeValue();
-                                notifyDataSetChanged();
                                 notifyItemRemoved(position);
+                                notifyDataSetChanged();
                                 Toast.makeText(context, "User Deleted" + position, Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -128,7 +134,7 @@ public class admin_user_adapter extends RecyclerView.Adapter<admin_user_adapter.
         return adminUserList.size();
     }
 
-    public void filteredList(ArrayList<UserHelperClass> filterUsers) {
+    void filteredList(ArrayList<UserHelperClass> filterUsers) {
         adminUserList = filterUsers;
         notifyDataSetChanged();
     }

@@ -1,9 +1,14 @@
 package project.msc.college;
 
+import android.app.ActivityOptions;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -26,11 +33,23 @@ public class dashboard extends AppCompatActivity {
     String stream;
     CardView card_chat_bot;
 
+    private static final String CHANNEL_ID = "college_app";
+    private static final String CHANNEL_NAME = "College_App";
+    private static final String CHANNEL_DESC = "College app desc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(0, 0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            assert notificationManager != null;
+            notificationManager.createNotificationChannel(channel);
+        }
 
         txtName = findViewById(R.id.txtUsername);
         txtFields = findViewById(R.id.txtField);
@@ -59,6 +78,14 @@ public class dashboard extends AppCompatActivity {
 
         showAllUserData();
 
+        txtName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(dashboard.this, "Clicked !", Toast.LENGTH_SHORT).show();
+                displayNotification();
+            }
+        });
     }
 
     public void showAllUserData() {
@@ -145,6 +172,7 @@ public class dashboard extends AppCompatActivity {
         Intent intent = new Intent(dashboard.this, chat_bot.class);
         startActivity(intent);
     }
+
     public void chat_bot_ui() {
         Intent intent = new Intent(dashboard.this, chat_bot_ui.class);
         startActivity(intent);
@@ -169,7 +197,15 @@ public class dashboard extends AppCompatActivity {
 
     public void btn_profile(View view) {
         Intent intent = new Intent(dashboard.this, userProfile.class);
-        startActivity(intent);
+
+        Pair[] pairs = new Pair[2];
+        pairs[0] = new Pair<View, String>(txtName, "name_transition");
+        pairs[1] = new Pair<View, String>(txtFields, "stream_transition");
+        // pairs[2] = new Pair<View,String>(profile_image,"img_transition");
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(dashboard.this, pairs);
+
+        startActivity(intent, options.toBundle());
         finish();
     }
 
@@ -177,4 +213,19 @@ public class dashboard extends AppCompatActivity {
         Intent intent = new Intent(dashboard.this, todo_main.class);
         startActivity(intent);
     }
+
+    private void displayNotification() {
+
+        NotificationCompat.Builder builder = new
+                NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_book_black_24dp)
+                .setContentTitle("Title")
+                .setContentText("Content Text")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(1, builder.build());
+    }
+
 }

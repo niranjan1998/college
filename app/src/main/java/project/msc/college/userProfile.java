@@ -2,8 +2,10 @@ package project.msc.college;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,11 +16,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -40,16 +45,23 @@ public class userProfile extends AppCompatActivity {
 
     TextInputLayout txt_editPassword;
     Button btn_update;
-    MaterialButton btn_logout;
+    MaterialButton btn_logout, btn_darkMode;
+    MaterialToolbar materialToolbar;
 
-    ImageView profile_image;
+    ImageView profile_image, full_image;
+
     Uri uri;
     String imageUrl;
 
     DatabaseReference databaseReference;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    Boolean isNightModeOn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
@@ -63,9 +75,44 @@ public class userProfile extends AppCompatActivity {
         ed_pass = findViewById(R.id.ed_password);
         ed_c_pass = findViewById(R.id.ed_c_password);
         profile_image = findViewById(R.id.user_profile);
+        full_image = findViewById(R.id.full_image);
 
         txt_editPassword = findViewById(R.id.txt_editPassword);
         btn_update = findViewById(R.id.update_password);
+        btn_darkMode = findViewById(R.id.btn_darkMode);
+
+        sharedPreferences = getSharedPreferences("system", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        isNightModeOn = sharedPreferences.getBoolean("NightMode", false);
+
+
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            btn_darkMode.setText(R.string.light_mode);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            btn_darkMode.setText(R.string.night_mode);
+        }
+
+        btn_darkMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isNightModeOn) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    editor.putBoolean("NightMode", false);
+                    editor.apply();
+
+                    btn_darkMode.setText(R.string.night_mode);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    editor.putBoolean("NightMode", true);
+                    editor.apply();
+
+                    btn_darkMode.setText(R.string.light_mode);
+
+                }
+            }
+        });
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +120,27 @@ public class userProfile extends AppCompatActivity {
                 logout();
             }
         });
+
+        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingTollBar);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#FFFFFF"));
+        collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
+        collapsingToolbarLayout.setExpandedTitleGravity(Gravity.BOTTOM);
+        collapsingToolbarLayout.setTitle("Profile");
+
+
+        materialToolbar = findViewById(R.id.toll_bar_name);
+        setSupportActionBar(materialToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+            }
+        });
+
+
         showAllUserData();
 
     }
@@ -118,6 +186,8 @@ public class userProfile extends AppCompatActivity {
                 try {
                     Glide.with(getApplicationContext())
                             .load(userProfilePic).into(profile_image);
+                    Glide.with(getApplicationContext())
+                            .load(userProfilePic).into(full_image);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -189,6 +259,8 @@ public class userProfile extends AppCompatActivity {
             assert data != null;
             uri = data.getData();
             profile_image.setImageURI(uri);
+
+
             uploadImage();
 
         } else {
@@ -198,6 +270,7 @@ public class userProfile extends AppCompatActivity {
     }
 
     public void uploadImage() {
+
         StorageReference storageReference = FirebaseStorage.getInstance()
                 .getReference().child("UsersData").child(roll).child("pic").child(Objects.requireNonNull(uri.getLastPathSegment()));
 
@@ -210,12 +283,12 @@ public class userProfile extends AppCompatActivity {
                 Uri urlImage = uriTask.getResult();
                 assert urlImage != null;
                 imageUrl = urlImage.toString();
+
                 FirebaseDatabase.getInstance().getReference("UsersData")
                         .child(roll).child("pic").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(userProfile.this, "Image Added", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(userProfile.this, "Image not added", Toast.LENGTH_SHORT).show();
                         }
@@ -254,11 +327,12 @@ public class userProfile extends AppCompatActivity {
     public void shareApp(View view) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        String send_test = "Send Text";
+        String send_test = "https://www.amazon.com/dp/B087BJZ7KY/ref=apps_sf_sta";
 
-        intent.putExtra(Intent.EXTRA_TEXT,send_test);
+        intent.putExtra(Intent.EXTRA_TEXT, send_test);
+        //   Get College App from the Amazon Appstore. Check it out - https://www.amazon.com/dp/B087BJZ7KY/ref=apps_sf_sta
 
-        startActivity(Intent.createChooser(intent,"Share Using"));
+        startActivity(Intent.createChooser(intent, "Share Using"));
 
     }
 

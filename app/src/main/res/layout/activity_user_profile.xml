@@ -1,283 +1,378 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="project.msc.college.userProfile">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingTollBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorLight"
+            app:expandedTitleMarginBottom="10dp"
+            app:expandedTitleMarginStart="10dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="true">
+
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/full_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@android:color/transparent"
+                android:scaleType="center"
+                android:src="@drawable/poster3_26_112038" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toll_bar_name"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/gradient_background"
-            android:padding="20dp">
-
-            <com.zolad.zoominimageview.ZoomInImageView
-                android:id="@+id/user_profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/profile"
-                android:onClick="select_image"
-                android:src="@drawable/contact" />
-
-            <ImageView
-                android:id="@+id/no_profile"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/user_profile"
-                android:layout_alignEnd="@+id/user_profile"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="-15dp"
-                android:layout_marginEnd="-15dp"
-                android:layout_marginBottom="20dp"
-                android:contentDescription="@string/profile"
-                android:onClick="select_image"
-                android:src="@drawable/contact"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/user_profile"
-                android:includeFontPadding="false"
-                android:text="@string/app_name"
-                android:textAllCaps="true"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_name"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/user_profile"
-                android:includeFontPadding="false"
-                android:text="@string/mscIt"
-                android:textAllCaps="true"
-                android:textSize="20sp"
-                android:textStyle="normal" />
-
-
-        </RelativeLayout>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/roll_no">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_roll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:drawableStart="@drawable/ic_person_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:focusable="false"
-                    android:importantForAutofill="no"
-                    android:inputType="none"
-                    android:text="@string/roll_no" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:drawableStart="@drawable/ic_email_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:focusable="false"
-                    android:importantForAutofill="no"
-                    android:inputType="none"
-                    android:text="@string/email"
-                    tools:ignore="LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/phone">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:drawableStart="@drawable/ic_phone_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:focusable="false"
-                    android:importantForAutofill="no"
-                    android:inputType="phone"
-                    android:text="@string/phone"
-                    tools:ignore="LabelFor" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="100dp">
+
+                <RelativeLayout
+                    android:id="@+id/card_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="20dp">
+                    <!--
+                                        <com.mikhaellopez.circularimageview.CircularImageView
+                                            android:id="@+id/user_profile"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:contentDescription="@string/profile"
+                                            android:onClick="select_image"
+                                            android:src="@drawable/contact" />-->
+
+                    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:background="@color/Black"
+                        android:transitionName="img_transition"
+                        app:cardCornerRadius="100dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/user_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:contentDescription="@string/profile"
+                            android:onClick="select_image"
+                            android:scaleType="center"
+                            android:src="@drawable/contact" />
+                    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+                    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="10dp"
+                        android:background="@color/Black"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="25dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/ic_camera_alt_black_24dp"
+                            app:tint="@color/colorAccent" />
+                    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@+id/card_profile"
+                    android:includeFontPadding="false"
+                    android:text="@string/app_name"
+                    android:textAllCaps="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:transitionName="name_transition" />
+
+                <TextView
+                    android:id="@+id/user_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_name"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/card_profile"
+                    android:includeFontPadding="false"
+                    android:text="@string/mscIt"
+                    android:textAllCaps="true"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:transitionName="stream_transition" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:hint="@string/password">
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/roll_no">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/ed_password"
+                        android:id="@+id/ed_roll"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="50dp"
+                        android:layout_height="wrap_content"
                         android:clickable="false"
-                        android:drawableStart="@drawable/ic_enhanced_encryption_black_24dp"
+                        android:drawableStart="@drawable/ic_person_black_24dp"
                         android:drawablePadding="10dp"
+
+                        android:drawableTint="@color/Black"
                         android:focusable="false"
                         android:importantForAutofill="no"
-                        android:inputType="textVisiblePassword"
-                        android:text="@string/password"
-                        tools:ignore="LabelFor" />
+                        android:inputType="none"
+                        android:text="@string/roll_no"
+                        tools:ignore="UnusedAttribute" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="50dp"
-                    android:layout_height="53dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:contentDescription="@string/add_student"
-                    android:onClick="show_edit"
-                    android:src="@drawable/ic_mode_edit_black_24dp" />
-            </RelativeLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_editPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/updatePassword"
-                android:visibility="gone">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_c_password"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
-                    android:drawableStart="@drawable/ic_key_black_24dp"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="@color/colorAccent"
-                    android:importantForAutofill="no"
-                    android:inputType="textVisiblePassword"
-                    android:maxLength="10"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    tools:ignore="LabelFor" />
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/email">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:drawableStart="@drawable/ic_email_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/Black"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="none"
+                        android:text="@string/email"
+                        tools:ignore="LabelFor,UnusedAttribute" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/update_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_light"
-                android:onClick="updatePassword"
-                android:text="@string/updatePassword"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:icon="@drawable/ic_file_upload_black_24dp"
-                app:iconGravity="textStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:drawableStart="@drawable/ic_phone_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/Black"
+                        android:focusable="false"
+                        android:importantForAutofill="no"
+                        android:inputType="phone"
+                        android:text="@string/phone"
+                        tools:ignore="LabelFor,UnusedAttribute" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:hint="@string/password">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ed_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="50dp"
+                            android:clickable="false"
+                            android:drawableStart="@drawable/ic_enhanced_encryption_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:drawableTint="@color/Black"
+                            android:focusable="false"
+                            android:importantForAutofill="no"
+                            android:inputType="textVisiblePassword"
+                            android:text="@string/password"
+                            tools:ignore="LabelFor,UnusedAttribute" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="50dp"
+                        android:layout_height="53dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:contentDescription="@string/add_student"
+                        android:onClick="show_edit"
+                        android:src="@drawable/ic_mode_edit_black_24dp"
+                        android:tint="@color/Black" />
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_editPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/updatePassword"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_c_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890$#!_-@"
+                        android:drawableStart="@drawable/ic_key_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/colorAccent"
+                        android:importantForAutofill="no"
+                        android:inputType="textVisiblePassword"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:ignore="LabelFor,UnusedAttribute" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/update_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_blue_light"
+                    android:onClick="updatePassword"
+                    android:text="@string/updatePassword"
+                    android:textColor="#FFF"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:icon="@drawable/ic_file_upload_black_24dp"
+                    app:iconGravity="textStart" />
 
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:onClick="feedback"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/feedback"
-                android:textAlignment="viewStart"
-                android:textColor="#808080"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:icon="@mipmap/legacy_feedback"
-                app:iconSize="42dp"
-                app:iconTint="@color/Black"
-                app:iconTintMode="screen" />
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="feedback"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/feedback"
+                    android:textAlignment="viewStart"
+                    android:textColor="#808080"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:icon="@mipmap/legacy_feedback"
+                    app:iconSize="42dp"
+                    app:iconTint="#000"
+                    app:iconTintMode="screen" />
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:onClick="shareApp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/share_app"
-                android:textAlignment="viewStart"
-                android:textColor="#808080"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:icon="@drawable/ic_share_black_24dp"
-                app:iconPadding="5dp"
-                app:iconSize="42dp"
-                app:iconTint="#555"
-                app:iconTintMode="screen" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_darkMode"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="shareApp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="#808080"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_wb_sunny_black_24dp"
+                    app:iconPadding="5dp"
+                    app:iconSize="42dp"
+                    app:iconTint="@color/Black" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_logout"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:text="@string/logout"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/tab_indicator_text"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:icon="@mipmap/legacy_logout"
-                app:iconSize="42dp"
-                app:iconTint="@color/colorAccent"
-                app:iconTintMode="screen"
-                app:rippleColor="@color/colorAccent" />
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:onClick="shareApp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/share_app"
+                    android:textAlignment="viewStart"
+                    android:textColor="#808080"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_share_black_24dp"
+                    app:iconPadding="5dp"
+                    app:iconSize="42dp"
+                    app:iconTint="#555" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_logout"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="@string/logout"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/tab_indicator_text"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:icon="@mipmap/legacy_logout"
+                    app:iconSize="42dp"
+                    app:iconTint="@color/colorAccent"
+                    app:iconTintMode="screen"
+                    app:rippleColor="@color/colorAccent" />
+
+            </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

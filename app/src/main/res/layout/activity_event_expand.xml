@@ -6,154 +6,158 @@
     android:layout_height="match_parent"
     tools:context="project.msc.college.event_expand">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/event_card"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="3dp">
+        android:orientation="vertical">
+
+        <com.zolad.zoominimageview.ZoomInImageView
+            android:id="@+id/event_expand_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/selectImage"
+            android:src="@drawable/assignment" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/download_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="save_img"
+            android:src="@drawable/ic_file_download_black_24dp"
+            app:backgroundTint="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_marginTop="-30dp"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <com.zolad.zoominimageview.ZoomInImageView
-                android:id="@+id/event_expand_img"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="@string/selectImage"
-                android:src="@drawable/assignment" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tv_expand_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/event_title"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_expand_dep"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/event_dep"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tv_expand_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:text="@string/date"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tv_expand_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_round">
+                android:text="@string/event_title"
+                android:textColor="@color/Black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt_comments"
-                    android:layout_width="347dp"
-                    android:layout_height="match_parent"
-                    android:onClick="txt_comment"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
-                    android:text="@string/comments"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:onClick="close_comment"
-                    android:src="@android:drawable/ic_menu_close_clear_cancel"
-                    android:tint="@color/colorPrimaryDark" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tv_expand_dep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_round">
+                android:text="@string/event_dep"
+                android:textSize="18sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycle_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="vertical">
-
-                </androidx.recyclerview.widget.RecyclerView>
-            </RelativeLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/tv_expand_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <EditText
-                    android:id="@+id/ed_comment"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:hint="@string/addComment"
-                    android:importantForAutofill="no"
-                    android:inputType="textFilter"
-                    android:maxLines="2"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@+id/button"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_comment"
-                    app:layout_constraintStart_toStartOf="@+id/button"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/btn_comment"
-                    android:layout_width="73dp"
-                    android:layout_height="36dp"
-                    android:layout_below="@+id/ed_comment"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:contentDescription="@string/send"
-                    android:onClick="btn_comment"
-                    android:src="@drawable/ic_send_black_24dp"
-                    android:text="@string/delete"
-                    android:visibility="visible"
-                    app:layout_constraintBottom_toBottomOf="@+id/ed_comment"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/ed_comment" />
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ed_comment"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:onClick="btnDeleteEvent"
-                    android:text="@string/delete_event"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:maxLines="1"
+                android:text="@string/date"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_round">
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/txt_comments"
+                android:layout_width="347dp"
+                android:layout_height="match_parent"
+                android:onClick="txt_comment"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="@string/comments"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:onClick="close_comment"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:tint="@color/COLOR" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_round">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/ed_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/addComment"
+                android:importantForAutofill="no"
+                android:inputType="textFilter"
+                android:maxLines="2"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/btn_comment"
+                app:layout_constraintStart_toStartOf="@+id/button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_comment"
+                android:layout_width="73dp"
+                android:layout_height="36dp"
+                android:layout_below="@+id/ed_comment"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/send"
+                android:onClick="btn_comment"
+                android:src="@drawable/ic_send_black_24dp"
+                android:text="@string/delete"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/ed_comment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ed_comment" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ed_comment"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:onClick="btnDeleteEvent"
+                android:text="@string/delete_event"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </ScrollView>

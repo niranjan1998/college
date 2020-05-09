@@ -6,82 +6,89 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="project.msc.college.event_upload_event">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <include layout="@layout/tollbar_layout"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp"
-        android:orientation="vertical">
+        <include layout="@layout/tollbar_layout" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/event_up_img"
-            android:src="@drawable/add_image"
-            android:onClick="btn_image_view"
-            android:scaleType="fitCenter"/>
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_title"
-            android:backgroundTint="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"
-            android:id="@+id/ed_event_name"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/event_dep"
-            android:textSize="18sp"
-            android:inputType="textMultiLine"
-            android:gravity="top|start"
-            android:backgroundTint="@color/colorAccent"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-            android:maxLines="10"
-            android:lines="2"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical"
-            android:id="@+id/ed_event_dep"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/event_up_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:onClick="btn_image_view"
+                android:scaleType="fitCenter"
+                android:src="@drawable/add_image" />
 
-        <com.google.android.material.button.MaterialButton
-            android:visibility="gone"
-            android:id="@+id/btn_event_takeImg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="btnTakeImage"
-            android:text="@string/takeImage"
-            app:icon="@android:drawable/ic_menu_camera"
-            android:layout_marginTop="20dp"
-            app:iconGravity="textStart" />
+            <EditText
+                android:id="@+id/ed_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/colorAccent"
+                android:hint="@string/event_title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_event_img"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="btnSelectImage"
-            android:text="@string/selectImage"
-            app:iconTint="@color/white"
-            app:iconGravity="textStart"
-            app:icon="@android:drawable/ic_menu_gallery" />
+            <EditText
+                android:id="@+id/ed_event_dep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:gravity="top|start"
+                android:hint="@string/event_dep"
+                android:inputType="textMultiLine"
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_event_upload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="btn_uploadEvents"
-            android:text="@string/upload_event"
-            android:layout_marginTop="20dp"
-            app:icon="@drawable/ic_file_upload_black_24dp"
-            app:iconGravity="textStart" />
+                android:lines="2"
+                android:maxLines="10"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                android:textSize="18sp" />
 
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_event_takeImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="btnTakeImage"
+                android:text="@string/takeImage"
+                android:visibility="gone"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_event_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="btnSelectImage"
+                android:text="@string/selectImage"
+                android:textColor="@color/white"
+                app:icon="@android:drawable/ic_menu_gallery"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_event_upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="btn_uploadEvents"
+                android:text="@string/upload_event"
+                android:textColor="@color/white"
+                app:icon="@drawable/ic_file_upload_black_24dp"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>

@@ -72,4 +72,12 @@ public class dash_notes_categories extends AppCompatActivity {
         intent.putExtra("sem", sem);
         startActivity(intent);
     }
+
+    public void card_videoNotes(View view) {
+        Intent intent = new Intent(getApplicationContext(), dash_notes_videos.class);
+        intent.putExtra("extra", "videoNotes");
+        intent.putExtra("main", main);
+        intent.putExtra("sem", sem);
+        startActivity(intent);
+    }
 }

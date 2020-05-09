@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,20 +22,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHolder> {
+public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHolder> implements Filterable {
 
     private Context context;
     private List<todo_model> todo_modelList;
+    private List<todo_model> todo_modelListAll;
 
 
     todo_adapter(Context context, List<todo_model> todo_modelList) {
         this.context = context;
         this.todo_modelList = todo_modelList;
+        this.todo_modelListAll = new ArrayList<>(todo_modelList);
     }
 
     @NonNull
@@ -64,7 +70,6 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
             // holder.txt_do_date.setOutlineAmbientShadowColor(Color.RED);
         } else {
             holder.txt_do_date.setTextColor(Color.GREEN);
-
         }
 
 
@@ -84,10 +89,37 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
                 @Override
                 public boolean onLongClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setMessage("Do you want to Delete ?").setCancelable(false)
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    builder.setTitle(R.string.select_todo)
+                            .setItems(R.array.Selected, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    if (which == 0) {
+                                        delete_To_Do();
+                                    } else if (which == 1) {
+                                        change_completed();
+                                    } else if (which == 2) {
+                                        change_not_completed();
+                                    }
+
+                                }
+
+                                private void change_not_completed() {
+                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("todoData");
+                                    databaseReference.child(i_group).child(i_id).child("status").setValue("notCompleted");
+                                    notifyDataSetChanged();
+                                    notifyItemRemoved(position);
+                                    Toast.makeText(context, "To-Do Completed", Toast.LENGTH_SHORT).show();
+                                }
+
+                                private void change_completed() {
+                                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("todoData");
+                                    databaseReference.child(i_group).child(i_id).child("status").setValue("Completed");
+                                    notifyDataSetChanged();
+                                    notifyItemRemoved(position);
+                                    Toast.makeText(context, "To-Do Completed", Toast.LENGTH_SHORT).show();
+                                }
+
+                                private void delete_To_Do() {
                                     todo_modelList.remove(todo_modelList.get(position));
                                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("todoData");
                                     databaseReference.child(i_group).child(i_id).removeValue();
@@ -95,15 +127,9 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
                                     notifyItemRemoved(position);
                                     Toast.makeText(context, "Deleted" + position, Toast.LENGTH_SHORT).show();
                                 }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                }
                             });
+
                     AlertDialog dialog = builder.create();
-                    dialog.setTitle("Confirm");
                     dialog.show();
                     return true;
                 }
@@ -115,6 +141,43 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
     public int getItemCount() {
         return todo_modelList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+
+        return filter;
+    }
+
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<todo_model> filteredList = new ArrayList<>();
+
+            if (constraint.toString().isEmpty()) {
+                filteredList.addAll(todo_modelListAll);
+            } else {
+                for (todo_model data : todo_modelListAll) {
+                    if (data.getTitle().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        filteredList.add(data);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            todo_modelList.clear();
+            todo_modelListAll.addAll((Collection<? extends todo_model>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     static class TodoViewHolder extends RecyclerView.ViewHolder {
 

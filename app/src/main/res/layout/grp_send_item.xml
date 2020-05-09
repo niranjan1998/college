@@ -70,6 +70,7 @@
                     android:layout_gravity="end"
                     android:maxLines="1"
                     android:text="@string/date"
+                    android:textColor="#555"
                     android:textDirection="anyRtl"
                     android:textSize="14sp" />
             </LinearLayout>

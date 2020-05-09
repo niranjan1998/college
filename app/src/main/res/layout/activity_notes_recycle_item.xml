@@ -16,30 +16,44 @@
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:padding="15dp">
 
             <ImageView
+                android:id="@+id/img_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_book_black_24dp" />
+                android:contentDescription="@string/book"
+                android:src="@drawable/ic_book_black_24dp"
+                android:tint="@color/Black" />
 
             <TextView
                 android:id="@+id/notes_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/notes_more"
+                android:layout_toEndOf="@+id/img_book"
                 android:maxLines="1"
-                android:paddingStart="3dp"
                 android:text="@string/notes"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/notes_more"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:contentDescription="@string/book"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:tint="@color/Black" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 

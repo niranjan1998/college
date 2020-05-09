@@ -1,5 +1,6 @@
 package project.msc.college;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +23,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,10 +63,6 @@ public class grp_chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grp_chat);
 
-        MaterialToolbar materialToolbar;
-        materialToolbar = findViewById(R.id.toll_bar);
-
-
         txt_msg = findViewById(R.id.txt_msg);
         txt_className = findViewById(R.id.class_name);
         imageView = findViewById(R.id.class_image);
@@ -91,7 +88,7 @@ public class grp_chat extends AppCompatActivity {
         }
 
         txt_className.setText(grp_name);
-        setSupportActionBar(materialToolbar);
+        // setSupportActionBar(materialToolbar);
 
 
         FirebaseDatabase.getInstance().getReference("Groups")
@@ -121,10 +118,28 @@ public class grp_chat extends AppCompatActivity {
         sp_grp_name.edit().putString("name", grp_name).apply();
         // String grp_names = sp_grp_name.getString("name", "");
 
+        final CharSequence[] attachments = new CharSequence[]{
+                "Upload image",
+                "Documents"
+        };
+
         attach_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                select_image();
+                AlertDialog.Builder builder = new AlertDialog.Builder(grp_chat.this);
+                builder.setTitle("Select")
+                        .setItems(attachments, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (which == 0) {
+                                    select_image();
+                                } else if (which == 1) {
+                                    Toast.makeText(grp_chat.this, "see u later", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -136,6 +151,7 @@ public class grp_chat extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycle_view);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(grp_chat.this);
         linearLayoutManager.setReverseLayout(false);
+
         recyclerView.setLayoutManager(linearLayoutManager);
         msgList = new ArrayList<>();
         final grp_adapter g_adapter = new grp_adapter(grp_chat.this, msgList);
@@ -206,9 +222,12 @@ public class grp_chat extends AppCompatActivity {
 
             String msg_type = "text";
 
-
             String myCurrentDate = DateFormat.getDateTimeInstance()
                     .format(Calendar.getInstance().getTime());
+
+        /*    Date date1 = Calendar.getInstance().getTime();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM d,yyyy", Locale.getDefault());
+            String myCurrentDate = simpleDateFormat.format(date1);*/
 
             grp_model g_model = new grp_model(
                     name,
@@ -222,11 +241,10 @@ public class grp_chat extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(grp_chat.this, "Added", Toast.LENGTH_SHORT).show();
-                        txt_msg.setText("");
+                        txt_msg.setText("");/*
                         startActivity(getIntent());
                         finish();
-                        overridePendingTransition(0, 0);
-
+                        overridePendingTransition(0, 0);*/
                     }
                 }
             });

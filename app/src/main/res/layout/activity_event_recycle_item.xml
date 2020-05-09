@@ -46,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:text="@string/title"
+                    android:textColor="@color/Black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -91,7 +92,8 @@
                         android:layout_marginBottom="10dp"
                         android:layout_toStartOf="@+id/comment"
                         android:contentDescription="@string/share"
-                        android:src="@drawable/ic_share_black_24dp" />
+                        android:src="@drawable/ic_share_black_24dp"
+                        android:tint="@color/Black" />
                 </RelativeLayout>
 
 

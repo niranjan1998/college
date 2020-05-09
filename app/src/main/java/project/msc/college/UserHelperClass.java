@@ -2,12 +2,12 @@ package project.msc.college;
 
 public class UserHelperClass {
 
-    String name,roll,phone,email,password,stream,role,pic;
+    private String name,roll,phone,email,password,stream,role,pic;
     private boolean expanded;
 
     public UserHelperClass(){}
 
-    public UserHelperClass(String name, String roll, String phone, String email, String password,String stream,String role,String pic) {
+    UserHelperClass(String name, String roll, String phone, String email, String password, String stream, String role, String pic) {
         this.name = name;
         this.roll = roll;
         this.phone = phone;
@@ -84,11 +84,11 @@ public class UserHelperClass {
         this.password = password;
     }
 
-    public boolean isExpanded() {
+    boolean isExpanded() {
         return expanded;
     }
 
-    public void setExpanded(boolean expanded) {
+    void setExpanded(boolean expanded) {
         this.expanded = expanded;
     }
 }

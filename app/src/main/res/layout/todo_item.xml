@@ -28,6 +28,7 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:text="@string/full_name"
+                android:textColor="@color/Black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="project.msc.college.dash_notes">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <include layout="@layout/tollbar_layout" />
@@ -22,13 +22,13 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cd_mscIt"
-                app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="mscIt"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -43,20 +43,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/msc"
-                        android:textColor="#000"
+                        android:textColor="@color/Black"
                         android:textSize="22sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/information_technology"
-                        android:textColor="#555"
                         android:textSize="18sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                app:cardCornerRadius="10dp"
                 android:id="@+id/cd_bscIt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,6 +62,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="bscIt"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="@dimen/cardview_default_elevation"
                 app:layout_constraintTop_toBottomOf="@+id/mscit"
                 tools:ignore="PrivateResource"
@@ -80,14 +79,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/bsc"
-                        android:textColor="#000"
+                        android:textColor="@color/Black"
                         android:textSize="22sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/information_technology"
-                        android:textColor="#555"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -123,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/mscIt"
-                        android:textColor="#000"
+                        android:textColor="@color/Black"
                         android:textSize="25sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -132,6 +130,7 @@
                 android:id="@+id/msc_sem1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="msc_notes1">
@@ -148,9 +147,11 @@
                         android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem1"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -177,9 +178,11 @@
                         android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem2"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -206,9 +209,11 @@
                         android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem3"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -233,11 +238,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem4"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -256,6 +264,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -270,7 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/bscIt"
-                        android:textColor="#000"
+                        android:textColor="@color/Black"
                         android:textSize="25sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -295,9 +304,11 @@
                         android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem1"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -322,11 +333,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem2"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -351,11 +365,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem3"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -380,11 +397,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem4"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -409,11 +429,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem5"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -438,15 +461,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+
                         android:drawableStart="@drawable/ic_folder_black_24dp"
                         android:drawablePadding="2dp"
+                        android:drawableTint="@color/Black"
                         android:text="@string/sem6"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        tools:ignore="UnusedAttribute" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

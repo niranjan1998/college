@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="@string/college_app"
-            android:textColor="#000"
+            android:textColor="@color/Black"
             android:textSize="35sp" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="@string/welcome"
-            android:textColor="#000"
             android:textSize="35sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -70,16 +69,33 @@
                 android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkbox"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/remember"
-            android:visibility="visible">
+            android:layout_height="wrap_content">
 
-        </com.google.android.material.checkbox.MaterialCheckBox>
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="@string/remember"
+                android:visibility="visible">
 
+            </com.google.android.material.checkbox.MaterialCheckBox>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btn_forget"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/checkbox"
+                android:onClick="send_password"
+                android:text="@string/forget_password"
+                android:textAlignment="viewEnd"
+                android:textAllCaps="false" />
+        </RelativeLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"

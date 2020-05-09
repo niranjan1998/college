@@ -9,9 +9,10 @@ public class todo_model {
     String id;
     String tech_name;
     String grp_class;
+    String status;
 
 
-    public todo_model(String title, String desc, String date,String po_date, String id, String tech_name, String grp_class) {
+    todo_model(String title, String desc, String date, String po_date, String id, String tech_name, String grp_class, String status) {
         this.title = title;
         this.desc = desc;
         this.date = date;
@@ -19,11 +20,19 @@ public class todo_model {
         this.id = id;
         this.tech_name = tech_name;
         this.grp_class = grp_class;
+        this.status = status;
     }
 
     public todo_model() {
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public String getPo_date() {
         return po_date;
     }

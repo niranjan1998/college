@@ -17,12 +17,12 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:onClick="grp_mscSem2"
         android:id="@+id/card_sem2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/toll_bar_name"
         android:layout_marginTop="3dp"
+        android:onClick="grp_mscSem2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,8 +38,11 @@
                 android:id="@+id/grp_imgSem2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/profile"
-                android:src="@drawable/add_student" />
+                android:src="@drawable/add_student"
+                app:civ_border_color="#CFD8DC"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/grp_nameSem2"
@@ -49,7 +52,7 @@
                 android:layout_toEndOf="@+id/grp_imgSem2"
                 android:gravity="center_vertical"
                 android:text="@string/mscIt2"
-                android:textColor="#000"
+                android:textColor="@color/Black"
                 android:textSize="18sp" />
 
         </RelativeLayout>
@@ -57,12 +60,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:onClick="grp_mscSem1"
         android:id="@+id/card_sem1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/card_sem2"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="grp_mscSem1">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -73,8 +76,11 @@
                 android:id="@+id/grp_imgSem1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/profile"
-                android:src="@drawable/add_student" />
+                android:src="@drawable/add_student"
+                app:civ_border_color="#CFD8DC"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/grp_nameSem1"
@@ -84,18 +90,19 @@
                 android:layout_toEndOf="@+id/grp_imgSem1"
                 android:gravity="center_vertical"
                 android:text="@string/mscIt1"
-                android:textColor="#000"
+                android:textColor="@color/Black"
                 android:textSize="18sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        android:onClick="grp_bscSem1"
         android:id="@+id/card_semB1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/card_sem1"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="grp_bscSem1">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -106,8 +113,11 @@
                 android:id="@+id/grp_imgSemB1"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/profile"
-                android:src="@drawable/add_student" />
+                android:src="@drawable/add_student"
+                app:civ_border_color="#CFD8DC"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/grp_nameSemB1"
@@ -117,18 +127,19 @@
                 android:layout_toEndOf="@+id/grp_imgSemB1"
                 android:gravity="center_vertical"
                 android:text="@string/bscIt1"
-                android:textColor="#000"
+                android:textColor="@color/Black"
                 android:textSize="18sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        android:onClick="grp_bscSem2"
         android:id="@+id/card_semB2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/card_semB1"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="grp_bscSem2">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -139,8 +150,11 @@
                 android:id="@+id/grp_imgSemB2"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/profile"
-                android:src="@drawable/add_student" />
+                android:src="@drawable/add_student"
+                app:civ_border_color="#CFD8DC"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/grp_nameSemB2"
@@ -150,18 +164,19 @@
                 android:layout_toEndOf="@+id/grp_imgSemB2"
                 android:gravity="center_vertical"
                 android:text="@string/bscIt2"
-                android:textColor="#000"
+                android:textColor="@color/Black"
                 android:textSize="18sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        android:onClick="grp_bscSem3"
         android:id="@+id/card_semB3"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/card_semB2"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:onClick="grp_bscSem3">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -172,8 +187,11 @@
                 android:id="@+id/grp_imgSemB3"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="@string/profile"
-                android:src="@drawable/add_student" />
+                android:src="@drawable/add_student"
+                app:civ_border_color="#CFD8DC"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/grp_nameSemB3"
@@ -183,7 +201,7 @@
                 android:layout_toEndOf="@+id/grp_imgSemB3"
                 android:gravity="center_vertical"
                 android:text="@string/bscIt3"
-                android:textColor="#000"
+                android:textColor="@color/Black"
                 android:textSize="18sp" />
 
         </RelativeLayout>

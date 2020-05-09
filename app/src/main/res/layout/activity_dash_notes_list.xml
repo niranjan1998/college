@@ -7,16 +7,16 @@
     tools:context="project.msc.college.dash_notes_list">
 
 
- <include layout="@layout/tollbar_layout"/>
+    <include layout="@layout/tollbar_layout" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/info_card"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        app:layout_constraintTop_toBottomOf="@+id/toll_bar"
         android:clickable="true"
         android:focusable="true"
         app:cardElevation="3dp"
+        app:layout_constraintTop_toBottomOf="@+id/toll_bar"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -29,13 +29,14 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_folder_open_black_24dp" />
+                android:src="@drawable/ic_folder_open_black_24dp"
+                android:tint="@color/Black" />
 
             <TextView
-                android:layout_marginStart="5dp"
                 android:id="@+id/tv_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -53,33 +54,30 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="5dp"
-        android:layout_margin="4dp"
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@+id/info_card"
+        android:layout_margin="4dp"
+        android:layout_marginTop="5dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/fab"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_card" />
 
 
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:onClick="btn_upload_notes"
         android:text="@string/upload"
         app:icon="@drawable/ic_file_upload_black_24dp"
         app:iconPadding="2dp"
-        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

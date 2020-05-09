@@ -112,5 +112,41 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="share">Share</string>
+    <string name="empty_list">Empty List</string>
+    <string name="forget_password">Forgot Password? </string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="completed">Completed</string>
+    <string name="notCompleted">Not Completed</string>
+    <string name="all">All</string>
+    <string name="search">Search</string>
+    <string name="select_todo">Item Selected </string>
+    <string name="select_attach">Attach File</string>
+    <string name="select_video">Video</string>
 
+    <string name="light_mode">Disable Dark Mode</string>
+    <string name="night_mode">Enable Dark Mode</string>
+    <string name="enter_url">Enter Url</string>
+    <string name="enter_title">Enter Title</string>
+    <string name="cancel">Cancel</string>
+    <string name="upload_video">Upload</string>
+
+    <string-array name="Selected">
+        <item>Delete TO-Do</item>
+        <item>Completed TO-Do</item>
+        <item>Not Completed TO-Do</item>
+    </string-array>
+    <string-array name="Selected_video">
+        <item>Download</item>
+        <item>Share</item>
+        <item>Delete</item>
+    </string-array>
+    <string-array name="Selected_notes">
+        <item>Download</item>
+        <item>Share</item>
+    </string-array>
+    <string-array name="Selected_attach">
+        <item>Select Image</item>
+        <item>Select Document</item>
+    </string-array>
 </resources>

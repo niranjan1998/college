@@ -1,7 +1,6 @@
 package project.msc.college;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,8 +40,6 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.EventViewH
     @Override
     public void onBindViewHolder(@NonNull final EventViewHolder holder, final int i) {
 
-        // final int currentPosition = i;
-        //  final Information infoData = eventList.get(i);
         Glide.with(context)
                 .load(eventList.get(i).getEvent_img()).into(holder.imageView);
 
@@ -65,32 +61,7 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.EventViewH
                 context.startActivity(intent);
             }
         });
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Open Event then delete :) ").setCancelable(true)
-                        .setPositiveButton("OKay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //  deleteEvent(imgUrl);
-                            }
-                        })
-                        .setNegativeButton("bye", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog dialog = builder.create();
-                dialog.setTitle("Confirm");
-                dialog.show();
 
-                return false;
-               /* Toast.makeText(context,"long click"+ i  ,Toast.LENGTH_SHORT).show();
-                return true;*/
-            }
-        });
         holder.img_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,9 +71,13 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.EventViewH
                 intent.putExtra("title", eventList.get(holder.getAdapterPosition()).getEvent_name());
                 intent.putExtra("dep", eventList.get(holder.getAdapterPosition()).getEvent_dep());
                 intent.setType("text/plain");
+
                 String send_title = intent.getStringExtra("title");
                 String send_dep = intent.getStringExtra("dep");
+
+                intent.setType("image/*");
                 String send_img = intent.getStringExtra("image");
+
 
                 String message = send_title + " " + send_dep;
 
@@ -114,45 +89,12 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.EventViewH
 
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return eventList.size();
     }
-
-/*
-    public void deleteEvent(String url) {
-        String key = "";
-
-
-        Intent intent = ((Activity) context).getIntent();
-        Bundle bundle = intent.getExtras();
-
-        if (bundle != null) {
-            key = bundle.getString("keyValue");
-            imgUrl = bundle.getString("image");
-        }
-
-        int i = eventList.indexOf(imgUrl);
-        eventList.remove(imgUrl);
-
-        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Events");
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageReference = storage.getReferenceFromUrl(imgUrl);
-        final String finalKey = key;
-        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                databaseReference.child(finalKey).removeValue();
-            }
-        });
-        notifyItemRemoved(i);
-    }
-*/
-
 
     static class EventViewHolder extends RecyclerView.ViewHolder {
 

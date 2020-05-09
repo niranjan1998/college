@@ -19,72 +19,85 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name="project.msc.college.no_internet" />
         <activity
-            android:name="project.msc.college.feedback"
+            android:name=".dash_notes_videos"
+            android:parentActivityName=".dash_notes_categories" />
+        <activity android:name=".no_internet" />
+        <activity
+            android:name=".feedback"
+            android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true"
-            android:parentActivityName="project.msc.college.userProfile" />
-        <activity android:name="project.msc.college.dash_notes_categories" />
-        <activity android:name="project.msc.college.chat_bot_ui" />
+            android:parentActivityName=".userProfile" />
         <activity
-            android:name="project.msc.college.todo_add"
+            android:name=".dash_notes_categories"
+            android:parentActivityName=".dash_notes" />
+        <activity android:name=".chat_bot_ui" />
+        <activity
+            android:name=".todo_add"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.todo_main" />
+            android:parentActivityName=".todo_main" />
         <activity
-            android:name="project.msc.college.todo_main"
+            android:name=".todo_main"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.dashboard" />
+            android:parentActivityName=".dashboard" />
         <activity
-            android:name="project.msc.college.admin_user_editor"
+            android:name=".admin_user_editor"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.admin_show_std" />
+            android:parentActivityName=".admin_show_std" />
         <activity
-            android:name="project.msc.college.admin_show_std"
+            android:name=".admin_show_std"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.admin_panel" />
-        <activity android:name="project.msc.college.show_grp" />
+            android:parentActivityName=".admin_panel" />
+        <activity android:name=".show_grp" />
         <activity
-            android:name="project.msc.college.admin_panel"
+            android:name=".admin_panel"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.dashboard" />
+            android:parentActivityName=".dashboard" />
         <activity
-            android:name="project.msc.college.reg_teacher"
+            android:name=".reg_teacher"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.admin_panel" />
+            android:parentActivityName=".admin_panel" />
         <activity
-            android:name="project.msc.college.chat_bot"
+            android:name=".chat_bot"
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="true" />
-        <activity android:name="project.msc.college.grp_chat" />
-        <activity android:name="project.msc.college.my_class" />
-        <activity android:name="project.msc.college.event_comment_item" />
-        <activity android:name="project.msc.college.userProfile" />
-        <activity android:name="project.msc.college.notes_recycleItem" />
-        <activity android:name="project.msc.college.notes_view" />
         <activity
-            android:name="project.msc.college.event_upload_event"
-            android:parentActivityName="project.msc.college.event_upload" />
-        <activity android:name="project.msc.college.event_expand" />
-        <activity android:name="project.msc.college.event_recycleItem" />
+            android:name=".grp_chat"
+            android:configChanges="orientation|screenSize" />
         <activity
-            android:name="project.msc.college.event_upload"
-            android:parentActivityName="project.msc.college.dashboard" />
-        <activity android:name="project.msc.college.view_notes" />
+            android:name=".my_class"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".event_comment_item" />
         <activity
-            android:name="project.msc.college.dash_notes"
-            android:parentActivityName="project.msc.college.dashboard" />
+            android:name=".userProfile"
+            android:parentActivityName=".dashboard" />
+        <activity android:name=".notes_recycleItem" />
+        <activity android:name=".notes_view" />
         <activity
-            android:name="project.msc.college.dash_notes_upload"
+            android:name=".event_upload_event"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.dash_notes_list" />
-        <activity android:name="project.msc.college.dash_notes_adapter" />
+            android:parentActivityName=".event_upload" />
+        <activity android:name=".event_expand" />
+        <activity android:name=".event_recycleItem" />
         <activity
-            android:name="project.msc.college.dash_notes_list"
-            android:parentActivityName="project.msc.college.dash_notes" />
-        <activity android:name="project.msc.college.viewfiles" />
-        <activity android:name="project.msc.college.upload_files" />
-        <activity android:name="project.msc.college.upload_notes" />
-        <activity android:name="project.msc.college.home">
+            android:name=".event_upload"
+            android:parentActivityName=".dashboard" />
+        <activity android:name=".view_notes" />
+        <activity
+            android:name=".dash_notes"
+            android:parentActivityName=".dashboard" />
+        <activity
+            android:name=".dash_notes_upload"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".dash_notes_list" />
+        <activity android:name=".dash_notes_adapter" />
+        <activity
+            android:name=".dash_notes_list"
+            android:parentActivityName=".dash_notes_categories" />
+        <activity android:name=".viewfiles" />
+        <activity android:name=".upload_files" />
+        <activity android:name=".upload_notes" />
+        <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -92,15 +105,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="project.msc.college.RegUsers"
+            android:name=".RegUsers"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName="project.msc.college.admin_panel" />
-        <activity android:name="project.msc.college.userLogin" />
-        <activity android:name="project.msc.college.login" />
-        <activity android:name="project.msc.college.MainActivity" />
+            android:parentActivityName=".admin_panel" />
+        <activity android:name=".userLogin" />
+        <activity android:name=".login" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name="project.msc.college.dashboard"
+            android:name=".dashboard"
             android:hardwareAccelerated="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="project.msc.college"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

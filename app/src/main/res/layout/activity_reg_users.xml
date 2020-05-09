@@ -21,6 +21,7 @@
             android:layout_width="165dp"
             android:layout_height="157dp"
             android:layout_marginTop="-200dp"
+            android:contentDescription="@string/college_app"
             android:src="@drawable/collegebw" />
 
         <RelativeLayout
@@ -131,6 +132,8 @@
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_box"
                         android:prompt="@string/spinner_title" />
 
                     <com.google.android.material.button.MaterialButton
@@ -139,7 +142,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/btn_round"
                         android:text="@string/stdAdd"
                         android:textColor="#ffff"
                         android:textSize="22sp" />

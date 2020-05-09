@@ -36,7 +36,7 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="1dp"
                     android:text="@string/full_name"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
                 <TextView
@@ -47,7 +47,7 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="5dp"
                     android:text="@string/myClass"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
                 <TextView
@@ -63,168 +63,140 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/lin_top"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rel_text"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="-30dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:paddingTop="22dp"
-                android:paddingBottom="22dp">
+                android:layout_marginRight="16dp">
 
                 <LinearLayout
+                    android:id="@+id/lin_top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingTop="22dp"
+                    android:paddingBottom="22dp">
 
-                    <TextView
-                        android:id="@+id/addTitle"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="@string/add_title"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/ed_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:autofillHints="no"
-                        android:background="@drawable/bg_box"
-                        android:hint="@string/add_title"
-                        android:inputType="text"
-                        android:maxLength="50"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textColorHint="#B5B5B5" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/addDesc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="@string/description"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:id="@+id/ed_desc"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:autofillHints="no"
-                        android:background="@drawable/bg_box"
-                        android:hint="@string/describe_todo"
-                        android:inputType="textMultiLine"
-                        android:maxLength="200"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textColorHint="#B5B5B5" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/adddate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="@string/timeline"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:background="@drawable/bg_box">
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txt_date"
+                            android:id="@+id/addTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/add_title"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/ed_title"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
-                            android:layout_marginEnd="55dp"
-                            android:gravity="center_vertical"
-                            android:hint="@string/select_date"
+                            android:autofillHints="no"
+                            android:background="@drawable/bg_box"
+                            android:hint="@string/add_title"
+                            android:inputType="text"
+                            android:maxLength="50"
                             android:paddingStart="12dp"
                             android:paddingEnd="12dp"
-                            android:textColorHint="#B5B5B5"
-                            android:textSize="20sp" />
+                            android:textColor="#000" />
 
-                        <ImageView
-                            android:layout_width="55dp"
-                            android:layout_height="55dp"
-                            android:layout_alignParentEnd="true"
-                            android:contentDescription="@string/calender"
-                            android:onClick="btn_pick_dateTime"
-                            android:src="@android:drawable/ic_menu_my_calendar"
-                            android:tint="@color/colorAccent" />
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="16dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/add_date"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="@string/timeline"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp" />
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="16dp"
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/cl_date"
+                        <TextView
+                            android:id="@+id/addDesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/description"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/ed_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:autofillHints="no"
+                            android:background="@drawable/bg_box"
+                            android:hint="@string/describe_todo"
+                            android:inputType="textMultiLine"
+                            android:maxLength="200"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textColor="#000" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:autofillHints="no"
-                        android:hint="@string/select_date_and_time"
-                        android:inputType="datetime"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textColorHint="#B5B5B5" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="16dp"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/adddate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/timeline"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@drawable/bg_box"
+                            android:onClick="btn_pick_dateTime">
+
+                            <TextView
+                                android:id="@+id/txt_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:layout_marginEnd="55dp"
+                                android:gravity="center_vertical"
+                                android:hint="@string/select_date"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:textColor="#000"
+                                android:textSize="20sp" />
+
+                            <ImageView
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_alignParentEnd="true"
+                                android:contentDescription="@string/calender"
+                                android:src="@android:drawable/ic_menu_my_calendar"
+                                android:tint="@color/colorAccent" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
-
-
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnUpload"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lin_top"
+                android:layout_below="@+id/card_block"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="16dp"

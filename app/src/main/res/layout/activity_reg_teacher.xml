@@ -22,13 +22,14 @@
             android:layout_width="165dp"
             android:layout_height="157dp"
             android:layout_marginTop="-200dp"
+            android:contentDescription="@string/college_app"
             android:src="@drawable/collegebw" />
 
         <RelativeLayout
-            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-30dp">
+            android:layout_marginTop="-30dp"
+            android:visibility="visible">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/notes_card"
@@ -128,10 +129,13 @@
                             android:textSize="20sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <Spinner
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_box"
                         android:prompt="@string/spinner_title" />
 
                     <com.google.android.material.button.MaterialButton

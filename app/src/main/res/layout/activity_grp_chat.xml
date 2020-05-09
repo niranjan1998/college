@@ -18,7 +18,7 @@
             android:id="@+id/toll_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/COLOR"
             android:minHeight="?attr/actionBarSize"
             android:onClick="open_class"
             app:contentInsetLeft="0dp"
@@ -60,7 +60,6 @@
         android:id="@+id/rel_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:paddingBottom="5dp"
         android:scrollbars="vertical"
         android:visibility="visible">
@@ -69,6 +68,7 @@
             android:id="@+id/rel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_marginEnd="53dp"
             android:background="@drawable/bg_round">
 
@@ -87,6 +87,8 @@
                 android:paddingEnd="10dp"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical"
+                android:textColor="#000"
+                android:textColorHint="#555"
                 android:textSize="18sp" />
 
 
@@ -97,20 +99,24 @@
                 android:layout_marginStart="-33dp"
                 android:layout_marginTop="5dp"
                 android:layout_toEndOf="@+id/txt_msg"
+                android:rotation="30"
                 android:src="@drawable/ic_attach_file_black_24dp" />
 
         </RelativeLayout>
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/img_send"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="42dp"
+            android:layout_height="80dp"
             android:layout_alignEnd="@+id/rel"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="false"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/gcm_defaultSenderId"
             android:onClick="btn_uploadMsg"
-            android:src="@drawable/ic_send_black_24dp" />
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_send_black_24dp" />
 
 
     </RelativeLayout>

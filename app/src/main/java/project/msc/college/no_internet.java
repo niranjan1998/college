@@ -10,14 +10,20 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class no_internet extends AppCompatActivity {
 
     SwipeRefreshLayout swipeRefreshLayout;
+    MaterialToolbar materialToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no_internet);
+        materialToolbar = findViewById(R.id.toll_bar);
+        materialToolbar.setTitle("College App ");
+        setSupportActionBar(materialToolbar);
 
         swipeRefreshLayout = findViewById(R.id.refresh);
 

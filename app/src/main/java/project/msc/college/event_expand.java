@@ -1,8 +1,10 @@
 package project.msc.college;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class event_expand extends AppCompatActivity {
     String imgUrl = "";
     DatabaseReference databaseReference;
     Button button;
+
 
     //for getting comment data
     RecyclerView recyclerView;
@@ -102,6 +105,7 @@ public class event_expand extends AppCompatActivity {
                 comment_model_list.clear();
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
                     comment_model c_model = itemSnapshot.getValue(comment_model.class);
+                    assert c_model != null;
                     c_model.setKey(itemSnapshot.getKey());
                     comment_model_list.add(c_model);
                 }
@@ -126,8 +130,11 @@ public class event_expand extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 databaseReference.child(key).removeValue();
                 Toast.makeText(event_expand.this, "Event Deleted", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), event_upload.class));
+
                 finish();
+                startActivity(new Intent(getApplicationContext(), event_upload.class));
+                overridePendingTransition(0, 0);
+
             }
         });
     }
@@ -140,7 +147,7 @@ public class event_expand extends AppCompatActivity {
         stream = result.getString("class", "");
         String myCurrentDate = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());
-        if (!ed_comment.getText().toString().isEmpty()) {
+        if (!ed_comment.getText().toString().trim().isEmpty()) {
             comment_model c_model = new comment_model(
                     name,
                     stream,
@@ -152,6 +159,7 @@ public class event_expand extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
+                        ed_comment.setText(" ");
                         Toast.makeText(event_expand.this, "Comment Added", Toast.LENGTH_SHORT).show();
                         startActivity(getIntent());
                         finish();
@@ -168,5 +176,24 @@ public class event_expand extends AppCompatActivity {
 
     public void close_comment(View view) {
         recyclerView.setVisibility(View.GONE);
+    }
+
+    public void save_img(View view) {
+
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            imgUrl = bundle.getString("image");
+        }
+
+        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(imgUrl);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        assert downloadManager != null;
+        long ref = downloadManager.enqueue(request);
+
+        Toast.makeText(this, "File Downloading", Toast.LENGTH_SHORT).show();
+
     }
 }

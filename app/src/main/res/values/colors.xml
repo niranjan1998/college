@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#0091EA</color>
+    <color name="COLOR">#0091EA</color>
     <color name="colorPrimary">#0091EA</color>
     <color name="colorAccent">#D88520</color>
     <color name="white">#fff</color>
@@ -8,4 +8,7 @@
     <color name="light_color">#EBECF1</color>
     <color name="colorLight">#00B0FF</color>
     <color name="Red">#D50000</color>
+    <color name="LightGrey">#ECEFF1</color>
+    <color name="txt_bg_admin">#EFF2F4</color>
+    <color name="video_bg">#FFFFFF</color>
 </resources>

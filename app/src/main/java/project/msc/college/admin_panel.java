@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +28,7 @@ public class admin_panel extends AppCompatActivity {
 
     public void show_students(View view) {
         Intent intent = new Intent(getApplicationContext(), admin_show_std.class);
-        intent.putExtra("role","Student");
+        intent.putExtra("role", "Student");
         startActivity(intent);
     }
 
@@ -42,7 +41,7 @@ public class admin_panel extends AppCompatActivity {
     public void logout(View view) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("LOGOUT")
+        builder.setMessage("LOGOUT !")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -51,7 +50,7 @@ public class admin_panel extends AppCompatActivity {
                         //removing values from sp
                         getApplicationContext().getSharedPreferences("loginUser", 0).edit().clear().apply();
 
-                        Toast.makeText(getApplicationContext(), "Logout Done", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getApplicationContext(), "Logout Done", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(admin_panel.this, home.class);
                         startActivity(intent);
                         finish();
