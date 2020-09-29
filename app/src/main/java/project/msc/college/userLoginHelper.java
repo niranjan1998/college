@@ -2,7 +2,7 @@ package project.msc.college;
 
 public class userLoginHelper {
     String name,roll,phone,email,password,stream,role,pic;
-
+// just for practice
     public userLoginHelper() {
     }
     public userLoginHelper(String name, String roll, String phone, String email, String password, String stream, String role, String pic) {

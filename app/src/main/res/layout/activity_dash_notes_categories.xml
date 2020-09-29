@@ -38,11 +38,14 @@
                     android:tint="@color/Black" />
 
                 <TextView
+                    android:paddingStart="12dp"
+                    android:paddingEnd="2dp"
                     android:id="@+id/tv_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:textSize="20sp"
+                    android:textColor="@color/Black"
                     android:textStyle="bold" />
 
                 <TextView
@@ -52,6 +55,7 @@
                     android:paddingStart="10dp"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:textColor="@color/Black"
                     tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
@@ -86,12 +90,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/notes"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -118,12 +121,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/syllabus"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -150,12 +152,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/practicals"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -182,12 +183,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/blackbook"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -214,12 +214,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/videoNotes"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>

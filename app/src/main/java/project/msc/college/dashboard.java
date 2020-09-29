@@ -81,7 +81,6 @@ public class dashboard extends AppCompatActivity {
         txtName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(dashboard.this, "Clicked !", Toast.LENGTH_SHORT).show();
                 displayNotification();
             }

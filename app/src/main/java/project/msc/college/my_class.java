@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +49,8 @@ public class my_class extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     ValueEventListener usersListener;
+
+    MaterialToolbar materialToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,18 @@ public class my_class extends AppCompatActivity {
         grp_names = sp_grp_name.getString("name", "");
 
         collapsingToolbarLayout.setTitle(grp_names);
+
+        materialToolbar = findViewById(R.id.toll_bar_name);
+        setSupportActionBar(materialToolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+            }
+        });
 
         FirebaseDatabase.getInstance().getReference("Groups")
                 .child(grp_names).addValueEventListener(new ValueEventListener() {

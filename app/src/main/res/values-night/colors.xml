@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="COLOR">#121212</color>
+    <color name="appBar">#121212</color>
     <color name="colorPrimary">#0091EA</color>
     <color name="colorAccent">#D88520</color>
     <color name="white">#fff</color>
     <color name="Black">#FFFFFF</color>
+    <color name="Black_light">#ECEFF1</color>
     <color name="light_color">#424242</color>
     <color name="colorLight">#121212</color>
     <color name="Red">#D50000</color>
     <color name="LightGrey">#121212</color>
     <color name="txt_bg_admin">#424242</color>
     <color name="video_bg">#303030</color>
+    <color name="todo_card">#303030</color>
 </resources>

@@ -20,7 +20,7 @@
             android:id="@+id/main_path"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="16dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textAllCaps="true"
@@ -31,7 +31,7 @@
             android:id="@+id/sem_path"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="8dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textAllCaps="true"
@@ -54,7 +54,7 @@
             android:id="@+id/file_names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:padding="16dp"
             app:counterEnabled="true"
             android:hint="@string/filename"
             app:counterMaxLength="20"
@@ -88,7 +88,9 @@
                 android:textColor="#2196F3"
                 android:textSize="15sp"
                 app:cornerRadius="20dp"
-                app:icon="@android:drawable/ic_menu_add" />
+                app:icon="@android:drawable/ic_menu_add"
+                app:iconTint="#2196F3"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/uploadFile_btn"
@@ -102,7 +104,8 @@
                 android:textSize="15sp"
                 android:visibility="invisible"
                 app:cornerRadius="20dp"
-                app:icon="@android:drawable/ic_menu_upload" />
+                app:icon="@android:drawable/ic_menu_upload"
+                app:iconTint="#2196F3"/>
         </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

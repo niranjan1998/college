@@ -1,5 +1,5 @@
 package project.msc.college;
-
+//just for tp
 // used to create adapter for recyclerview of sem1recyclerview.java to view in notes in sem1 swipe view of notes
 
 import android.annotation.SuppressLint;

@@ -15,7 +15,7 @@
             android:id="@+id/collapsingTollBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/colorLight"
+            app:contentScrim="@color/appBar"
             app:expandedTitleMarginBottom="10dp"
             app:expandedTitleMarginStart="10dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -29,11 +29,11 @@
                 android:src="@drawable/lab" />
 
             <ImageView
-                android:layout_marginBottom="40dp"
                 android:id="@+id/imageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end|bottom"
+                android:layout_marginBottom="40dp"
                 android:contentDescription="@string/add_student"
                 android:onClick="btnSelectImage"
                 android:tint="@color/white"
@@ -42,7 +42,10 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toll_bar_name"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

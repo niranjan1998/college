@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
                     android:paddingStart="10dp"
-                    android:paddingEnd="1dp"
+                    android:paddingEnd="3dp"
                     android:text="@string/full_name"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
@@ -180,12 +180,16 @@
                                 android:textSize="20sp" />
 
                             <ImageView
-                                android:layout_width="55dp"
-                                android:layout_height="55dp"
+                                android:layout_centerInParent="true"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:paddingEnd="6dp"
+                                android:paddingStart="6dp"
                                 android:layout_alignParentEnd="true"
+                                android:layout_margin="5dp"
                                 android:contentDescription="@string/calender"
-                                android:src="@android:drawable/ic_menu_my_calendar"
-                                android:tint="@color/colorAccent" />
+                                android:src="@drawable/calenter_todo"
+                                android:tint="#606060" />
                         </RelativeLayout>
 
                     </LinearLayout>

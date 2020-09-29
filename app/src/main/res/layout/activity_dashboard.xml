@@ -41,8 +41,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/txtName"
                     android:textColor="#ffff"
+                    android:textAllCaps="true"
                     android:textSize="22sp"
-                    android:transitionName="name_transition" />
+                    android:textStyle="bold"
+                    android:transitionName="name_transition"
+                    />
 
                 <TextView
                     android:id="@+id/txtField"
@@ -52,7 +55,7 @@
                     android:layout_marginTop="6dp"
                     android:text="@string/msc_it2"
                     android:textColor="#ffff"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:transitionName="stream_transition" />
 
                 <TextView
@@ -104,7 +107,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -112,7 +115,8 @@
                     android:gravity="center"
                     android:onClick="upload_notes"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -141,7 +145,7 @@
                 android:layout_marginBottom="10dp"
                 android:visibility="visible"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -181,7 +185,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -220,7 +224,7 @@
                 android:layout_marginBottom="10dp"
                 android:onClick="open_todo"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -257,7 +261,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -296,7 +300,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
+                app:cardElevation="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

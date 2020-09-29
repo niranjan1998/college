@@ -74,7 +74,6 @@
                 android:onClick="txt_comment"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:text="@string/comments"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -135,6 +134,7 @@
                 android:contentDescription="@string/send"
                 android:onClick="btn_comment"
                 android:src="@drawable/ic_send_black_24dp"
+                android:tint="@color/Black"
                 android:text="@string/delete"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/ed_comment"
@@ -150,8 +150,8 @@
                 android:layout_marginEnd="10dp"
                 android:onClick="btnDeleteEvent"
                 android:text="@string/delete_event"
-                android:visibility="invisible"
                 android:textColor="@color/white"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

@@ -144,12 +144,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem1"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -175,12 +174,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem2"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -206,12 +204,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem3"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -222,6 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="msc_notes4"
@@ -237,13 +235,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem4"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -264,7 +260,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -277,7 +273,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:text="@string/bscIt"
                         android:textColor="@color/Black"
                         android:textSize="25sp" />
@@ -301,12 +296,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
+                        android:textColor="@color/Black_light"
                         android:text="@string/sem1"
-                        android:textColor="@color/Black"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -332,13 +326,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem2"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -364,13 +356,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem3"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -396,13 +386,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem4"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -428,13 +416,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem5"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
@@ -445,6 +431,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="bsc_notes6"
@@ -460,13 +447,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-
                         android:drawableStart="@drawable/ic_folder_black_24dp"
-                        android:drawablePadding="2dp"
-                        android:drawableTint="@color/Black"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="@color/Black_light"
                         android:text="@string/sem6"
-                        android:textColor="@color/Black"
+                        android:textColor="@color/Black_light"
                         android:textSize="18sp"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>

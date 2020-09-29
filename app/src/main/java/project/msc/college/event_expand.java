@@ -1,5 +1,6 @@
 package project.msc.college;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +40,7 @@ public class event_expand extends AppCompatActivity {
 
     TextView event_expand_dep;
     TextView event_expand_name;
+    TextView txt_comments;
     ImageView event_expand_img;
     TextView event_expand_date;
     EditText ed_comment;
@@ -66,6 +68,7 @@ public class event_expand extends AppCompatActivity {
         event_expand_date = findViewById(R.id.tv_expand_date);
         ed_comment = findViewById(R.id.ed_comment);
         button = findViewById(R.id.button);
+        txt_comments = findViewById(R.id.txt_comments);
 
         SharedPreferences result = getSharedPreferences("loginRef", Context.MODE_PRIVATE);
         String role = result.getString("role", "");
@@ -100,6 +103,7 @@ public class event_expand extends AppCompatActivity {
         dbReference = FirebaseDatabase.getInstance().getReference("Events").child(key).child("comments");
 
         commentListener = dbReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 comment_model_list.clear();
@@ -109,8 +113,11 @@ public class event_expand extends AppCompatActivity {
                     c_model.setKey(itemSnapshot.getKey());
                     comment_model_list.add(c_model);
                 }
-
                 ec_adapter.notifyDataSetChanged();
+
+
+                txt_comments.setText("Comments : " + " " + ec_adapter.getItemCount());
+
             }
 
             @Override

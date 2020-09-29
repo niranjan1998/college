@@ -5,75 +5,162 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <!--
+        <androidx.cardview.widget.CardView
+            android:id="@+id/todo_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:visibility="gone"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="2dp">
+
+                <TextView
+                    android:id="@+id/todo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/full_name"
+                    android:textColor="@color/Black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/todo_tech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/todo_title"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/full_name"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/todo_do_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/todo_title"
+                    android:layout_alignParentEnd="true"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:text="@string/full_name"
+                    android:textDirection="rtl"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/todo_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/todo_do_date"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/full_name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/todo_post_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/todo_desc"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/full_name"
+                    android:textSize="18sp" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    -->
     <androidx.cardview.widget.CardView
         android:id="@+id/todo_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/todo_do_date"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/full_name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="2dp">
+            android:layout_marginStart="78dp">
 
-            <TextView
-                android:id="@+id/todo_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/full_name"
-                android:textColor="@color/Black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/todo_tech"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/todo_card_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/todo_title"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/full_name"
-                android:textSize="18sp" />
+                app:cardCornerRadius="6dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/todo_card"
+                app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/todo_do_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/todo_title"
-                android:layout_alignParentEnd="true"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:text="@string/full_name"
-                android:textDirection="rtl"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="2dp">
 
-            <TextView
-                android:id="@+id/todo_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/todo_do_date"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/full_name"
-                android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/todo_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/full_name"
+                        android:textColor="@color/Black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/todo_post_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/todo_desc"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/full_name"
-                android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/todo_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/todo_title"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/full_name"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:paddingTop="8dp"
+                        android:id="@+id/todo_tech"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/todo_desc"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/full_name"
+                        android:textSize="16sp" />
+
+
+
+                    <TextView
+                        android:id="@+id/todo_post_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/todo_tech"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/full_name"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
 
         </RelativeLayout>

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class login extends AppCompatActivity implements OnItemSelectedListener {
-
+//just for practice
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

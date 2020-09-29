@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:textSize="20sp"
+                android:textColor="@color/Black"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:textSize="20sp"
+                android:textColor="@color/Black"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

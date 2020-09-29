@@ -48,7 +48,9 @@
             android:name=".admin_show_std"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".admin_panel" />
-        <activity android:name=".show_grp" />
+        <activity
+            android:name=".show_grp"
+            android:parentActivityName=".dashboard" />
         <activity
             android:name=".admin_panel"
             android:configChanges="orientation|screenSize"
@@ -66,7 +68,8 @@
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".my_class"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".grp_chat" />
         <activity android:name=".event_comment_item" />
         <activity
             android:name=".userProfile"

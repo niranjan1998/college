@@ -67,6 +67,7 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
         //Toast.makeText(context,newDate,Toast.LENGTH_SHORT).show();
         if (date.trim().equals(newDate)) {
             holder.txt_do_date.setTextColor(Color.RED);
+        //    holder.card_item.setCardBackgroundColor(Color.parseColor("#FFEBEB"));
             // holder.txt_do_date.setOutlineAmbientShadowColor(Color.RED);
         } else {
             holder.txt_do_date.setTextColor(Color.GREEN);
@@ -182,7 +183,7 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
     static class TodoViewHolder extends RecyclerView.ViewHolder {
 
         TextView txt_title, txt_desc, txt_do_date, txt_po_date, txt_tech;
-        CardView cardView;
+        CardView cardView, card_item;
 
         TodoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -193,6 +194,7 @@ public class todo_adapter extends RecyclerView.Adapter<todo_adapter.TodoViewHold
             txt_po_date = itemView.findViewById(R.id.todo_post_date);
             txt_tech = itemView.findViewById(R.id.todo_tech);
             cardView = itemView.findViewById(R.id.todo_card);
+            card_item = itemView.findViewById(R.id.todo_card_item);
 
         }
     }

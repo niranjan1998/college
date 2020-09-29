@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class storeUser {
+    // just for practice
 //shared preference errors
     Context context;
 

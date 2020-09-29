@@ -5,7 +5,7 @@ public class uploads_fmodel {
     public String url;
     private String key;
 
-
+    // just for practice
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public uploads_fmodel() {

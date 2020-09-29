@@ -15,7 +15,7 @@
             android:id="@+id/collapsingTollBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/colorLight"
+            app:contentScrim="@color/appBar"
             app:expandedTitleMarginBottom="10dp"
             app:expandedTitleMarginStart="10dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -95,6 +95,7 @@
                         android:layout_margin="10dp"
                         android:background="@color/Black"
                         android:backgroundTint="@color/white"
+                        app:cardElevation="10dp"
                         app:cardCornerRadius="25dp">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -344,10 +345,10 @@
                     android:textColor="#808080"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:icon="@drawable/ic_share_black_24dp"
+                    app:icon="@drawable/ic_icons8_share"
                     app:iconPadding="5dp"
                     app:iconSize="42dp"
-                    app:iconTint="#555" />
+                    app:iconTint="@color/Black" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_logout"
